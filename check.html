@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>うちの会社、助成金の対象になる？30秒チェック｜育守法務事務所</title>
-<meta name="description" content="雇用関係の助成金を受ける前提となる労務の土台がそろっているか、10問・30秒でチェックできます。無料・名前の入力なし。">
+<meta name="description" content="労務管理の状況と、使えそうな助成金の目安が30秒でわかります。無料・会社名や連絡先の入力は不要。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="うちの会社、助成金の対象になる？30秒チェック｜育守法務事務所">
 <meta property="og:url" content="https://exhoumu.github.io/check.html">
@@ -196,12 +196,12 @@ function show(){
     else ready = `<p class="ready ng">${missNg.length?`あと「${missNg.map(nameOf).join('」「')}」を整えると、申請の準備ができます。`:''}${missUn.length?`「${missUn.map(nameOf).join('」「')}」は確認が必要です。`:''}</p>`;
     h += `<div class="sub-card"><h3>${x.name}</h3><p class="for">${x.course}</p><div class="amt"><b>${x.amt}</b><span>${x.amtNote}</span></div><ul class="merit">${x.merits.map(m=>`<li>${m}</li>`).join('')}</ul>${ready}<p class="cond-note">${x.cond}　<a href="${x.link}" target="_blank" rel="noopener">厚生労働省の案内</a></p></div>`;
   });
-  h += '<div class="base"><h3>会社の土台のチェック結果</h3>';
+  h += '<div class="base"><h3>労務管理の状況のチェック結果</h3>';
   h += `<p style="margin:0 0 6px;font-size:15px;line-height:1.85">そろっている項目：${ok.length} / ${BASE.length}</p>`;
   if(ng.length) h += `<p style="margin:12px 0 0;font-weight:500">整えたい項目</p><ul>${ng.map(x=>`<li><b>${x.ng}</b><span>${x.why}</span></li>`).join('')}</ul>`;
   if(un.length) h += `<p style="margin:12px 0 0;font-weight:500">確認が必要な項目</p><p style="margin:2px 0 0;font-size:14px;color:#355269;line-height:1.8">書類を見ればすぐに分かることが多い項目です。社労士が一緒に確認します。</p><ul>${un.map(x=>`<li><b>${x.ng}</b><span>${x.why}</span></li>`).join('')}</ul>`;
-  if(!ng.length && !un.length) h += '<p style="margin:8px 0 0;font-size:15px;line-height:1.85">多くの助成金の前提となる労務の土台は、そろっている可能性が高いです。労働基準監督署の調査やトラブルにも強い状態です。</p>';
-  else h += '<p style="margin:0;font-size:15px;line-height:1.85">土台を整えると、助成金を受けられる可能性が広がるだけでなく、労働基準監督署の調査や従業員とのトラブルにも強くなります。</p>';
+  if(!ng.length && !un.length) h += '<p style="margin:8px 0 0;font-size:15px;line-height:1.85">多くの助成金の前提となる労務管理は、整っている可能性が高いです。労働基準監督署の調査やトラブルにも強い状態です。</p>';
+  else h += '<p style="margin:0;font-size:15px;line-height:1.85">労務管理を整えると、助成金を受けられる可能性が広がるだけでなく、労働基準監督署の調査や従業員とのトラブルにも強くなります。</p>';
   h += '</div>';
   h += `<div class="cta"><p><b style="color:#C9B78A;font-size:18px">この結果をもとにした初回相談は無料です。</b><br>どの助成金が実際に使えるか、いつ何を準備すればよいかを、札幌市厚別区の社会保険労務士が具体的にご案内します。助成金の申請は着手金なし・成功報酬です。</p><div class="row"><a class="btn" id="formGo" href="#" target="_blank" rel="noopener">この結果で相談する（フォーム）</a><a class="btn sub" id="mailGo" href="#">メールで相談する</a></div><small>どちらも、この結果が入力された状態で開きます。お名前とご連絡先だけ入れて送ってください。</small></div>`;
   const r=document.getElementById('result'); r.innerHTML=h; r.style.display='block';
