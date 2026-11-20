@@ -216,7 +216,7 @@ function show(){
   const r=document.getElementById('result'); r.innerHTML=h; r.style.display='block';
   const txt = summary(picked, ok, ng, un);
   document.getElementById('mailGo').href = 'mailto:ex.houmu@gmail.com?subject=' + encodeURIComponent('【30秒チェック】結果をもとに相談したい') + '&body=' + encodeURIComponent(txt);
-  document.getElementById('formGo').href = 'https://docs.google.com/forms/d/e/1FAIpQLScL5SvfhChUnfJKygrNnXuP_KBU9Hcldvt1UHSblvse-y-Cog/viewform?usp=pp_url&entry.578792485=' + encodeURIComponent(summary(picked, ok, ng, un, true));
+  document.getElementById('formGo').href = 'https://docs.google.com/forms/d/e/1FAIpQLScL5SvfhChUnfJKygrNnXuP_KBU9Hcldvt1UHSblvse-y-Cog/viewform?usp=pp_url&entry.211899175=' + encodeURIComponent('30秒チェック') + '&entry.578792485=' + encodeURIComponent(summary(picked, ok, ng, un, true));
   r.scrollIntoView({behavior:'smooth', block:'start'});
 }
 function summary(picked, ok, ng, un, form){
