@@ -16,32 +16,60 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&amp;family=Noto+Serif+JP:wght@400;600&amp;display=swap">
 <link rel="stylesheet" href="css/site.css">
 <style>
-.chk-hero{padding:72px 0 40px;background:#0D1B42;color:#F7F4EA}
+.chk-hero{padding:64px 0 36px;background:#0D1B42;color:#F7F4EA}
 .chk-hero .eyebrow{color:#C9B78A}
 .chk-hero h1{font-family:'Noto Serif JP',serif;font-weight:600;font-size:34px;line-height:1.45;letter-spacing:.06em;margin:0 0 16px}
 .chk-hero p{margin:0;font-size:15.5px;line-height:1.9;color:#DCE2EE}
-.chk-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.chk-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
 .chk-tags span{border:1px solid #C9B78A;color:#F7F4EA;font-size:13px;padding:4px 12px;border-radius:2px;letter-spacing:.06em}
 .chk-wrap{max-width:760px;margin:0 auto;padding:0 22px}
-.q{background:#FCFBF5;border:1px solid #D9D2BF;padding:18px 20px;margin:0 0 12px}
+.step{font-family:'Noto Serif JP',serif;font-weight:600;font-size:20px;margin:36px 0 6px;letter-spacing:.04em}
+.step-sub{margin:0 0 14px;font-size:14px;color:#355269;line-height:1.8}
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.plans button{min-height:64px;text-align:left;padding:10px 14px;border:1px solid #0D1B42;background:#fff;color:#0D1B42;font-size:15px;line-height:1.5;border-radius:3px;cursor:pointer;font-family:inherit}
+.plans button[aria-pressed="true"]{background:#0D1B42;color:#F7F4EA}
+.plans button[aria-pressed="true"]::before{content:"✓ ";color:#C9B78A;font-weight:700}
+.q{background:#FCFBF5;border:1px solid #D9D2BF;padding:16px 18px;margin:0 0 10px}
 .q p{margin:0 0 4px;font-size:16px;line-height:1.7;font-weight:500}
 .q small{display:block;color:#355269;font-size:13px;line-height:1.7;margin-bottom:10px}
-.q .ans{display:flex;gap:10px}
-.q button{flex:1;min-height:48px;border:1px solid #0D1B42;background:#fff;color:#0D1B42;font-size:16px;letter-spacing:.1em;border-radius:2px;cursor:pointer;font-family:inherit}
-.q button[aria-pressed="true"]{background:#0D1B42;color:#F7F4EA}
+.q .ans{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.q .ans button{min-height:48px;border:1px solid #0D1B42;background:#fff;color:#0D1B42;font-size:15px;letter-spacing:.04em;border-radius:3px;cursor:pointer;font-family:inherit;padding:0 4px}
+.q .ans button[aria-pressed="true"]{background:#0D1B42;color:#F7F4EA}
 .q .no-num{font-family:'Noto Serif JP',serif;color:#7A6230;margin-right:6px}
 .prog{position:sticky;top:0;z-index:4;background:rgba(247,244,234,.97);border-bottom:1px solid #D9D2BF;padding:10px 0;font-size:14px;color:#355269}
 .prog b{color:#0D1B42}
-#result{display:none;margin:28px 0 0;border-top:2px solid #0D1B42;background:#FCFBF5;padding:26px 22px}
-#result h2{font-family:'Noto Serif JP',serif;font-weight:600;font-size:24px;margin:0 0 10px;letter-spacing:.04em}
-#result .score{font-size:15px;color:#355269;margin:0 0 16px}
-#result ul{margin:0 0 18px;padding:0;list-style:none}
-#result li{border-bottom:1px solid #D9D2BF;padding:12px 0}
-#result li b{display:block;font-weight:500;margin-bottom:2px}
-#result li span{font-size:14px;color:#355269;line-height:1.8}
-.chk-note{font-size:13px;color:#355269;line-height:1.85;margin:20px 0 0}
-.chk-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
-@media (max-width:860px){.chk-hero h1{font-size:26px}}
+.go{display:block;width:100%;margin-top:18px;min-height:56px;font-size:17px}
+.go[disabled]{opacity:.45;cursor:default}
+#result{display:none;margin:30px 0 0}
+.rhead{background:#0D1B42;color:#F7F4EA;padding:24px 22px}
+.rhead h2{font-family:'Noto Serif JP',serif;font-weight:600;font-size:24px;line-height:1.5;margin:0 0 8px;letter-spacing:.04em}
+.rhead p{margin:0;font-size:15px;line-height:1.85;color:#DCE2EE}
+.rhead b{color:#C9B78A}
+.sub-card{border:1px solid #D9D2BF;border-top:3px solid #0D1B42;background:#FCFBF5;padding:18px 20px;margin-top:14px}
+.sub-card h3{font-family:'Noto Serif JP',serif;font-weight:600;font-size:19px;margin:0 0 2px;line-height:1.5}
+.sub-card .for{font-size:13px;color:#355269;margin:0 0 10px}
+.amt{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:10px 0;border-top:1px solid #D9D2BF;border-bottom:1px solid #D9D2BF;margin-bottom:10px}
+.amt span{font-size:13px;color:#355269}
+.amt b{font-family:'Noto Serif JP',serif;font-size:22px;color:#0D1B42}
+.merit{margin:0 0 10px;padding:0;list-style:none}
+.merit li{font-size:15px;line-height:1.75;padding-left:22px;position:relative}
+.merit li::before{content:"＋";position:absolute;left:0;color:#7A6230;font-weight:700}
+.ready{font-size:14px;line-height:1.8;margin:0 0 6px;padding:8px 12px;background:#F7F4EA}
+.ready.ok{border-left:3px solid #2E7D5B}
+.ready.ng{border-left:3px solid #B8860B}
+.cond-note{font-size:12.5px;color:#355269;line-height:1.7;margin:0}
+.cond-note a{color:#355269}
+.base{margin-top:26px;border-top:2px solid #0D1B42;background:#FCFBF5;padding:20px 20px}
+.base h3{font-family:'Noto Serif JP',serif;font-weight:600;font-size:19px;margin:0 0 6px}
+.base ul{margin:6px 0 14px;padding:0;list-style:none}
+.base li{border-bottom:1px solid #D9D2BF;padding:10px 0}
+.base li b{display:block;font-weight:500;margin-bottom:2px}
+.base li span{font-size:14px;color:#355269;line-height:1.8}
+.cta{margin-top:24px;background:#0D1B42;color:#F7F4EA;padding:24px 22px}
+.cta p{margin:0 0 14px;font-size:15px;line-height:1.85}
+.cta .btn{background:#F7F4EA;color:#0D1B42 !important}
+.chk-note{font-size:13px;color:#355269;line-height:1.85;margin:22px 0 0}
+@media (max-width:860px){.chk-hero h1{font-size:26px}.plans{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -66,18 +94,26 @@
     <div class="chk-wrap">
       <p class="eyebrow">30 SECONDS CHECK</p>
       <h1>うちの会社、<br>助成金の対象になる？</h1>
-      <p>雇用関係の助成金の多くは、会社の労務の「土台」がそろっていることが前提になります。10問に「はい・いいえ」で答えるだけで、その土台がそろっているかを確かめられます。</p>
+      <p>これからの予定と、今の会社の状況を選ぶだけで、使えるかもしれない助成金と金額の目安、申請の準備ができているかが分かります。</p>
       <div class="chk-tags"><span>30秒</span><span>無料</span><span>名前の入力なし</span></div>
     </div>
   </section>
 
-  <div class="prog"><div class="chk-wrap">回答 <b id="cnt">0</b> / 10</div></div>
+  <div class="prog"><div class="chk-wrap">回答 <b id="cnt">0</b> / 6　<span style="margin-left:8px">（予定はいくつ選んでもOK）</span></div></div>
 
-  <section style="padding: 28px 0 80px">
+  <section style="padding: 4px 0 80px">
     <div class="chk-wrap">
+      <p class="step">1．これから1年で、やりそうなことは？</p>
+      <p class="step-sub">当てはまるものを、いくつでも押してください（なければ飛ばしてOK）。</p>
+      <div class="plans" id="plans"></div>
+
+      <p class="step">2．今の会社の状況は？</p>
+      <p class="step-sub">迷ったら「わからない」で大丈夫です。</p>
       <div id="qs"></div>
+      <button type="button" class="btn go" id="go" disabled>結果を見る</button>
+
       <div id="result" aria-live="polite"></div>
-      <p class="chk-note">※ このチェックは、多くの雇用関係の助成金で前提となる、または審査で確認される労務の項目を確かめるものです。個別の助成金の対象になるかどうかは、それぞれの要件の確認が必要です。<br>※ 回答はこの画面の中だけで使い、どこにも送信・保存しません。</p>
+      <p class="chk-note">※ 金額は、厚生労働省の2026（令和8）年度の制度にもとづく中小企業の目安です。実際の支給額は要件や人数などで変わり、支給を約束するものではありません。予算や受付期間により、受付が終わっている場合もあります。<br>※ 回答はこの画面の中だけで使い、どこにも送信・保存しません。相談の際は、この結果の画面をスクリーンショットで保存しておくと話が早いです。</p>
     </div>
   </section>
   </main>
@@ -106,43 +142,65 @@
 </div>
 
 <script>
-const Q = [
-  {q:'従業員を雇用保険に加入させていますか？', h:'雇用関係の助成金の多くは、雇用保険の適用事業所であることが条件です。', ng:'雇用保険の加入', why:'雇用関係の助成金の多くは、雇用保険に加入している会社（適用事業所）が対象です。'},
-  {q:'労働保険料（労災保険・雇用保険）を、期限どおりに納めていますか？', h:'', ng:'労働保険料の納付', why:'労働保険料を滞納していると、多くの助成金は受けられません。'},
-  {q:'従業員全員と、労働条件を書面（雇用契約書・労働条件通知書）で交わしていますか？', h:'', ng:'労働条件の書面', why:'申請の際に提出を求められることが多い書類です。労働条件の明示は法律上の義務でもあります。'},
-  {q:'タイムカードなどで、毎日の出勤・退勤の時刻を記録していますか？', h:'', ng:'出勤簿（出退勤の記録）', why:'出勤簿は、多くの助成金で提出を求められます。記録がないと、要件を満たしていることを示せません。'},
-  {q:'賃金台帳（毎月の給与の内訳を記録したもの）を作って、保管していますか？', h:'給与ソフトで作っている場合は「はい」です。', ng:'賃金台帳', why:'賃金台帳も、多くの助成金で提出を求められる書類です。'},
-  {q:'残業代を、法律どおりの割増率で支払っていますか？', h:'残業がない場合は「はい」を選んでください。', ng:'残業代の支払い', why:'残業代の未払いなど、労働関係の法令に違反していると、助成金を受けられないことがあります。'},
-  {q:'残業をさせる場合、36協定を労働基準監督署に届け出ていますか？', h:'残業がない場合は「はい」を選んでください。', ng:'36協定の届出', why:'36協定がないまま残業させることは法令違反になり、助成金の審査で問題になることがあります。'},
-  {q:'就業規則がありますか？', h:'従業員が10人以上の会社は、労働基準監督署への届出が必要です。', ng:'就業規則', why:'多くの助成金は、制度を就業規則に定めていることが条件です。'},
-  {q:'有給休暇を、いつ・何日取ったかを記録していますか？', h:'年次有給休暇管理簿のことです。', ng:'有給休暇の管理', why:'年次有給休暇管理簿の作成は法律上の義務です。年5日の取得義務を守れているかも確認されます。'},
-  {q:'加入が必要な人を、社会保険（健康保険・厚生年金）に加入させていますか？', h:'法人や、加入が必要な個人事業所の場合です。分からない場合は「いいえ」を選んでください。', ng:'社会保険の加入', why:'社会保険の加入もれは、助成金の審査や、労務の見直しで指摘されやすい点です。'}
+const BASE = [
+  {id:'koyo', q:'従業員を雇用保険に加入させていますか？', h:'', ng:'雇用保険の加入', why:'雇用関係の助成金の多くは、雇用保険に加入している会社（適用事業所）が対象です。'},
+  {id:'nofu', q:'労働保険料（労災保険・雇用保険）を、期限どおりに納めていますか？', h:'', ng:'労働保険料の納付', why:'労働保険料を滞納していると、多くの助成金は受けられません。'},
+  {id:'keiyaku', q:'従業員全員と、雇用契約書（労働条件通知書）を交わしていますか？', h:'', ng:'労働条件の書面', why:'申請の際に提出を求められることが多い書類です。労働条件の明示は法律上の義務でもあります。'},
+  {id:'chobo', q:'毎日の出退勤の時刻と、毎月の給与の内訳を記録していますか？', h:'出勤簿（タイムカード）と賃金台帳のことです。給与ソフトで作っていれば「はい」です。', ng:'出勤簿・賃金台帳', why:'多くの助成金で提出を求められます。記録がないと、要件を満たしていることを示せません。'},
+  {id:'kisoku', q:'就業規則がありますか？', h:'従業員が10人以上の会社は、労働基準監督署への届出が必要です。', ng:'就業規則', why:'多くの助成金は、取り組む制度を就業規則に定めていることが条件です。'},
+  {id:'zangyo', q:'残業代を法律どおりに支払い、残業がある場合は36協定を届け出ていますか？', h:'残業がない場合は「はい」を選んでください。', ng:'残業代と36協定', why:'残業代の未払いや36協定のない残業は法令違反になり、助成金を受けられない原因になります。'}
 ];
-const A = new Array(Q.length).fill(null);
+const SUBS = [
+  {id:'seishain', plan:'パート・契約社員を<br>正社員にする', name:'キャリアアップ助成金', course:'正社員化コース', amt:'1人あたり 40万〜80万円', amtNote:'有期雇用から正社員にした場合', merits:['人が定着しやすくなる','求人に「正社員登用あり」と書けて、採用に強くなる'], need:['koyo','nofu','keiyaku','chobo','kisoku'], cond:'正社員にする前に、就業規則などに転換制度を定め、計画を届け出る必要があります。', link:'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/package_00007.html'},
+  {id:'ikukyu', plan:'男性の従業員が<br>育休を取りそう', name:'両立支援等助成金', course:'出生時両立支援コース（子育てパパ支援助成金）', amt:'1人目 20万円', amtNote:'職場の環境整備を4つ以上行うと30万円。2人目・3人目は10万円', merits:['「育休が取れる会社」として、採用で選ばれやすくなる','休む人がいても回る職場の仕組みができる'], need:['koyo','nofu','keiyaku','chobo','kisoku'], cond:'子の出生後8週以内に育休を始めることなどが条件です。育休の制度を就業規則に定めておく必要があります。', link:'https://www.mhlw.go.jp/content/001716053.pdf'},
+  {id:'kenshu', plan:'従業員に研修や<br>資格取得をさせたい', name:'人材開発支援助成金', course:'人材育成支援コースなど', amt:'研修費の一部＋研修中の賃金の一部', amtNote:'コースや研修の時間によって変わります', merits:['研修費の負担を抑えて、人が育つ','できる仕事が増え、任せられる人が増える'], need:['koyo','nofu','keiyaku','chobo'], cond:'研修を始める前に計画を届け出る必要があります。', link:'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/d01-1.html'},
+  {id:'hyoka', plan:'人事評価や<br>賃金の制度を整えたい', name:'人材確保等支援助成金', course:'雇用管理制度・雇用環境整備助成コース', amt:'人事評価制度の導入で 50万円', amtNote:'賃金規定制度なども対象。賃上げを行わない場合は40万円', merits:['評価の基準がはっきりして、不満や離職が減る','昇給や賞与の説明がしやすくなる'], need:['koyo','nofu','keiyaku','chobo','kisoku'], cond:'制度を導入したあと、離職率が下がることが支給の条件です。', link:'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/package_00007.html'},
+  {id:'jikan', plan:'残業を減らす・休みを<br>取りやすくしたい', name:'働き方改革推進支援助成金', course:'労働時間短縮・年休促進支援コース', amt:'かかった費用の 原則3/4', amtNote:'上限は取り組みの成果目標によって25万〜250万円など', merits:['勤怠の記録が正確になり、未払い残業のリスクが減る','休みが取りやすくなり、採用でアピールできる'], need:['koyo','nofu','chobo','zangyo'], cond:'勤怠管理のソフトや機器の導入などが対象です。毎年度、受付期間と予算に限りがあります。', link:'https://www.mhlw.go.jp/content/001696140.pdf'},
+  {id:'chinage', plan:'一番低い時給を上げて、<br>設備やソフトも入れたい', name:'業務改善助成金', course:'', amt:'設備費の 最大4/5（上限 最大600万円）', amtNote:'時給を50円以上引き上げることなどが条件', merits:['設備で仕事が速くなり、賃上げの原資をつくれる','最低賃金の引き上げに前もって備えられる'], need:['koyo','nofu','chobo'], cond:'例年、最低賃金が改定される秋の前に受付があります。申請前に賃上げや設備の購入をすると対象外です。', link:'https://www.mhlw.go.jp/content/11200000/001693381.pdf'}
+];
+const A = {}; const P = new Set();
+const plans = document.getElementById('plans');
+plans.innerHTML = SUBS.map(x=>`<button type="button" data-p="${x.id}" aria-pressed="false">${x.plan}</button>`).join('');
+plans.addEventListener('click', e=>{const b=e.target.closest('button'); if(!b) return; const id=b.dataset.p; if(P.has(id)){P.delete(id);b.setAttribute('aria-pressed','false')}else{P.add(id);b.setAttribute('aria-pressed','true')}});
 const qs = document.getElementById('qs');
-qs.innerHTML = Q.map((x,i)=>`<div class="q" data-i="${i}"><p><span class="no-num">${i+1}</span>${x.q}</p>${x.h?`<small>${x.h}</small>`:'<small></small>'}<div class="ans"><button type="button" data-v="1" aria-pressed="false">はい</button><button type="button" data-v="0" aria-pressed="false">いいえ</button></div></div>`).join('');
+qs.innerHTML = BASE.map((x,i)=>`<div class="q" data-i="${x.id}"><p><span class="no-num">${i+1}</span>${x.q}</p><small>${x.h}</small><div class="ans"><button type="button" data-v="y" aria-pressed="false">はい</button><button type="button" data-v="n" aria-pressed="false">いいえ</button><button type="button" data-v="u" aria-pressed="false">わからない</button></div></div>`).join('');
+const go = document.getElementById('go');
 qs.addEventListener('click', e=>{
-  const b = e.target.closest('button'); if(!b) return;
-  const box = b.closest('.q'), i = +box.dataset.i;
-  A[i] = b.dataset.v === '1';
-  box.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed', x===b ? 'true' : 'false'));
-  const n = A.filter(v=>v!==null).length;
-  document.getElementById('cnt').textContent = n;
-  if(n === Q.length) show();
-  else { const next = qs.querySelector(`.q[data-i="${i+1}"]`); if(next && A[i+1]===null) next.scrollIntoView({behavior:'smooth', block:'center'}); }
+  const b=e.target.closest('button'); if(!b) return;
+  const box=b.closest('.q'), id=box.dataset.i;
+  A[id]=b.dataset.v;
+  box.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed', x===b?'true':'false'));
+  const n=Object.keys(A).length; document.getElementById('cnt').textContent=n;
+  go.disabled = n<BASE.length;
+  if(n===BASE.length) go.scrollIntoView({behavior:'smooth', block:'center'});
 });
+go.addEventListener('click', show);
+const nameOf = id => BASE.find(x=>x.id===id).ng;
 function show(){
-  const ng = Q.filter((x,i)=>A[i]===false), ok = Q.length - ng.length;
-  let head, msg;
-  if(ng.length===0){ head='土台はそろっています'; msg='多くの助成金の前提となる労務の土台は、そろっている可能性が高いです。会社の取り組みに合う助成金がないか、一緒に確認しましょう。'; }
-  else if(ng.length<=3){ head='あと少しで、土台がそろいます'; msg='次の項目を整えると、助成金を受けられる可能性が広がります。どれも、労務の基本として整えておきたいものです。'; }
-  else { head='まずは土台づくりから'; msg='今のままでは、多くの助成金で要件を満たせない可能性があります。助成金のためだけでなく、トラブルを防ぐためにも、次の項目から整えていきましょう。'; }
-  const r = document.getElementById('result');
-  r.innerHTML = `<h2>${head}</h2><p class="score">「はい」が ${ok} / ${Q.length} 問</p><p style="margin:0 0 14px;line-height:1.9">${msg}</p>`
-    + (ng.length ? `<ul>${ng.map(x=>`<li><b>${x.ng}</b><span>${x.why}</span></li>`).join('')}</ul>` : '')
-    + `<div class="chk-cta"><a class="btn" href="index.html#contact">結果をもとに相談する</a><a class="btn" style="background:#fff;color:#0D1B42 !important;border:1px solid #0D1B42" href="price.html">料金を見る</a></div>`;
-  r.style.display = 'block';
-  r.scrollIntoView({behavior:'smooth', block:'start'});
+  const ng=BASE.filter(x=>A[x.id]==='n'), un=BASE.filter(x=>A[x.id]==='u'), ok=BASE.filter(x=>A[x.id]==='y');
+  const picked = SUBS.filter(x=>P.has(x.id));
+  const list = picked.length ? picked : SUBS.filter(x=>['seishain','ikukyu','hyoka'].includes(x.id));
+  let h = '<div class="rhead">';
+  if(picked.length){ h += `<h2>使えるかもしれない<br>助成金が <b>${picked.length}つ</b> あります</h2><p>予定していることに合わせて、代表的な助成金と金額の目安をまとめました。どれも、会社の環境が良くなる取り組みにお金が出る制度です。</p>`; }
+  else { h += `<h2>こんな助成金があります</h2><p>予定が決まっていなくても、多くの会社で使われている代表的な助成金です。取り組みを決める前に知っておくと、使える場面を逃しません。</p>`; }
+  h += '</div>';
+  list.forEach(x=>{
+    const miss = x.need.filter(id=>A[id]!=='y');
+    const missNg = miss.filter(id=>A[id]==='n'), missUn = miss.filter(id=>A[id]==='u');
+    let ready;
+    if(!miss.length) ready = `<p class="ready ok">今の会社の状況なら、申請の準備に進めそうです。</p>`;
+    else ready = `<p class="ready ng">${missNg.length?`あと「${missNg.map(nameOf).join('」「')}」を整えると、申請の準備ができます。`:''}${missUn.length?`「${missUn.map(nameOf).join('」「')}」は確認が必要です。`:''}</p>`;
+    h += `<div class="sub-card"><h3>${x.name}</h3><p class="for">${x.course}</p><div class="amt"><b>${x.amt}</b><span>${x.amtNote}</span></div><ul class="merit">${x.merits.map(m=>`<li>${m}</li>`).join('')}</ul>${ready}<p class="cond-note">${x.cond}　<a href="${x.link}" target="_blank" rel="noopener">厚生労働省の案内</a></p></div>`;
+  });
+  h += '<div class="base"><h3>会社の土台のチェック結果</h3>';
+  h += `<p style="margin:0 0 6px;font-size:15px;line-height:1.85">そろっている項目：${ok.length} / ${BASE.length}</p>`;
+  if(ng.length) h += `<p style="margin:12px 0 0;font-weight:500">整えたい項目</p><ul>${ng.map(x=>`<li><b>${x.ng}</b><span>${x.why}</span></li>`).join('')}</ul>`;
+  if(un.length) h += `<p style="margin:12px 0 0;font-weight:500">確認が必要な項目</p><p style="margin:2px 0 0;font-size:14px;color:#355269;line-height:1.8">書類を見ればすぐに分かることが多い項目です。社労士が一緒に確認します。</p><ul>${un.map(x=>`<li><b>${x.ng}</b><span>${x.why}</span></li>`).join('')}</ul>`;
+  if(!ng.length && !un.length) h += '<p style="margin:8px 0 0;font-size:15px;line-height:1.85">多くの助成金の前提となる労務の土台は、そろっている可能性が高いです。労働基準監督署の調査やトラブルにも強い状態です。</p>';
+  else h += '<p style="margin:0;font-size:15px;line-height:1.85">土台を整えると、助成金を受けられる可能性が広がるだけでなく、労働基準監督署の調査や従業員とのトラブルにも強くなります。</p>';
+  h += '</div>';
+  h += `<div class="cta"><p>どの助成金が実際に使えるか、いつ何を準備すればよいかを、社会保険労務士が具体的にご案内します。助成金の申請は<b style="color:#C9B78A">着手金なし・成功報酬</b>です。</p><a class="btn" href="index.html#contact">この結果をもとに相談する</a></div>`;
+  const r=document.getElementById('result'); r.innerHTML=h; r.style.display='block'; r.scrollIntoView({behavior:'smooth', block:'start'});
 }
 </script>
 </body>
