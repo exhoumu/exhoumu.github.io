@@ -152,19 +152,26 @@ const BASE = [
   {id:'keiyaku', q:'従業員全員と、雇用契約書（労働条件通知書）を交わしていますか？', h:'', ng:'労働条件の書面', why:'申請の際に提出を求められることが多い書類です。労働条件の明示は法律上の義務でもあります。'},
   {id:'chobo', q:'毎日の出退勤の時刻と、毎月の給与の内訳を記録していますか？', h:'出勤簿（タイムカード）と賃金台帳のことです。給与ソフトで作っていれば「はい」です。', ng:'出勤簿・賃金台帳', why:'多くの助成金で提出を求められます。記録がないと、要件を満たしていることを示せません。'},
   {id:'kisoku', q:'就業規則がありますか？', h:'従業員が10人以上の会社は、労働基準監督署への届出が必要です。', ng:'就業規則', why:'多くの助成金は、取り組む制度を就業規則に定めていることが条件です。'},
-  {id:'zangyo', q:'残業代を法律どおりに支払い、残業がある場合は36協定を届け出ていますか？', h:'残業がない場合は「はい」を選んでください。', ng:'残業代と36協定', why:'残業代の未払いや36協定のない残業は法令違反になり、助成金を受けられない原因になります。'}
+  {id:'zangyo', q:'残業代を法律どおりに支払い、残業がある場合は36協定を届け出ていますか？', h:'36協定は、残業をさせるために労働基準監督署へ出す届出です。残業がない場合は「はい」を選んでください。', ng:'残業代と36協定', why:'残業代の未払いや36協定のない残業は法令違反になり、助成金を受けられない原因になります。'}
+];
+const PLANS = [
+  {id:'seishain', label:'パート・契約社員を<br>正社員にしたい'},
+  {id:'ikukyu', label:'産休・育休を<br>取りそうな従業員がいる'},
+  {id:'muki', label:'50歳以上のパート・契約社員を<br>定年まで働ける契約にしたい'},
+  {id:'shoyo', label:'パート・契約社員にも<br>賞与か退職金を出したい'},
+  {id:'setsubi', label:'設備やソフトを<br>新しくしたい'}
 ];
 const SUBS = [
-  {id:'seishain', plan:'パート・契約社員を<br>正社員にする', name:'キャリアアップ助成金', course:'正社員化コース', amt:'1人あたり 40万〜80万円', amtNote:'有期雇用から正社員にした場合', merits:['人が定着しやすくなる','求人に「正社員登用あり」と書けて、採用に強くなる'], need:['koyo','nofu','keiyaku','chobo','kisoku'], cond:'正社員にする前に、就業規則などに転換制度を定め、計画を届け出る必要があります。', link:'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/package_00007.html'},
-  {id:'ikukyu', plan:'産休・育休を<br>取りそうな従業員がいる', name:'両立支援等助成金', course:'育児休業等支援コース／出生時両立支援コース（男性の育休）／育休中等業務代替支援コース', amt:'育休の取得時 30万円 など', amtNote:'復帰時にも支給。男性の育休は1人目20万円（条件で30万円）。休業中の仕事を代わりに担う人への手当や、代わりの人の雇用にも支給（代わりの人を新たに雇い1年以上なら81万円など）。組み合わせて申請できます', merits:['「産休・育休が取れる会社」として、採用で選ばれやすくなる','休む人がいても回る職場の仕組みができ、復帰後も辞めにくくなる'], need:['koyo','nofu','keiyaku','chobo','kisoku'], cond:'育休の制度を就業規則に定め、面談や業務の引継ぎなど決められた手順を育休の前に行う必要があります。産休から続けて育休を取る場合も対象です。', link:'https://www.mhlw.go.jp/content/001716053.pdf'},
-  {id:'kenshu', plan:'従業員に研修や<br>資格取得をさせたい', name:'人材開発支援助成金', course:'人材育成支援コースなど', amt:'研修費の一部＋研修中の賃金の一部', amtNote:'コースや研修の時間によって変わります', merits:['研修費の負担を抑えて、人が育つ','できる仕事が増え、任せられる人が増える'], need:['koyo','nofu','keiyaku','chobo'], cond:'研修を始める前に計画を届け出る必要があります。', link:'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/d01-1.html'},
-  {id:'hyoka', plan:'人事評価や<br>賃金の制度を整えたい', name:'人材確保等支援助成金', course:'雇用管理制度・雇用環境整備助成コース', amt:'人事評価制度の導入で 50万円', amtNote:'賃金規定制度なども対象。賃上げを行わない場合は40万円', merits:['評価の基準がはっきりして、不満や離職が減る','昇給や賞与の説明がしやすくなる'], need:['koyo','nofu','keiyaku','chobo','kisoku'], cond:'制度を導入したあと、離職率が下がることが支給の条件です。', link:'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/package_00007.html'},
-  {id:'jikan', plan:'残業を減らす・休みを<br>取りやすくしたい', name:'働き方改革推進支援助成金', course:'労働時間短縮・年休促進支援コース', amt:'かかった費用の 原則3/4', amtNote:'上限は取り組みの成果目標によって25万〜250万円など', merits:['勤怠の記録が正確になり、未払い残業のリスクが減る','休みが取りやすくなり、採用でアピールできる'], need:['koyo','nofu','chobo','zangyo'], cond:'勤怠管理のソフトや機器の導入などが対象です。毎年度、受付期間と予算に限りがあります。', link:'https://www.mhlw.go.jp/content/001696140.pdf'},
-  {id:'chinage', plan:'一番低い時給を上げて、<br>設備やソフトも入れたい', name:'業務改善助成金', course:'', amt:'設備費の 最大4/5（上限 最大600万円）', amtNote:'時給を50円以上引き上げることなどが条件', merits:['設備で仕事が速くなり、賃上げの原資をつくれる','最低賃金の引き上げに前もって備えられる'], need:['koyo','nofu','chobo'], cond:'例年、最低賃金が改定される秋の前に受付があります。申請前に賃上げや設備の購入をすると対象外です。', link:'https://www.mhlw.go.jp/content/11200000/001693381.pdf'}
+  {id:'seishain', p:'seishain', name:'キャリアアップ助成金', course:'正社員化コース', amt:'1人あたり 40万〜80万円', amtNote:'契約期間のあるパート・契約社員を正社員にした場合。雇ってからの期間などで金額が変わります', merits:['人が定着しやすくなる','求人に「正社員登用あり」と書けて、採用に強くなる'], need:['koyo','nofu','keiyaku','chobo','kisoku'], cond:'正社員にする前に、「正社員になれる制度」を就業規則に書き、計画を労働局に出しておく必要があります。正社員にしたあとの給与を、前より3%以上上げることも条件です。', link:'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/package_00007.html'},
+  {id:'ikukyu', p:'ikukyu', name:'両立支援等助成金', course:'育児休業等支援コース など', amt:'1人につき 60万円', amtNote:'育休を取ったときに30万円、育休から職場に戻ったときに30万円。1つの会社で2人まで。ほかに、男性が育休を取ったとき（1人目20万円〜）や、休んでいる人の仕事を代わりに担う人に手当を出したときなどにも出ます', merits:['「産休・育休が取れる会社」として、採用で選ばれやすくなる','休む人がいても回る職場の仕組みができ、復帰後も辞めにくくなる'], need:['koyo','nofu','keiyaku','chobo','kisoku'], cond:'育休を取る前に、本人と面談して復帰までの計画をつくり、仕事の引継ぎをするなど、決められた手順が必要です。育休の制度を就業規則に書いておくことも条件です。産休から続けて育休を取る場合も対象です。', link:'https://www.mhlw.go.jp/content/001716053.pdf'},
+  {id:'muki', p:'muki', name:'65歳超雇用推進助成金', course:'高年齢者無期雇用転換コース', amt:'1人あたり 40万円', amtNote:'1年に10人まで。対象は、50歳以上で定年より前のパート・契約社員です', merits:['ベテランが安心して長く働けて、技術や経験が社内に残る','人手が足りない中でも、経験のある人を手放さずに済む'], need:['koyo','nofu','keiyaku','chobo','kisoku'], cond:'契約を変える前に、「定年まで働ける契約に変える制度」を就業規則に書き、変える日の3か月前までに計画を出しておく必要があります。契約期間のある働き方を、通算1年以上5年以内続けている人が対象です。', link:'https://www.mhlw.go.jp/stf/newpage_55142.html'},
+  {id:'shoyo', p:'shoyo', name:'キャリアアップ助成金', course:'賞与・退職金制度導入コース', amt:'1つの事業所につき 40万円', amtNote:'賞与と退職金を同時に始めると56.8万円', merits:['パートや契約社員のやる気が上がり、辞めにくくなる','「パートにも賞与あり」と求人に書けて、採用に強くなる'], need:['koyo','nofu','keiyaku','chobo','kisoku'], cond:'パート・契約社員の全員に賞与か退職金を出す制度を就業規則に書き、計画を先に出しておく必要があります。賞与は1人5万円以上（6か月分として）などの決まりがあり、そのために基本給を下げることはできません。', link:'https://www.mhlw.go.jp/content/001508011.pdf'},
+  {id:'chinage', p:'setsubi', name:'業務改善助成金', course:'', amt:'かかった費用の 最大4/5（上限 最大600万円）', amtNote:'社内で一番低い時給を50円以上上げることが条件です。上限は、上げる額と人数で変わります', merits:['設備で仕事が速くなり、賃上げの元手をつくれる','最低賃金の引き上げに前もって備えられる'], need:['koyo','nofu','chobo'], cond:'例年、最低賃金が変わる秋の前に受付があります。申請の前に時給を上げたり、設備を買ったりすると対象外です。', link:'https://www.mhlw.go.jp/content/11200000/001693381.pdf'},
+  {id:'jikan', p:'setsubi', name:'働き方改革推進支援助成金', course:'労働時間短縮・年休促進支援コース', amt:'かかった費用の 原則3/4（上限 最大250万円）', amtNote:'勤怠管理のソフトや、仕事を効率よくする機器などが対象です。残業を減らす・休みを取りやすくするといった目標の達成が条件で、上限は目標によって25万〜250万円。賃上げをすると上乗せがあります', merits:['勤怠の記録が正確になり、未払い残業のリスクが減る','休みが取りやすくなり、採用でアピールできる'], need:['koyo','nofu','chobo','zangyo'], cond:'買う前に申請し、交付が決まってから買う必要があります。毎年度、受付期間と予算に限りがあります。', link:'https://www.mhlw.go.jp/content/001696140.pdf'}
 ];
 const A = {}; const P = new Set();
 const plans = document.getElementById('plans');
-plans.innerHTML = SUBS.map(x=>`<button type="button" data-p="${x.id}" aria-pressed="false">${x.plan}</button>`).join('');
+plans.innerHTML = PLANS.map(x=>`<button type="button" data-p="${x.id}" aria-pressed="false">${x.label}</button>`).join('');
 plans.addEventListener('click', e=>{const b=e.target.closest('button'); if(!b) return; const id=b.dataset.p; if(P.has(id)){P.delete(id);b.setAttribute('aria-pressed','false')}else{P.add(id);b.setAttribute('aria-pressed','true')}});
 const qs = document.getElementById('qs');
 qs.innerHTML = BASE.map((x,i)=>`<div class="q" data-i="${x.id}"><p><span class="no-num">${i+1}</span>${x.q}</p><small>${x.h}</small><div class="ans"><button type="button" data-v="y" aria-pressed="false">はい</button><button type="button" data-v="n" aria-pressed="false">いいえ</button><button type="button" data-v="u" aria-pressed="false">わからない</button></div></div>`).join('');
@@ -182,8 +189,8 @@ go.addEventListener('click', show);
 const nameOf = id => BASE.find(x=>x.id===id).ng;
 function show(){
   const ng=BASE.filter(x=>A[x.id]==='n'), un=BASE.filter(x=>A[x.id]==='u'), ok=BASE.filter(x=>A[x.id]==='y');
-  const picked = SUBS.filter(x=>P.has(x.id));
-  const list = picked.length ? picked : SUBS.filter(x=>['seishain','ikukyu','hyoka'].includes(x.id));
+  const picked = SUBS.filter(x=>P.has(x.p));
+  const list = picked.length ? picked : SUBS.filter(x=>['seishain','ikukyu','chinage'].includes(x.id));
   let h = '<div class="rhead">';
   if(picked.length){ h += `<h2>使えるかもしれない<br>助成金が <b>${picked.length}つ</b> あります</h2><p>予定していることに合わせて、代表的な助成金と金額の目安をまとめました。どれも、会社の環境が良くなる取り組みにお金が出る制度です。</p>`; }
   else { h += `<h2>こんな助成金があります</h2><p>予定が決まっていなくても、多くの会社で使われている代表的な助成金です。取り組みを決める前に知っておくと、使える場面を逃しません。</p>`; }
@@ -215,7 +222,8 @@ function summary(picked, ok, ng, un, form){
   if(!form) L.push('育守法務事務所 御中','');
   L.push('30秒チェックの結果をもとに、初回相談（無料）を希望します。','');
   L.push('■ これから1年でやりそうなこと');
-  if(picked.length) picked.forEach(x=>L.push('・'+x.plan.replace(/<br>/g,'')+'（'+x.name+'）')); else L.push('・特になし／未定');
+  const pp = PLANS.filter(x=>P.has(x.id));
+  if(pp.length) pp.forEach(x=>L.push('・'+x.label.replace(/<br>/g,'')+'（'+SUBS.filter(y=>y.p===x.id).map(y=>y.name).join('・')+'）')); else L.push('・特になし／未定');
   L.push('','■ 会社の状況');
   BASE.forEach(x=>L.push('・'+x.ng+'：'+({y:'はい',n:'いいえ',u:'わからない'})[A[x.id]]));
   if(!form) L.push('','■ 会社名・お名前・ご連絡先（ご記入ください）','会社名：','お名前：','電話またはメール：','ご希望の連絡方法・時間帯：');
