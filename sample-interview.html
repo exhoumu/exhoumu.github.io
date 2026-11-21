@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>面談の分析レポート（見本）｜育守法務事務所</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<style>
+:root{--kon:#0D1B42;--yoru:#010C24;--kinari:#F7F4EA;--kin:#C9B78A;--raised:#FCFBF5;--muted:#355269;--gold:#7A6230;--line:#D9D2BF;
+  --ok:#2F6B4F;--okbg:#E4EFE7;--warn:#8A6A12;--warnbg:#F6EDD2;--bad:#9B2C2C;--badbg:#F6E3DF}
+*{box-sizing:border-box}
+body{margin:0;background:var(--kinari);color:var(--kon);font-family:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;font-size:15px;line-height:1.75;letter-spacing:.02em}
+.ser{font-family:'Noto Serif JP','Yu Mincho',serif}
+.sample{background:var(--gold);color:#fff;text-align:center;font-size:13px;padding:6px 12px;letter-spacing:.1em}
+header{background:var(--kon);color:var(--kinari);padding:34px 24px 30px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header .eb{font-family:'Noto Serif JP',serif;color:var(--kin);font-size:13px;letter-spacing:.2em;margin:0}
+header h1{font-family:'Noto Serif JP',serif;font-weight:600;font-size:32px;margin:6px 0 4px;letter-spacing:.06em}
+header .meta{display:flex;gap:24px;flex-wrap:wrap;font-size:14px;color:#B8C2D6;margin-top:10px}
+header .meta b{color:var(--kinari);font-weight:500}
+main{padding:28px 0 60px}
+section{margin:0 0 34px}
+h2{font-family:'Noto Serif JP',serif;font-weight:600;font-size:22px;margin:0 0 4px;display:flex;align-items:baseline;gap:12px}
+h2 .no{font-size:14px;color:var(--gold)}
+.lead{color:var(--muted);font-size:14px;margin:0 0 14px}
+.rule{height:1px;background:var(--line);margin:0 0 16px}
+.sig{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.card{background:var(--raised);border:1px solid var(--line);padding:16px 18px;border-top:4px solid var(--line)}
+.card.ok{border-top-color:var(--ok)}.card.warn{border-top-color:#C79A1E}.card.bad{border-top-color:var(--bad)}
+.card .t{font-size:13px;color:var(--muted)}
+.lamp{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;padding:1px 10px;border-radius:2px;margin:6px 0}
+.lamp::before{content:"";width:9px;height:9px;border-radius:50%;background:currentColor}
+.ok .lamp{color:var(--ok);background:var(--okbg)}.warn .lamp{color:var(--warn);background:var(--warnbg)}.bad .lamp{color:var(--bad);background:var(--badbg)}
+.card .v{font-family:'Noto Serif JP',serif;font-weight:600;font-size:28px;line-height:1.3}
+.card .v small{font-size:14px;margin-left:2px}
+.card .d{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.6}
+.money{display:grid;grid-template-columns:1.2fr 1fr;gap:12px}
+.mbox{background:var(--kon);color:var(--kinari);padding:20px 24px}
+.mbox .l{font-size:13px;color:#B8C2D6}
+.mbox .v{font-family:'Noto Serif JP',serif;font-weight:600;font-size:38px;line-height:1.3;margin:4px 0}
+.mbox .s{font-size:13.5px;color:#B8C2D6}
+.mbox .up{color:#F3C9C0;font-weight:700}
+.mbox2{background:var(--raised);border:2px solid var(--kin);padding:20px 24px}
+.mbox2 .l{font-size:13px;color:var(--muted)}
+.mbox2 .v{font-family:'Noto Serif JP',serif;font-weight:600;font-size:30px;margin:4px 0;color:var(--kon)}
+.mbox2 .s{font-size:13.5px}
+.hm{overflow-x:auto;background:var(--raised);border:1px solid var(--line);padding:12px}
+.hm table{border-collapse:separate;border-spacing:3px;font-size:12.5px;min-width:720px}
+.hm th{font-weight:500;color:var(--muted);padding:2px 4px;text-align:center;white-space:nowrap}
+.hm th.r{text-align:left}
+.hm td{width:52px;height:30px;text-align:center;font-variant-numeric:tabular-nums;border-radius:2px}
+.hm td.tot{background:transparent;font-weight:700;width:64px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:10px;align-items:center}
+.legend i{display:inline-block;width:18px;height:12px;vertical-align:-1px;margin-right:4px;border-radius:2px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.panel{background:var(--raised);border:1px solid var(--line);padding:16px 18px}
+.panel h3{font-family:'Noto Serif JP',serif;font-weight:600;font-size:16px;margin:0 0 10px}
+.bar{display:grid;grid-template-columns:56px 1fr 140px;gap:10px;align-items:center;font-size:13px;margin:7px 0}
+.track{position:relative;height:14px;background:#EFEADA;border-radius:2px;overflow:hidden}
+.fill{position:absolute;left:0;top:0;bottom:0;border-radius:2px}
+.cap{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--bad)}
+.bar .n{text-align:right;font-variant-numeric:tabular-nums}
+.yt{width:100%;border-collapse:collapse;font-size:13.5px}
+.yt td,.yt th{padding:7px 6px;border-bottom:1px solid var(--line);text-align:left}
+.yt th{font-weight:500;color:var(--gold);font-size:12.5px}
+.yt .r{text-align:right}
+.tag{display:inline-block;font-size:12px;padding:0 8px;border-radius:2px;font-weight:700}
+.tag.bad{color:var(--bad);background:var(--badbg)}.tag.warn{color:var(--warn);background:var(--warnbg)}.tag.ok{color:var(--ok);background:var(--okbg)}
+.alert{display:flex;gap:14px;align-items:flex-start;background:var(--raised);border:1px solid var(--line);border-left:4px solid var(--bad);padding:12px 16px;margin:8px 0}
+.alert .id{font-family:'Noto Serif JP',serif;font-weight:600;font-size:18px;min-width:56px}
+.alert ul{margin:0;padding-left:1.1em;font-size:13.5px}
+.cmp .row{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center;margin:12px 0}
+.cmp .lbl{font-size:13.5px}
+.cmp .bars{display:flex;flex-direction:column;gap:4px}
+.cmp .b{display:grid;grid-template-columns:150px 1fr 58px;gap:8px;align-items:center;font-size:12.5px;color:var(--muted)}
+.cmp .b .track{height:12px}
+.cmp .b.me{color:var(--kon);font-weight:700}
+.src{font-size:12px;color:var(--muted);margin-top:8px}
+.next{counter-reset:n}
+.step{display:grid;grid-template-columns:44px 1fr 190px;gap:14px;background:var(--raised);border:1px solid var(--line);padding:14px 18px;margin:8px 0;align-items:start}
+.step::before{counter-increment:n;content:counter(n,cjk-ideographic);font-family:'Noto Serif JP',serif;font-size:24px;color:var(--gold);line-height:1.2}
+.step b{font-size:15.5px}
+.step p{margin:2px 0 0;font-size:13.5px;color:var(--muted)}
+.step .k{font-size:12.5px;color:var(--muted);text-align:right}
+.step .k b{display:block;font-size:14px;color:var(--kon)}
+.sub{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.subc{background:var(--raised);border:1px solid var(--line);padding:14px 18px}
+.subc b{font-size:15px}
+.subc .amt{font-family:'Noto Serif JP',serif;font-weight:600;font-size:20px;margin:4px 0}
+.subc p{margin:0;font-size:13px;color:var(--muted)}
+.shoken{background:var(--raised);border:1px solid var(--line);border-left:4px solid var(--kin);padding:18px 22px;font-family:'Noto Serif JP',serif;font-size:15.5px;line-height:2}
+.shoken .sig2{text-align:right;font-size:13px;color:var(--muted);margin-top:6px}
+.mtg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mc{background:var(--raised);border:1px solid var(--line);padding:14px 18px}
+.mc h3{font-family:'Noto Serif JP',serif;font-weight:600;font-size:15.5px;margin:0 0 8px;display:flex;gap:8px;align-items:center}
+.mc ul,.mc ol{margin:0;padding-left:1.2em;font-size:13.5px}
+.mc li{margin:3px 0}
+.quote{border-left:3px solid var(--kin);padding:2px 0 2px 10px;margin:6px 0;font-size:13.5px}
+.mot{display:flex;align-items:flex-end;gap:10px;height:120px;padding:8px 4px 0;border-bottom:1px solid var(--line)}
+.mot .c{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-size:12px;color:var(--muted)}
+.mot .b{width:70%;border-radius:2px 2px 0 0}
+.labs .lab{font-size:12px;color:var(--muted);text-align:center;flex:1}
+.labs{display:flex;gap:10px;padding:4px 4px 0}
+.prev{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--raised);border:1px solid var(--line)}
+.prev td,.prev th{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.prev th{font-weight:500;color:var(--gold);font-size:12.5px}
+footer{background:var(--kon);color:#B8C2D6;font-size:13px;padding:22px 0}
+footer b{color:var(--kinari);font-family:'Noto Serif JP',serif;font-weight:600;letter-spacing:.12em;font-size:16px}
+@media(max-width:760px){.sig{grid-template-columns:1fr 1fr}.money,.two,.sub{grid-template-columns:1fr}.step{grid-template-columns:34px 1fr}.step .k{grid-column:2;text-align:left}.cmp .row{grid-template-columns:1fr}.cmp .b{grid-template-columns:110px 1fr 50px}header h1{font-size:24px}}
+</style>
+<style>
+.pc{background:var(--raised);border:1px solid var(--line);padding:16px 20px;margin:12px 0}
+.pc .ph{display:flex;gap:14px;align-items:baseline;border-bottom:1.5px solid var(--kin);padding-bottom:6px;margin-bottom:10px}
+.pc .ph b{font-size:20px}.pc .ph span{font-size:13px;color:var(--muted)}
+.pc .g{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
+.pc h4{font-family:'Noto Serif JP',serif;font-weight:600;font-size:14.5px;margin:0 0 4px;color:var(--gold)}
+.pc ul,.pc ol{margin:0;padding-left:1.2em;font-size:13.5px}
+.quote{border-left:3px solid var(--kin);padding:2px 0 2px 10px;margin:4px 0;font-size:13.5px}
+.theme{display:grid;grid-template-columns:190px 1fr 50px;gap:10px;align-items:center;font-size:13.5px;margin:8px 0}
+.flow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:13px}
+.flow span{background:var(--raised);border:1px solid var(--line);padding:6px 10px}
+.flow i{color:var(--kin);font-style:normal}
+.fb td,.fb th{padding:9px 10px;border-bottom:1px solid var(--line);font-size:13.5px;text-align:left}
+.fb th{color:var(--gold);font-weight:500;font-size:12.5px}
+.fb{width:100%;border-collapse:collapse;background:var(--raised);border:1px solid var(--line)}
+@media(max-width:760px){.pc .g{grid-template-columns:1fr}.theme{grid-template-columns:120px 1fr 40px}}
+</style></head><body>
+<div class="sample">見本です。架空の会社と架空の面談で作っています</div>
+<header><div class="wrap">
+  <p class="eb">人事パートナー顧問　｜　面談（1on1）からの分析</p>
+  <h1>面談の分析レポート</h1>
+  <p style="margin:2px 0 0;color:#B8C2D6;font-size:14px">面談の記録から　｜　勤怠・給与のデータからの分析は <a href="sample-report.html" style="color:#C9B78A">職場の健康診断レポート（見本）</a></p>
+  <div class="meta"><span>対象：<b>株式会社サンプル 様（架空の会社）</b></span><span>面談：<b>2027年1月・4人</b></span><span>面談した人：<b>社長・製造部長</b></span></div>
+</div></header>
+<main class="wrap">
+<section>
+  <h2><span class="no">一</span>このレポートのでき方</h2>
+  <div class="flow"><span>当事務所が面談の進め方を設計し、社長・部長にお伝え</span><i>→</i><span>社長・部長が面談（本人の同意を得て録音）</span><i>→</i><span>文字にし、氏名などを番号に置き換え</span><i>→</i><span>デジタル技術も活用して要点を整理</span><i>→</i><span>社会保険労務士が確認し、所見を書く</span></div>
+  <p class="src">面談をするのは会社の方です。当事務所は、従業員が本音を話せる面談の場をつくるための進め方と、上司の方の聞き方を一緒に整えます。</p>
+</section>
+<section>
+  <h2><span class="no">二</span>全体で多かった声</h2>
+  <p class="lead">4人の面談で出た悩みを、テーマごとに数えました。</p>
+  <div class="panel">
+    <div class="theme"><span>教え方・手順がばらばら</span><div class="track"><div class="fill" style="width:75%;background:var(--bad)"></div></div><span>3人</span></div>
+    <div class="theme"><span>休みを取りにくい</span><div class="track"><div class="fill" style="width:50%;background:#C79A1E"></div></div><span>2人</span></div>
+    <div class="theme"><span>仕事が一部の人に集中</span><div class="track"><div class="fill" style="width:50%;background:#C79A1E"></div></div><span>2人</span></div>
+    <div class="theme"><span>将来・役割が見えない</span><div class="track"><div class="fill" style="width:25%;background:var(--muted)"></div></div><span>1人</span></div>
+  </div>
+</section>
+<section>
+  <h2><span class="no">三</span>一人ずつ</h2>
+  <div class="pc"><div class="ph"><b class="ser">No.03</b><span>製造部・入社4年</span></div>
+    <div class="g"><div><h4>今の悩み・課題</h4><ul><li>残業が続いて、家族との時間が取れない</li><li>自分しかできない作業が多く、休めない</li></ul></div>
+    <div><h4>キャリアについての発言</h4><div class="quote">「後輩に仕事を任せられるようになりたい」</div><div class="quote">「このままのペースだと、正直きつい」</div></div>
+    <div><h4>モチベーションの変化（5段階）</h4><svg viewBox="0 0 220 100" width="100%" height="100" aria-label="モチベーションの推移 [3.4, 3.0, 2.7, 2.4]"><line x1="10" y1="70" x2="210" y2="70" stroke="#D9D2BF"/><polyline points="20,34 80,40 140,44 200,49" fill="none" stroke="#B5463A" stroke-width="2.5"/><circle cx="20" cy="34" r="4" fill="#B5463A"/><text x="20" y="26" font-size="11" text-anchor="middle" fill="#355269">3.4</text><circle cx="80" cy="40" r="4" fill="#B5463A"/><text x="80" y="32" font-size="11" text-anchor="middle" fill="#355269">3.0</text><circle cx="140" cy="44" r="4" fill="#B5463A"/><text x="140" y="36" font-size="11" text-anchor="middle" fill="#355269">2.7</text><circle cx="200" cy="49" r="4" fill="#B5463A"/><text x="200" y="41" font-size="11" text-anchor="middle" fill="#355269">2.4</text><text x="20" y="92" font-size="11" text-anchor="middle" fill="#355269">4月</text><text x="80" y="92" font-size="11" text-anchor="middle" fill="#355269">7月</text><text x="140" y="92" font-size="11" text-anchor="middle" fill="#355269">10月</text><text x="200" y="92" font-size="11" text-anchor="middle" fill="#355269">1月</text></svg><p class="src" style="margin:0">下がり続けています。早めのフォローを。</p></div>
+    <div><h4>次回までのアクション（3つ）</h4><ol><li>No.03しかできない作業を2つ選び、後輩No.06に教える計画を作る（製造部長）</li><li>3月中に有給休暇を2日取る日を決める（本人と社長）</li><li>1か月後に残業の変化を一緒に確かめる（社労士）</li></ol></div></div></div><div class="pc"><div class="ph"><b class="ser">No.07</b><span>事務・入社2年</span></div>
+    <div class="g"><div><h4>今の悩み・課題</h4><ul><li>経理と総務が重なる月末に仕事が集中する</li><li>有給休暇を取ると周りに迷惑がかかると感じている</li></ul></div>
+    <div><h4>キャリアについての発言</h4><div class="quote">「経理の資格を取って、会社の数字に強くなりたい」</div></div>
+    <div><h4>モチベーションの変化（5段階）</h4><svg viewBox="0 0 220 100" width="100%" height="100" aria-label="モチベーションの推移 [3.2, 3.1, 3.0, 3.3]"><line x1="10" y1="70" x2="210" y2="70" stroke="#D9D2BF"/><polyline points="20,37 80,38 140,40 200,36" fill="none" stroke="#2F6B4F" stroke-width="2.5"/><circle cx="20" cy="37" r="4" fill="#2F6B4F"/><text x="20" y="29" font-size="11" text-anchor="middle" fill="#355269">3.2</text><circle cx="80" cy="38" r="4" fill="#2F6B4F"/><text x="80" y="30" font-size="11" text-anchor="middle" fill="#355269">3.1</text><circle cx="140" cy="40" r="4" fill="#2F6B4F"/><text x="140" y="32" font-size="11" text-anchor="middle" fill="#355269">3.0</text><circle cx="200" cy="36" r="4" fill="#2F6B4F"/><text x="200" y="28" font-size="11" text-anchor="middle" fill="#355269">3.3</text><text x="20" y="92" font-size="11" text-anchor="middle" fill="#355269">4月</text><text x="80" y="92" font-size="11" text-anchor="middle" fill="#355269">7月</text><text x="140" y="92" font-size="11" text-anchor="middle" fill="#355269">10月</text><text x="200" y="92" font-size="11" text-anchor="middle" fill="#355269">1月</text></svg><p class="src" style="margin:0">上向いています。</p></div>
+    <div><h4>次回までのアクション（3つ）</h4><ol><li>月末の作業を一覧にし、前倒しできるものを決める（本人と社長）</li><li>有給休暇を取る日を先に決めて共有する（社長）</li><li>簿記の講座の費用の補助を検討する（社長）</li></ol></div></div></div><div class="pc"><div class="ph"><b class="ser">No.09</b><span>製造部・入社8か月</span></div>
+    <div class="g"><div><h4>今の悩み・課題</h4><ul><li>仕事の順番を、先輩ごとに違うやり方で教わり、どれが正しいか分からない</li><li>質問したいが、忙しそうで声をかけにくい</li></ul></div>
+    <div><h4>キャリアについての発言</h4><div class="quote">「1年後には、ひとりで現場を任されるようになりたい」</div><div class="quote">「資格を取りたいが、何から始めればいいか分からない」</div></div>
+    <div><h4>モチベーションの変化（5段階）</h4><svg viewBox="0 0 220 100" width="100%" height="100" aria-label="モチベーションの推移 [4.5, 3.8, 2.8, 2.2]"><line x1="10" y1="70" x2="210" y2="70" stroke="#D9D2BF"/><polyline points="20,18 80,28 140,43 200,52" fill="none" stroke="#B5463A" stroke-width="2.5"/><circle cx="20" cy="18" r="4" fill="#B5463A"/><text x="20" y="10" font-size="11" text-anchor="middle" fill="#355269">4.5</text><circle cx="80" cy="28" r="4" fill="#B5463A"/><text x="80" y="20" font-size="11" text-anchor="middle" fill="#355269">3.8</text><circle cx="140" cy="43" r="4" fill="#B5463A"/><text x="140" y="35" font-size="11" text-anchor="middle" fill="#355269">2.8</text><circle cx="200" cy="52" r="4" fill="#B5463A"/><text x="200" y="44" font-size="11" text-anchor="middle" fill="#355269">2.2</text><text x="20" y="92" font-size="11" text-anchor="middle" fill="#355269">4月</text><text x="80" y="92" font-size="11" text-anchor="middle" fill="#355269">7月</text><text x="140" y="92" font-size="11" text-anchor="middle" fill="#355269">10月</text><text x="200" y="92" font-size="11" text-anchor="middle" fill="#355269">1月</text></svg><p class="src" style="margin:0">下がり続けています。早めのフォローを。</p></div>
+    <div><h4>次回までのアクション（3つ）</h4><ol><li>作業の手順を1枚にまとめ、教え方をそろえる（製造部長）</li><li>週1回15分、質問の時間を決める（先輩No.02）</li><li>取りたい資格を本人と一緒に決める（社長）</li></ol></div></div></div><div class="pc"><div class="ph"><b class="ser">No.11</b><span>製造部・入社6年</span></div>
+    <div class="g"><div><h4>今の悩み・課題</h4><ul><li>後輩への教え方に自信がない</li></ul></div>
+    <div><h4>キャリアについての発言</h4><div class="quote">「班長を任せてもらえるなら挑戦したい」</div></div>
+    <div><h4>モチベーションの変化（5段階）</h4><svg viewBox="0 0 220 100" width="100%" height="100" aria-label="モチベーションの推移 [3.3, 3.5, 3.6, 3.9]"><line x1="10" y1="70" x2="210" y2="70" stroke="#D9D2BF"/><polyline points="20,36 80,32 140,31 200,26" fill="none" stroke="#2F6B4F" stroke-width="2.5"/><circle cx="20" cy="36" r="4" fill="#2F6B4F"/><text x="20" y="28" font-size="11" text-anchor="middle" fill="#355269">3.3</text><circle cx="80" cy="32" r="4" fill="#2F6B4F"/><text x="80" y="24" font-size="11" text-anchor="middle" fill="#355269">3.5</text><circle cx="140" cy="31" r="4" fill="#2F6B4F"/><text x="140" y="23" font-size="11" text-anchor="middle" fill="#355269">3.6</text><circle cx="200" cy="26" r="4" fill="#2F6B4F"/><text x="200" y="18" font-size="11" text-anchor="middle" fill="#355269">3.9</text><text x="20" y="92" font-size="11" text-anchor="middle" fill="#355269">4月</text><text x="80" y="92" font-size="11" text-anchor="middle" fill="#355269">7月</text><text x="140" y="92" font-size="11" text-anchor="middle" fill="#355269">10月</text><text x="200" y="92" font-size="11" text-anchor="middle" fill="#355269">1月</text></svg><p class="src" style="margin:0">上向いています。</p></div>
+    <div><h4>次回までのアクション（3つ）</h4><ol><li>班長の役割と手当の案を作る（社長と社労士）</li><li>教え方の手順書づくりに参加してもらう（製造部長）</li><li>3か月後の面談で役割を振り返る（製造部長）</li></ol></div></div></div>
+</section>
+<section>
+  <h2><span class="no">四</span>面談の進め方のふりかえり（社長・部長の方へ）</h2>
+  <p class="lead">本音が出る面談になっていたかを、記録から確かめました。次の面談に生かします。</p>
+  <table class="fb"><thead><tr><th>面談した人</th><th>本人が話した時間</th><th>「どう思う？」など開いた質問</th><th>次の約束を本人と決めたか</th></tr></thead><tbody>
+    <tr><td>社長（No.07・No.11）</td><td><span class="tag ok">62%</span></td><td>9回</td><td><span class="tag ok">決めた</span></td></tr>
+    <tr><td>製造部長（No.03・No.09）</td><td><span class="tag bad">31%</span></td><td>3回</td><td><span class="tag warn">部長が決めた</span></td></tr>
+  </tbody></table>
+  <div class="alert" style="border-left-color:#C79A1E;margin-top:10px"><div class="id" style="min-width:auto;font-size:15px">次回へ</div><ul><li>製造部長の面談は、部長が話す時間が7割近くありました。最初の10分は聞き役に回り、本人が話す時間を6割以上にしましょう。</li><li>アドバイスの前に「どうしたらいいと思う？」と一度聞くと、本人が自分で決めた約束になり、続きやすくなります。</li></ul></div>
+</section>
+<section>
+  <h2><span class="no">五</span>社会保険労務士の所見</h2>
+  <div class="shoken">4人に共通していたのは「教え方がばらばらで、質問しにくい」という声でした。人の問題ではなく、仕組みの問題です。手順書を1枚つくり、質問の時間を決めるだけで、No.09の不安とNo.03の負担の両方が軽くなるはずです。また、No.11の「班長に挑戦したい」は、教える役を任せる良い機会です。役割と手当をはっきりさせれば、No.03に集中している仕事を分けることにもつながります。<div class="sig2">2027年1月　社会保険労務士　稲石 楓季</div></div>
+</section>
+<p class="src">※ 録音は、面談の前に本人の同意を得て行います。氏名などは番号に置き換え、記録は社会保険労務士の守秘義務のもとで管理します。判断と最終の確認は、社会保険労務士が行います。</p>
+</main>
+<footer><div class="wrap"><b>育守法務事務所</b>　社会保険労務士　稲石 楓季　｜　このレポートは見本です　｜　<a href="price.html" style="color:#C9B78A">顧問契約と料金へ</a>　<a href="index.html" style="color:#C9B78A">トップへ</a></div></footer>
+</body></html>
