@@ -130,7 +130,6 @@
           <p class="serif" style="margin: 4px 0 0; font-weight: 600; font-size: 24px; letter-spacing: 0.14em">育守法務事務所</p>
           <dl>
             <dt>所在地</dt><dd>北海道札幌市厚別区</dd>
-            <dt>電話</dt><dd><a href="tel:080-1895-0341">080-1895-0341</a></dd>
             <dt>メール</dt><dd><a href="mailto:ex.houmu@gmail.com">ex.houmu@gmail.com</a></dd>
             <dt>営業時間</dt><dd>平日 10:00〜19:00（土日祝休み）</dd>
           </dl>
@@ -231,7 +230,7 @@ function summary(picked, ok, ng, un, form){
   if(pp.length) pp.forEach(x=>L.push('・'+x.label.replace(/<br>/g,'')+'（'+SUBS.filter(y=>y.p===x.id).map(y=>y.name).join('・')+'）')); else L.push('・特になし／未定');
   L.push('','■ 会社の状況');
   BASE.forEach(x=>L.push('・'+x.ng+'：'+({y:'はい',n:'いいえ',u:'わからない'})[A[x.id]]));
-  if(!form) L.push('','■ 会社名・お名前・ご連絡先（ご記入ください）','会社名：','お名前：','電話またはメール：','ご希望の連絡方法・時間帯：');
+  if(!form) L.push('','■ 会社名・お名前・ご連絡先（ご記入ください）','会社名：','お名前：','メールアドレス：');
   else L.push('','（ご相談したいことがあれば、この下にご自由にお書きください）');
   return L.join('\n');
 }
