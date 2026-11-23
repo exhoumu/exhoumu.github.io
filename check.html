@@ -214,24 +214,25 @@ function show(){
   if(!ng.length && !un.length) h += '<p style="margin:8px 0 0;font-size:15px;line-height:1.85">多くの助成金の前提となる労務管理は、整っている可能性が高いです。労働基準監督署の調査やトラブルにも強い状態です。</p>';
   else h += '<p style="margin:0;font-size:15px;line-height:1.85">労務管理を整えると、助成金を受けられる可能性が広がるだけでなく、労働基準監督署の調査や従業員とのトラブルにも強くなります。</p>';
   h += '</div>';
-  h += `<div class="cta"><p><b style="color:#C9B78A;font-size:18px">この結果をもとにした初回相談は無料です。</b><br>どの助成金が実際に使えるか、いつ何を準備すればよいかを、札幌市厚別区の社会保険労務士が具体的にご案内します。助成金の申請は着手金なし・成功報酬です。</p><div class="row"><a class="btn" id="formGo" href="#" target="_blank" rel="noopener">この結果で相談する（フォーム）</a><a class="btn sub" id="mailGo" href="#">メールで相談する</a></div><small>どちらも、この結果が入力された状態で開きます。お名前とご連絡先だけ入れて送ってください。</small></div>`;
+  h += `<div class="cta"><p><b style="color:#C9B78A;font-size:18px">この結果をもとにした初回相談は無料です。</b><br>どの助成金が実際に使えるか、いつ何を準備すればよいかを、札幌市厚別区の社会保険労務士が具体的にご案内します。助成金の申請は着手金なし・成功報酬です。</p><div class="row"><a class="btn" id="formGo" href="#" target="_blank" rel="noopener">この結果で相談する（フォーム）</a><a class="btn sub" id="mailGo" href="#">メールで相談する</a></div><small>どちらも、この結果が入力された状態で開きます。お名前とご連絡先だけ入れて送ってください。</small><p style="margin:18px 0 0;font-size:15px;line-height:1.8">まずは資料を見てみたい方は　<a id="docGo" href="#" target="_blank" rel="noopener" style="color:#C9B78A;font-weight:600">資料請求（PDF）→</a><br><span style="font-size:13px;color:#B8C2D6">事務所案内と「顧問契約で変わること」を、この結果と一緒にメールでお送りします。</span></p></div>`;
   const r=document.getElementById('result'); r.innerHTML=h; r.style.display='block';
   const txt = summary(picked, ok, ng, un);
   document.getElementById('mailGo').href = 'mailto:ex.houmu@gmail.com?subject=' + encodeURIComponent('【30秒チェック】結果をもとに相談したい') + '&body=' + encodeURIComponent(txt);
   document.getElementById('formGo').href = 'https://docs.google.com/forms/d/e/1FAIpQLScL5SvfhChUnfJKygrNnXuP_KBU9Hcldvt1UHSblvse-y-Cog/viewform?usp=pp_url&entry.211899175=' + encodeURIComponent('30秒チェック') + '&entry.578792485=' + encodeURIComponent(summary(picked, ok, ng, un, true));
+  document.getElementById('docGo').href = 'https://docs.google.com/forms/d/e/1FAIpQLSfvN-a86iv_raDTc4XyR5IH_K8_LavKqXG-lcxIQ2-PPBE6tA/viewform?usp=pp_url&entry.211899175=' + encodeURIComponent('30秒チェック') + '&entry.2145931262=' + encodeURIComponent(summary(picked, ok, ng, un, 'doc'));
   r.scrollIntoView({behavior:'smooth', block:'start'});
 }
 function summary(picked, ok, ng, un, form){
   const L=[];
   if(!form) L.push('育守法務事務所 御中','');
-  L.push('30秒チェックの結果をもとに、初回相談（無料）を希望します。','');
+  if(form!=='doc') L.push('30秒チェックの結果をもとに、初回相談（無料）を希望します。','');
   L.push('■ 気になっていること・考えていること');
   const pp = PLANS.filter(x=>P.has(x.id));
   if(pp.length) pp.forEach(x=>L.push('・'+x.label.replace(/<br>/g,'')+'（'+SUBS.filter(y=>y.p===x.id).map(y=>y.name).join('・')+'）')); else L.push('・特になし／未定');
   L.push('','■ 会社の状況');
   BASE.forEach(x=>L.push('・'+x.ng+'：'+({y:'はい',n:'いいえ',u:'わからない'})[A[x.id]]));
   if(!form) L.push('','■ 会社名・お名前・ご連絡先（ご記入ください）','会社名：','お名前：','メールアドレス：');
-  else L.push('','（ご相談したいことがあれば、この下にご自由にお書きください）');
+  else if(form!=='doc') L.push('','（ご相談したいことがあれば、この下にご自由にお書きください）');
   return L.join('\n');
 }
 </script>
