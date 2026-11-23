@@ -98,7 +98,7 @@
     <div class="chk-wrap">
       <p class="eyebrow">30 SECONDS CHECK</p>
       <h1>うちの会社、<br>助成金の対象になる？</h1>
-      <p>これからの予定と、今の会社の状況を選ぶだけで、使えるかもしれない助成金と金額の目安、申請の準備ができているかが分かります。</p>
+      <p>これからの予定と、今の会社の状況を選ぶだけで、使えるかもしれない助成金と金額の目安、労務管理の状況が分かります。</p>
       <div class="chk-tags"><span class="free">無料</span><span>30秒</span><span>会社名・連絡先の入力なし</span><span>結果をもとにした初回相談も無料</span></div>
     </div>
   </section>
@@ -206,8 +206,7 @@ function show(){
     const miss = x.need.filter(id=>A[id]!=='y');
     const missNg = miss.filter(id=>A[id]==='n'), missUn = miss.filter(id=>A[id]==='u');
     let ready;
-    if(!miss.length) ready = '';
-    else ready = `<p class="ready ng">${missNg.length?`あと「${missNg.map(nameOf).join('」「')}」を整えると、申請を目指せます。`:''}${missUn.length?`「${missUn.map(nameOf).join('」「')}」は確認が必要です。`:''}</p>`;
+    ready = '';
     h += `<div class="sub-card"><h3>${x.name}</h3><p class="for">${x.course}</p><div class="amt"><b>${x.amt}</b><span>${x.amtNote}</span></div><ul class="merit">${x.merits.map(m=>`<li>${m}</li>`).join('')}</ul>${ready}<p class="cond-note">${x.cond}　<a href="${x.link}" target="_blank" rel="noopener">厚生労働省の案内</a></p></div>`;
   });
   h += '<div class="base"><h3>労務管理の状況のチェック結果</h3>';
