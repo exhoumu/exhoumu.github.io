@@ -223,6 +223,7 @@ function show(){
   r.scrollIntoView({behavior:'smooth', block:'start'});
 }
 function summary(picked, ok, ng, un, form){
+  if(form==='doc') return docSummary();
   const L=[];
   if(!form) L.push('育守法務事務所 御中','');
   if(form!=='doc') L.push('30秒チェックの結果をもとに、初回相談（無料）を希望します。','');
@@ -233,6 +234,18 @@ function summary(picked, ok, ng, un, form){
   BASE.forEach(x=>L.push('・'+x.ng+'：'+({y:'はい',n:'いいえ',u:'わからない'})[A[x.id]]));
   if(!form) L.push('','■ 会社名・お名前・ご連絡先（ご記入ください）','会社名：','お名前：','メールアドレス：');
   else if(form!=='doc') L.push('','（ご相談したいことがあれば、この下にご自由にお書きください）');
+  return L.join('\n');
+}
+function docSummary(){
+  const L=[], lab={y:'はい',n:'いいえ',u:'わからない'};
+  const pp = PLANS.filter(x=>P.has(x.id));
+  L.push('■ 気になっていること・使えそうな助成金');
+  if(pp.length) pp.forEach(x=>{ L.push('・'+x.label.replace(/<br>/g,'')); SUBS.filter(y=>y.p===x.id).forEach(y=>L.push('　→ '+y.name+(y.course?'（'+y.course+'）':'')+'：'+y.amt)); });
+  else L.push('・特になし／未定');
+  const bad = BASE.filter(x=>A[x.id]==='n'||A[x.id]==='u'), good = BASE.filter(x=>A[x.id]==='y');
+  if(bad.length){ L.push('','■ 確認が必要なこと'); bad.forEach(x=>{ L.push('・'+x.ng+'：'+lab[A[x.id]]); L.push('　→ '+x.why); }); }
+  if(good.length){ L.push('','■ 整っていること'); L.push('・'+good.map(x=>x.ng).join('、')); }
+  L.push('','※ 金額は2026年度の目安で、条件があります。実際に使えるかどうかは、ご相談のときに確認します。');
   return L.join('\n');
 }
 </script>
