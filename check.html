@@ -117,7 +117,7 @@
       <button type="button" class="btn go" id="go" disabled>結果を見る</button>
 
       <div id="result" aria-live="polite"></div>
-      <p class="chk-note">※ 金額は、厚生労働省の2026（令和8）年度の制度にもとづく中小企業の目安です。実際の支給額は要件や人数などで変わり、支給を約束するものではありません。予算や受付期間により、受付が終わっている場合もあります。<br>※ 回答はこの画面の中だけで使い、どこにも送信・保存しません。</p>
+      <p class="chk-note">※ 回答は、相談や資料請求のボタンを押したときに、その申し込みの内容として送られます。それ以外は、どこにも送信・保存しません。</p>
     </div>
   </section>
   </main>
@@ -198,14 +198,15 @@ function show(){
   const picked = SUBS.filter(x=>P.has(x.p));
   const list = picked.length ? picked : SUBS.filter(x=>['seishain','muki','chinage','jikan'].includes(x.id));
   let h = '<div class="rhead">';
-  if(picked.length){ h += `<h2>使えるかもしれない<br>助成金が <b>${picked.length}つ</b> あります</h2><p>予定していることに合わせて、代表的な助成金と金額の目安をまとめました。どれも、会社の環境が良くなる取り組みにお金が出る制度です。</p>`; }
+  if(picked.length){ h += `<h2>使えるかもしれない<br>助成金が <b>${picked.length}つ</b> あります</h2><p>予定していることに合わせて、代表的な助成金と金額の目安をまとめました。どれも、会社の環境が良くなる取り組みにお金が出る制度です。<br>実際に使えるかどうかは、ご相談のときに確認します。</p>`; }
   else { h += `<h2>こんな助成金があります</h2><p>予定が決まっていなくても、多くの会社で使われている代表的な助成金です。取り組みを決める前に知っておくと、使える場面を逃しません。</p>`; }
   h += '</div>';
+  h += '<p class="chk-note" style="margin:10px 0 16px">※ 金額は、2026年度の制度にもとづく中小企業の目安です。実際の金額は要件や人数などで変わり、支給を約束するものではありません。国の予算やタイミングにより、受付が終わっている場合もあります。</p>';
   list.forEach(x=>{
     const miss = x.need.filter(id=>A[id]!=='y');
     const missNg = miss.filter(id=>A[id]==='n'), missUn = miss.filter(id=>A[id]==='u');
     let ready;
-    if(!miss.length) ready = `<p class="ready ok">申請の前提となる労務管理は、整っているようです。実際に使えるかどうかは、ご相談のときに確認します。</p>`;
+    if(!miss.length) ready = '';
     else ready = `<p class="ready ng">${missNg.length?`あと「${missNg.map(nameOf).join('」「')}」を整えると、申請を目指せます。`:''}${missUn.length?`「${missUn.map(nameOf).join('」「')}」は確認が必要です。`:''}</p>`;
     h += `<div class="sub-card"><h3>${x.name}</h3><p class="for">${x.course}</p><div class="amt"><b>${x.amt}</b><span>${x.amtNote}</span></div><ul class="merit">${x.merits.map(m=>`<li>${m}</li>`).join('')}</ul>${ready}<p class="cond-note">${x.cond}　<a href="${x.link}" target="_blank" rel="noopener">厚生労働省の案内</a></p></div>`;
   });
