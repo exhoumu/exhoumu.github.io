@@ -106,6 +106,7 @@ def head(title, desc, url, depth='../'):
         <a href="{depth}price.html">料金</a>
         <a href="{depth}blog/">ブログ</a>
         <a href="{depth}index.html#profile">代表紹介</a>
+        <a href="{depth}ai.html">AIの使い方</a>
         <a class="btn" href="{depth}index.html#contact">お問い合わせ</a>
       </nav>
     </div>
