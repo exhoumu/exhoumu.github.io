@@ -134,7 +134,7 @@ FOOT = '''    </div>
           <a href="../index.html">トップ</a>
           <a href="../price.html">顧問契約と料金</a>
           <a href="./">ブログ</a>
-          <a href="../policy.html#ai">AIの活用と情報管理</a>
+          <a href="../ai.html">AIの使い方</a>
           <a href="../policy.html">プライバシーポリシー</a>
           <a href="../index.html#contact">お問い合わせ</a>
         </nav>
