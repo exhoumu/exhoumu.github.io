@@ -1,3 +1,5 @@
 User-agent: *
 Disallow: /files/
 Sitemap: https://exhoumu.github.io/sitemap.xml
+Disallow: /blog/src/
+Disallow: /blog/build.py
