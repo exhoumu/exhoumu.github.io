@@ -4,245 +4,229 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>職場の健康診断レポート（見本）｜育守法務事務所</title>
+<meta name="description" content="組織づくり軍師　顧問で3か月ごとにお届けする「職場の健康診断レポート」の見本です。働いた時間に対してきちんと休めているかを3つの物差しと3段階で判定し、累積と推移、面談の言葉から辞める前の兆しを見つけます。">
+<link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&display=swap">
 <style>
-:root{--kon:#0D1B42;--yoru:#010C24;--kinari:#F7F4EA;--kin:#C9B78A;--raised:#FCFBF5;--muted:#355269;--gold:#7A6230;--line:#D9D2BF;
-  --ok:#2F6B4F;--okbg:#E4EFE7;--warn:#8A6A12;--warnbg:#F6EDD2;--bad:#9B2C2C;--badbg:#F6E3DF}
+:root{--kon:#0D1B42;--kinari:#F7F4EA;--kin:#C9B78A;--raised:#FCFBF5;--muted:#355269;--gold:#7A6230;--line:#D9D2BF;
+  --ok:#2F6B4F;--okbg:#E4EFE7;--chu:#8A6A12;--chubg:#F6EDD2;--kei:#B4561E;--keibg:#F8E4D6;--kik:#9B2C2C;--kikbg:#F6E3DF}
 *{box-sizing:border-box}
 body{margin:0;background:var(--kinari);color:var(--kon);font-family:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;font-size:15px;line-height:1.75;letter-spacing:.02em}
-.ser{font-family:'Noto Serif JP','Yu Mincho',serif}
+.serif{font-family:'Noto Serif JP','Yu Mincho',serif}
 .sample{background:var(--gold);color:#fff;text-align:center;font-size:13px;padding:6px 12px;letter-spacing:.1em}
-header{background:var(--kon);color:var(--kinari);padding:34px 24px 30px}
 .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{background:var(--kon);color:var(--kinari);padding:34px 0 30px}
 header .eb{font-family:'Noto Serif JP',serif;color:var(--kin);font-size:13px;letter-spacing:.2em;margin:0}
 header h1{font-family:'Noto Serif JP',serif;font-weight:600;font-size:32px;margin:6px 0 4px;letter-spacing:.06em}
 header .meta{display:flex;gap:24px;flex-wrap:wrap;font-size:14px;color:#B8C2D6;margin-top:10px}
 header .meta b{color:var(--kinari);font-weight:500}
+header a{color:var(--kin)}
 main{padding:28px 0 60px}
-section{margin:0 0 34px}
+section{margin:0 0 38px}
 h2{font-family:'Noto Serif JP',serif;font-weight:600;font-size:22px;margin:0 0 4px;display:flex;align-items:baseline;gap:12px}
 h2 .no{font-size:14px;color:var(--gold)}
 .lead{color:var(--muted);font-size:14px;margin:0 0 14px}
-.rule{height:1px;background:var(--line);margin:0 0 16px}
+.panel{background:var(--raised);border:1px solid var(--line);padding:18px 20px}
+.summary{background:var(--kon);color:var(--kinari);padding:24px 28px}
+.summary .t{font-size:12.5px;letter-spacing:.2em;color:var(--kin);margin:0 0 8px}
+.summary ol{margin:0;padding-left:1.4em;font-size:16px;line-height:1.9}
+.summary ol b{color:#fff}
+.decide{margin-top:16px;border-top:1px solid #2B3B66;padding-top:14px;font-size:14.5px}
+.decide b{color:var(--kin)}
 .sig{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.card{background:var(--raised);border:1px solid var(--line);padding:16px 18px;border-top:4px solid var(--line)}
-.card.ok{border-top-color:var(--ok)}.card.warn{border-top-color:#C79A1E}.card.bad{border-top-color:var(--bad)}
+.card{background:var(--raised);border:1px solid var(--line);border-top:4px solid var(--line);padding:14px 16px}
 .card .t{font-size:13px;color:var(--muted)}
-.lamp{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;padding:1px 10px;border-radius:2px;margin:6px 0}
-.lamp::before{content:"";width:9px;height:9px;border-radius:50%;background:currentColor}
-.ok .lamp{color:var(--ok);background:var(--okbg)}.warn .lamp{color:var(--warn);background:var(--warnbg)}.bad .lamp{color:var(--bad);background:var(--badbg)}
-.card .v{font-family:'Noto Serif JP',serif;font-weight:600;font-size:28px;line-height:1.3}
+.card .v{font-family:'Noto Serif JP',serif;font-weight:600;font-size:30px;line-height:1.3}
 .card .v small{font-size:14px;margin-left:2px}
-.card .d{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.6}
-.money{display:grid;grid-template-columns:1.2fr 1fr;gap:12px}
-.mbox{background:var(--kon);color:var(--kinari);padding:20px 24px}
-.mbox .l{font-size:13px;color:#B8C2D6}
-.mbox .v{font-family:'Noto Serif JP',serif;font-weight:600;font-size:38px;line-height:1.3;margin:4px 0}
-.mbox .s{font-size:13.5px;color:#B8C2D6}
-.mbox .up{color:#F3C9C0;font-weight:700}
-.mbox2{background:var(--raised);border:2px solid var(--kin);padding:20px 24px}
-.mbox2 .l{font-size:13px;color:var(--muted)}
-.mbox2 .v{font-family:'Noto Serif JP',serif;font-weight:600;font-size:30px;margin:4px 0;color:var(--kon)}
-.mbox2 .s{font-size:13.5px}
-.hm{overflow-x:auto;background:var(--raised);border:1px solid var(--line);padding:12px}
-.hm table{border-collapse:separate;border-spacing:3px;font-size:12.5px;min-width:720px}
-.hm th{font-weight:500;color:var(--muted);padding:2px 4px;text-align:center;white-space:nowrap}
-.hm th.r{text-align:left}
-.hm td{width:52px;height:30px;text-align:center;font-variant-numeric:tabular-nums;border-radius:2px}
-.hm td.tot{background:transparent;font-weight:700;width:64px}
-.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:10px;align-items:center}
-.legend i{display:inline-block;width:18px;height:12px;vertical-align:-1px;margin-right:4px;border-radius:2px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.panel{background:var(--raised);border:1px solid var(--line);padding:16px 18px}
-.panel h3{font-family:'Noto Serif JP',serif;font-weight:600;font-size:16px;margin:0 0 10px}
-.bar{display:grid;grid-template-columns:56px 1fr 140px;gap:10px;align-items:center;font-size:13px;margin:7px 0}
-.track{position:relative;height:14px;background:#EFEADA;border-radius:2px;overflow:hidden}
-.fill{position:absolute;left:0;top:0;bottom:0;border-radius:2px}
-.cap{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--bad)}
-.bar .n{text-align:right;font-variant-numeric:tabular-nums}
-.yt{width:100%;border-collapse:collapse;font-size:13.5px}
-.yt td,.yt th{padding:7px 6px;border-bottom:1px solid var(--line);text-align:left}
-.yt th{font-weight:500;color:var(--gold);font-size:12.5px}
-.yt .r{text-align:right}
-.tag{display:inline-block;font-size:12px;padding:0 8px;border-radius:2px;font-weight:700}
-.tag.bad{color:var(--bad);background:var(--badbg)}.tag.warn{color:var(--warn);background:var(--warnbg)}.tag.ok{color:var(--ok);background:var(--okbg)}
-.alert{display:flex;gap:14px;align-items:flex-start;background:var(--raised);border:1px solid var(--line);border-left:4px solid var(--bad);padding:12px 16px;margin:8px 0}
-.alert .id{font-family:'Noto Serif JP',serif;font-weight:600;font-size:18px;min-width:56px}
-.alert ul{margin:0;padding-left:1.1em;font-size:13.5px}
-.cmp .row{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center;margin:12px 0}
-.cmp .lbl{font-size:13.5px}
-.cmp .bars{display:flex;flex-direction:column;gap:4px}
-.cmp .b{display:grid;grid-template-columns:150px 1fr 58px;gap:8px;align-items:center;font-size:12.5px;color:var(--muted)}
-.cmp .b .track{height:12px}
-.cmp .b.me{color:var(--kon);font-weight:700}
-.src{font-size:12px;color:var(--muted);margin-top:8px}
-.next{counter-reset:n}
-.step{display:grid;grid-template-columns:44px 1fr 190px;gap:14px;background:var(--raised);border:1px solid var(--line);padding:14px 18px;margin:8px 0;align-items:start}
-.step::before{counter-increment:n;content:counter(n,cjk-ideographic);font-family:'Noto Serif JP',serif;font-size:24px;color:var(--gold);line-height:1.2}
-.step b{font-size:15.5px}
-.step p{margin:2px 0 0;font-size:13.5px;color:var(--muted)}
-.step .k{font-size:12.5px;color:var(--muted);text-align:right}
-.step .k b{display:block;font-size:14px;color:var(--kon)}
-.sub{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.subc{background:var(--raised);border:1px solid var(--line);padding:14px 18px}
-.subc b{font-size:15px}
-.subc .amt{font-family:'Noto Serif JP',serif;font-weight:600;font-size:20px;margin:4px 0}
-.subc p{margin:0;font-size:13px;color:var(--muted)}
-.shoken{background:var(--raised);border:1px solid var(--line);border-left:4px solid var(--kin);padding:18px 22px;font-family:'Noto Serif JP',serif;font-size:15.5px;line-height:2}
-.shoken .sig2{text-align:right;font-size:13px;color:var(--muted);margin-top:6px}
-.mtg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.mc{background:var(--raised);border:1px solid var(--line);padding:14px 18px}
-.mc h3{font-family:'Noto Serif JP',serif;font-weight:600;font-size:15.5px;margin:0 0 8px;display:flex;gap:8px;align-items:center}
-.mc ul,.mc ol{margin:0;padding-left:1.2em;font-size:13.5px}
-.mc li{margin:3px 0}
-.quote{border-left:3px solid var(--kin);padding:2px 0 2px 10px;margin:6px 0;font-size:13.5px}
-.mot{display:flex;align-items:flex-end;gap:10px;height:120px;padding:8px 4px 0;border-bottom:1px solid var(--line)}
-.mot .c{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;font-size:12px;color:var(--muted)}
-.mot .b{width:70%;border-radius:2px 2px 0 0}
-.labs .lab{font-size:12px;color:var(--muted);text-align:center;flex:1}
-.labs{display:flex;gap:10px;padding:4px 4px 0}
-.prev{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--raised);border:1px solid var(--line)}
-.prev td,.prev th{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-.prev th{font-weight:500;color:var(--gold);font-size:12.5px}
+.card .d{font-size:12.5px;color:var(--muted)}
+.card.kik{border-top-color:var(--kik)}.card.kei{border-top-color:var(--kei)}.card.chu{border-top-color:#C79A1E}.card.ok{border-top-color:var(--ok)}
+.st{display:inline-block;font-size:12px;font-weight:700;padding:1px 9px;border-radius:2px;white-space:nowrap}
+.st.ok{color:var(--ok);background:var(--okbg)}.st.chu{color:var(--chu);background:var(--chubg)}.st.kei{color:var(--kei);background:var(--keibg)}.st.kik{color:var(--kik);background:var(--kikbg)}
+table.t{width:100%;border-collapse:collapse;font-size:14px;background:var(--raised);border:1px solid var(--line)}
+table.t th{background:var(--kon);color:var(--kinari);font-weight:500;font-size:12.5px;text-align:left;padding:9px 12px;letter-spacing:.04em}
+table.t td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+table.t td.n{white-space:nowrap}
+table.t small{color:var(--muted)}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.rule{background:var(--raised);border:1px solid var(--line);padding:12px 14px;font-size:13px}
+.rule b{display:block;font-family:'Noto Serif JP',serif;font-size:15px;margin-bottom:4px}
+.rule .row{display:flex;gap:6px;align-items:center;margin:3px 0}
+.chart{background:var(--raised);border:1px solid var(--line);padding:16px 18px}
+.chart svg{width:100%;height:auto;display:block}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:6px}
+.legend i{display:inline-block;width:18px;height:3px;vertical-align:middle;margin-right:5px}
+.trend{display:grid;grid-template-columns:1.6fr 1fr;gap:14px}
+.flag{background:var(--raised);border:1px solid var(--line);border-left:4px solid var(--kik);padding:14px 16px;margin-bottom:10px}
+.flag .h{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+.flag .id{font-family:'Noto Serif JP',serif;font-weight:600;font-size:18px}
+.dots{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+.dot{border:1px solid var(--line);padding:6px 8px;font-size:12px;background:#fff}
+.dot.on{border-color:var(--kik);background:var(--kikbg)}
+.dot b{display:block;font-size:12.5px}
+.q{font-size:13px;color:var(--muted);margin:8px 0 0}
+.next .step{display:grid;grid-template-columns:120px 1fr 190px;gap:14px;background:var(--raised);border:1px solid var(--line);padding:14px 16px;margin-bottom:10px;align-items:start}
+.next .who{font-size:12.5px;color:var(--muted)}
+.next .who b{display:block;font-size:14px;color:var(--kon)}
+.next p{margin:2px 0 0;font-size:13.5px;color:var(--muted)}
+.next .k{font-size:12.5px;color:var(--muted);text-align:right}
+.next .k b{display:block;color:var(--kon);font-size:14px}
+.shoken{background:var(--raised);border:1px solid var(--line);border-left:4px solid var(--gold);padding:16px 20px;font-size:14.5px;line-height:1.95}
+.sig2{text-align:right;color:var(--muted);font-size:13px;margin-top:8px}
+.src{font-size:12.5px;color:var(--muted);line-height:1.7}
+.cta{background:var(--kon);color:var(--kinari);padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.cta a{background:var(--kinari);color:var(--kon);text-decoration:none;font-weight:700;padding:10px 20px}
 footer{background:var(--kon);color:#B8C2D6;font-size:13px;padding:22px 0}
 footer b{color:var(--kinari);font-family:'Noto Serif JP',serif;font-weight:600;letter-spacing:.12em;font-size:16px}
-@media(max-width:760px){.sig{grid-template-columns:1fr 1fr}.money,.two,.sub{grid-template-columns:1fr}.step{grid-template-columns:34px 1fr}.step .k{grid-column:2;text-align:left}.cmp .row{grid-template-columns:1fr}.cmp .b{grid-template-columns:110px 1fr 50px}header h1{font-size:24px}}
+@media(max-width:760px){.sig{grid-template-columns:1fr 1fr}.rules,.trend{grid-template-columns:1fr}.dots{grid-template-columns:1fr 1fr}.next .step{grid-template-columns:1fr}.next .k{text-align:left}header h1{font-size:24px}table.t{font-size:12.5px}table.t td,table.t th{padding:7px 8px}.tw{overflow-x:auto}}
 </style>
 </head>
 <body>
 <div class="sample">見本です。架空の会社と架空の数字で作っています</div>
 <header><div class="wrap">
-  <p class="eb">組織づくり軍師　顧問　｜　ご契約後に最初にお届けするレポート</p>
-  <h1>職場の健康診断レポート</h1><p style="margin:2px 0 0;color:#B8C2D6;font-size:14px">勤怠・給与のデータから　｜　面談からの分析は <a href="sample-interview.html" style="color:#C9B78A">面談の分析レポート（見本）</a></p>
-  <div class="meta"><span>対象：<b>株式会社サンプル 様（架空の会社）</b></span><span>従業員：<b>12人</b></span><span>対象期間：<b>2026年1月〜12月</b></span><span>作成：<b>2027年1月</b></span></div>
+  <p class="eb">組織づくり軍師　顧問　｜　3か月ごとにお届けするレポート</p>
+  <h1>職場の健康診断レポート</h1>
+  <p style="margin:2px 0 0;color:#B8C2D6;font-size:14px">勤怠のデータと面談の記録から　｜　面談の記録の読み解き方は <a href="sample-interview.html">面談の分析レポート（見本）</a></p>
+  <div class="meta"><span>対象：<b>株式会社サンプル 様（架空の会社）</b></span><span>従業員：<b>12人</b></span><span>対象期間：<b>2027年2月〜4月</b>（推移は2026年11月〜）</span><span>お届け：<b>2027年5月</b></span></div>
 </div></header>
 
 <main class="wrap">
 
 <section>
-  <h2><span class="no">一</span>まず、全体の判定</h2>
-  <p class="lead">勤怠と給与のデータから、4つの点を青・黄・赤で判定しました。</p>
+  <div class="summary">
+    <p class="t">30秒で分かる、今回の結論</p>
+    <ol>
+      <li><b>製造部のNo.03が「危険」</b>。残業が6か月続けて増え、3か月休みを取れていません。面談でも疲れの言葉が増えています。</li>
+      <li><b>営業部のNo.07は、残業が半年で約1.7倍</b>。今はまだ「警戒」ですが、このまま進むと夏には危険に入ります。</li>
+      <li>前回決めた<b>製造部の仕事の割り振りの見直しは効いています</b>（No.04は警戒→注意）。</li>
+    </ol>
+    <div class="decide"><b>社長に決めていただきたいこと</b>　① No.03の仕事を、5月中にどこまで他の人に移すか　② 営業部に、夏の繁忙期の前に人を足すか、仕事を減らすか</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="no">一</span>全体の判定</h2>
+  <p class="lead">一人ひとりが、働いた時間に対してきちんと休めているかを判定しました。人数は前回（2月）との比較です。</p>
   <div class="sig">
-    <div class="card warn"><div class="t">残業</div><span class="lamp">注意</span><div class="v">2<small>人</small></div><div class="d">月45時間を超えた月がある人。製造部に集中しています。</div></div>
-    <div class="card bad"><div class="t">有給休暇（年5日の義務）</div><span class="lamp">要対応</span><div class="v">3<small>人</small></div><div class="d">このままだと期限までに5日に届かない見込みです。</div></div>
-    <div class="card warn"><div class="t">離職</div><span class="lamp">注意</span><div class="v">16.7<small>%</small></div><div class="d">1年で2人が退職。全国の平均を少し上回ります。</div></div>
-    <div class="card ok"><div class="t">最低賃金との差</div><span class="lamp">良好</span><div class="v">＋42<small>円</small></div><div class="d">いちばん低い時給と、北海道の最低賃金との差です。次の改定にも今のところ間に合います。</div></div>
+    <div class="card kik"><div class="t">危険</div><div class="v">1<small>人</small></div><div class="d">前回 0人 → 今回 1人</div></div>
+    <div class="card kei"><div class="t">警戒</div><div class="v">1<small>人</small></div><div class="d">前回 2人 → 今回 1人</div></div>
+    <div class="card chu"><div class="t">注意</div><div class="v">3<small>人</small></div><div class="d">前回 2人 → 今回 3人</div></div>
+    <div class="card ok"><div class="t">気になる点なし</div><div class="v">7<small>人</small></div><div class="d">前回 8人 → 今回 7人</div></div>
   </div>
 </section>
 
 <section>
-  <h2><span class="no">二</span>お金でみると</h2>
-  <p class="lead">残業代の動きを、金額にしました。</p>
-  <div class="money">
-    <div class="mbox"><div class="l">2026年に払った残業代（12人の合計）</div><div class="v">約 477万円</div><div class="s">前の年より <span class="up">＋12%（約51万円の増加）</span>。半分以上が製造部の3人（No.03・No.04・No.06）に集中しています。時給1,500円・割増1.25倍で計算。</div></div>
-    <div class="mbox2"><div class="l">製造部の仕事の割り振りを見直し、3人の残業を月10時間ずつ減らせたら</div><div class="v">年 約 67万円 の削減</div><div class="s">時給1,500円 × 1.25 × 10時間 × 3人 × 12か月 で計算</div></div>
+  <h2><span class="no">二</span>3つの物差しと3段階</h2>
+  <p class="lead">見るのは、残業・深夜の残業・休みの取り方の3つ。どれも直近3か月で見ます。基準は会社と相談して決めます（下は見本の基準です）。</p>
+  <div class="rules">
+    <div class="rule"><b>残業（3か月の平均）</b><div class="row"><span class="st chu">注意</span>月40時間を超える</div><div class="row"><span class="st kei">警戒</span>月50時間を超える</div><div class="row"><span class="st kik">危険</span>月60時間を超える</div></div>
+    <div class="rule"><b>深夜の残業（3か月の平均）</b><div class="row"><span class="st chu">注意</span>月5時間を超える</div><div class="row"><span class="st kei">警戒</span>月10時間を超える</div><div class="row"><span class="st kik">危険</span>月20時間を超える</div></div>
+    <div class="rule"><b>休みの取り方（直近3か月）</b><div class="row"><span class="st chu">注意</span>休んだ日が1日だけ</div><div class="row"><span class="st kei">警戒</span>1日も休めていない</div><div class="row"><span class="st kik">危険</span>4か月以上休めていない</div></div>
+  </div>
+  <p class="src" style="margin:-4px 0 12px">2つ以上の物差しで「警戒」以上なら、優先度を上げます。ここでいう「休んだ日」は、有給休暇などで所定の休日のほかに休んだ日です。</p>
+  <div class="tw"><table class="t">
+    <thead><tr><th>従業員</th><th>部署</th><th>残業</th><th>深夜の残業</th><th>休みの取り方</th><th>判定</th></tr></thead>
+    <tbody>
+      <tr><td class="n"><b>No.03</b></td><td>製造部</td><td><span class="st kik">危険</span> <small>月62時間</small></td><td><span class="st kei">警戒</span> <small>月12時間</small></td><td><span class="st kik">危険</span> <small>4か月 0日</small></td><td><span class="st kik">危険</span></td></tr>
+      <tr><td class="n"><b>No.07</b></td><td>営業部</td><td><span class="st kei">警戒</span> <small>月54時間</small></td><td><span class="st chu">注意</span> <small>月6時間</small></td><td><span class="st kei">警戒</span> <small>3か月 0日</small></td><td><span class="st kei">警戒</span></td></tr>
+      <tr><td class="n"><b>No.04</b></td><td>製造部</td><td><span class="st chu">注意</span> <small>月43時間</small></td><td><span class="st ok">—</span></td><td><span class="st ok">—</span> <small>3日</small></td><td><span class="st chu">注意</span> <small>前回は警戒</small></td></tr>
+      <tr><td class="n"><b>No.06</b></td><td>製造部</td><td><span class="st ok">—</span> <small>月35時間</small></td><td><span class="st chu">注意</span> <small>月7時間</small></td><td><span class="st chu">注意</span> <small>1日</small></td><td><span class="st chu">注意</span></td></tr>
+      <tr><td class="n"><b>No.11</b></td><td>営業部</td><td><span class="st chu">注意</span> <small>月41時間</small></td><td><span class="st ok">—</span></td><td><span class="st ok">—</span> <small>2日</small></td><td><span class="st chu">注意</span></td></tr>
+      <tr><td class="n">ほか7人</td><td>—</td><td colspan="3"><small>3つとも基準の内側です</small></td><td><span class="st ok">気になる点なし</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2><span class="no">三</span>累積と推移：辞める前の兆しは、ここに出ます</h2>
+  <p class="lead">その月だけを見ると「一時的に忙しいだけ」に見えても、6か月並べると右肩上がりが分かります。</p>
+  <div class="trend">
+    <div class="chart"><svg id="tr" viewBox="0 0 560 260" role="img" aria-label="残業時間の6か月の推移"></svg>
+      <div class="legend"><span><i style="background:#9B2C2C"></i>No.03</span><span><i style="background:#B4561E"></i>No.07</span><span><i style="background:#2F6B4F"></i>No.04</span><span><i style="background:#9AA6BC;height:2px"></i>社内の注意ライン（月40時間）</span></div></div>
+    <div class="tw"><table class="t">
+      <thead><tr><th>従業員</th><th>3か月の累積</th><th>6か月の変化</th></tr></thead>
+      <tbody>
+        <tr><td><b>No.03</b></td><td>186時間</td><td><span class="st kik">増え続けている</span><br><small>11月 48 → 4月 64時間（＋33%）</small></td></tr>
+        <tr><td><b>No.07</b></td><td>162時間</td><td><span class="st kei">急に増えている</span><br><small>11月 34 → 4月 58時間（＋71%）</small></td></tr>
+        <tr><td><b>No.04</b></td><td>129時間</td><td><span class="st ok">下がってきた</span><br><small>11月 52 → 4月 40時間（−23%）</small></td></tr>
+      </tbody>
+    </table></div>
   </div>
 </section>
 
 <section>
-  <h2><span class="no">三</span>誰に、いつ残業が偏っているか</h2>
-  <p class="lead">縦が従業員（番号）、横が月です。色が濃いほど残業が多い月です。単位：時間</p>
-  <div class="hm"><table id="hm"></table>
-  <div class="legend"><span><i style="background:#F2EFE4"></i>20時間未満</span><span><i style="background:#E6D6A8"></i>20〜34時間</span><span><i style="background:#D9A55A"></i>35〜45時間</span><span><i style="background:#B5463A"></i>46時間以上（36協定の原則の上限、月45時間を超える）</span></div></div>
-</section>
-
-<section class="two">
-  <div class="panel">
-    <h3>36協定の年間の上限（360時間）まで</h3>
-    <div id="caps"></div>
-    <p class="src">赤い線が年360時間。No.03とNo.04は超えています。さらにNo.03は月45時間を超えた月が8か月あり、特別条項でも認められる「年6か月まで」を超えています。早めの対応が必要です。</p>
+  <h2><span class="no">四</span>面談の言葉と掛け合わせる</h2>
+  <p class="lead">数字だけ、面談だけでは見落とします。数字と言葉の両方で兆しが重なっている人から、手を打ちます。</p>
+  <div class="flag">
+    <div class="h"><span class="id">No.03</span><span class="st kik">数字：危険</span><span class="st kik">言葉の兆し：5つのうち3つ</span></div>
+    <div class="dots">
+      <div class="dot on"><b>否定的な言葉</b>「正直しんどい」が2回から5回に</div>
+      <div class="dot on"><b>この先の話</b>前回まであった資格の話が出なくなった</div>
+      <div class="dot"><b>上司・同僚への不満</b>目立った変化なし</div>
+      <div class="dot on"><b>意欲</b>「言われたことだけやる」という言葉</div>
+      <div class="dot"><b>仕事と私生活</b>目立った変化なし</div>
+    </div>
+    <p class="q">数字と言葉の両方が悪くなっています。退職を決める前に、本人と話す時間をつくるべき段階です。</p>
   </div>
-  <div class="panel">
-    <h3>有給休暇　年5日の義務</h3>
-    <table class="yt"><thead><tr><th>従業員</th><th class="r">取得</th><th class="r">期限</th><th>判定</th></tr></thead><tbody>
-      <tr><td>No.03</td><td class="r">1日</td><td class="r">あと38日</td><td><span class="tag bad">あと4日必要</span></td></tr>
-      <tr><td>No.07</td><td class="r">2日</td><td class="r">あと38日</td><td><span class="tag bad">あと3日必要</span></td></tr>
-      <tr><td>No.11</td><td class="r">3日</td><td class="r">あと96日</td><td><span class="tag warn">あと2日必要</span></td></tr>
-      <tr><td>そのほか9人</td><td class="r">5日以上</td><td class="r">—</td><td><span class="tag ok">達成</span></td></tr>
-    </tbody></table>
-    <p class="src">5日に届かないと、法律上は1人につき30万円以下の罰金の対象になります。</p>
-  </div>
-</section>
-
-<section>
-  <h2><span class="no">四</span>気をつけたい人（退職の早期警報）</h2>
-  <p class="lead">辞める前に見られることが多い変化が、重なっている人です。面談の優先順位の参考にします。</p>
-  <div class="alert"><div class="id">No.03</div><ul><li>残業が月45時間を超えた月が8か月（直近は3か月連続）</li><li>有給休暇を1日しか取っていない</li><li>直近2か月、遅刻の記録が増加</li></ul></div>
-  <div class="alert" style="border-left-color:#C79A1E"><div class="id">No.09</div><ul><li>入社8か月。直近2か月で欠勤が3日</li><li>前回の面談で「仕事の進め方が分からない」との声</li></ul></div>
-</section>
-
-<section>
-  <h2><span class="no">五</span>全国の平均と比べると</h2>
-  <div class="panel cmp">
-    <div class="row"><div class="lbl"><b>有給休暇の取得率</b></div><div class="bars">
-      <div class="b me"><span>株式会社サンプル</span><div class="track"><div class="fill" style="width:52%;background:var(--bad)"></div></div><span>52.0%</span></div>
-      <div class="b"><span>全国（30〜99人の企業）</span><div class="track"><div class="fill" style="width:64.9%;background:var(--muted)"></div></div><span>64.9%</span></div>
-      <div class="b"><span>全国（全体）</span><div class="track"><div class="fill" style="width:66.9%;background:var(--muted)"></div></div><span>66.9%</span></div>
-    </div></div>
-    <div class="row"><div class="lbl"><b>1年間の離職率</b></div><div class="bars">
-      <div class="b me"><span>株式会社サンプル</span><div class="track"><div class="fill" style="width:66.8%;background:#C79A1E"></div></div><span>16.7%</span></div>
-      <div class="b"><span>全国（全体）</span><div class="track"><div class="fill" style="width:56.8%;background:var(--muted)"></div></div><span>14.2%</span></div>
-    </div></div>
-    <p class="src">出典：厚生労働省「令和7年就労条件総合調査」（2024年の取得率。対象は常用労働者30人以上の企業）、厚生労働省「令和6年雇用動向調査」（離職率）。調査の対象や規模が貴社と異なるため、目安としてご覧ください。離職率の棒は25%を右端としています。</p>
+  <div class="flag" style="border-left-color:var(--kei)">
+    <div class="h"><span class="id">No.07</span><span class="st kei">数字：警戒</span><span class="st chu">言葉の兆し：5つのうち1つ</span></div>
+    <div class="dots">
+      <div class="dot"><b>否定的な言葉</b>目立った変化なし</div>
+      <div class="dot"><b>この先の話</b>昇格の話が出ている</div>
+      <div class="dot"><b>上司・同僚への不満</b>目立った変化なし</div>
+      <div class="dot"><b>意欲</b>高い</div>
+      <div class="dot on"><b>仕事と私生活</b>「子どもの行事に行けない」</div>
+    </div>
+    <p class="q">意欲は高いうちに、仕事の量を整えるのが効く段階です。今なら、本人も前向きに受け止めやすい時期です。</p>
   </div>
 </section>
 
 <section>
-  <h2><span class="no">六</span>次の一手</h2>
+  <h2><span class="no">五</span>次の3か月でやること</h2>
+  <p class="lead">段階ごとに、誰が、何を、いつまでにやるかを決めます。次のレポート（8月）で、効いたかを確かめます。</p>
   <div class="next">
-    <div class="step"><div><b>製造部の仕事の割り振りを見直す</b><p>No.03を中心に、残業が集中している工程を一緒に洗い出します。来月の面談で案をお持ちします。</p></div><div class="k">期限<b>2月の面談</b>見込める効果　年約67万円</div></div>
-    <div class="step"><div><b>有給休暇の取得日を決める</b><p>No.03・No.07の取得日を、本人と相談して3月中に入れます。計画的に取る仕組み（計画的付与）の案もお渡しします。</p></div><div class="k">期限<b>3月末</b>防げるリスク　最大60万円</div></div>
-    <div class="step"><div><b>No.09との面談</b><p>入社後のフォローとして、仕事の進め方の相談の場を設けます。進め方の手順書の作成もお手伝いします。</p></div><div class="k">期限<b>2月中</b>退職1人の損失　約115万円</div></div>
+    <div class="step"><div class="who"><span class="st kik">危険</span><b>No.03</b></div><div><b>社長と本人の面談、仕事を移す</b><p>今週中に社長と本人で話す時間をとり、仕事の一部を5月中に他の人へ移します。本人が望めば、地域産業保健センター（50人未満の会社は無料）で医師の面接を受けられるよう手配します。</p></div><div class="k">誰が：社長<b>5月中</b>面談の進め方は当事務所がお渡しします</div></div>
+    <div class="step"><div class="who"><span class="st kei">警戒</span><b>No.07</b></div><div><b>上司との面談で、夏の前に仕事量を整える</b><p>繁忙期の前に、担当の振り分けか、人を足すかを決めます。休みを取る日も、先に決めてしまいます。</p></div><div class="k">誰が：営業部長<b>6月中</b>人を足す場合の採用の段取りも相談できます</div></div>
+    <div class="step"><div class="who"><span class="st chu">注意</span><b>No.04・No.06・No.11</b></div><div><b>上司からひと声かける</b><p>「最近どう？」と声をかけ、休みの予定を聞きます。それだけで、早めの相談につながることがあります。</p></div><div class="k">誰が：各部署の上司<b>5月中</b></div></div>
   </div>
 </section>
 
 <section>
-  <h2><span class="no">七</span>使えそうな助成金</h2>
-  <div class="sub">
-    <div class="subc"><b>働き方改革推進支援助成金</b><div class="amt">費用の原則3/4</div><p>勤怠管理のソフトなどで残業を減らす取り組みが対象。毎年4月ごろ受付開始・11月末締切（予算で早く締まることがあります）。条件あり。</p></div>
-    <div class="subc"><b>キャリアアップ助成金（正社員化）</b><div class="amt">1人あたり 40万〜80万円</div><p>パートのNo.10・No.12を正社員にする予定があれば。正社員にする前に計画書の提出が必要です。条件あり。</p></div>
-  </div>
+  <h2><span class="no">六</span>前回の「次の一手」はどうなったか</h2>
+  <div class="tw"><table class="t">
+    <thead><tr><th>前回（2月）決めたこと</th><th>結果</th><th>数字の変化</th></tr></thead>
+    <tbody>
+      <tr><td>製造部の仕事の割り振りを見直す</td><td><span class="st ok">効いた</span></td><td>No.04の残業　月52時間 → 40時間（警戒 → 注意）</td></tr>
+      <tr><td>No.03の業務を一部、新人に引き継ぐ</td><td><span class="st kei">進んでいない</span></td><td>引き継ぎ先の新人の育成が追いつかず、No.03の残業は増加</td></tr>
+    </tbody>
+  </table></div>
 </section>
 
 <section>
-  <h2><span class="no">八</span>社会保険労務士の所見</h2>
-  <div class="shoken">全体としては、給与や最低賃金の面で大きな問題はなく、土台はしっかりした会社です。一方で、残業と有給休暇が製造部の数人に偏っていて、そのうちNo.03は36協定の上限を超える状態が続いています。法令の面でも、人が辞めるリスクの面でも、ここが今いちばんの急所です。まずは製造部の仕事の割り振りから一緒に手をつけ、3か月後のレポートで変化を確かめましょう。<div class="sig2">2027年1月　社会保険労務士　稲石 楓季</div></div>
+  <h2><span class="no">七</span>社会保険労務士の所見</h2>
+  <div class="shoken">製造部の割り振りの見直しが効き、全体としては良い方向に動いています。一方で、引き継ぎが止まった分の負担がNo.03に集まり、「残業の増加・休めていない・面談での言葉の変化」の3つが重なりました。退職を決める人は、この状態がしばらく続いたあとに申し出ることが多いため、今が手を打てる時期です。No.03の仕事を移すことと、引き継ぎ先の育成を同時に進めましょう。<div class="sig2">2027年5月　社会保険労務士　稲石 楓季</div></div>
 </section>
+
 <section>
-  <h2><span class="no">九</span>前回の「次の一手」はどうなったか</h2>
-  <p class="lead">2回目以降のレポートでは、前回決めたことの結果を必ず振り返ります（下は2回目の見本）。</p>
-  <table class="prev"><thead><tr><th>前回決めたこと</th><th>結果</th><th>数字の変化</th></tr></thead><tbody>
-    <tr><td>製造部の仕事の割り振りを見直す</td><td><span class="tag ok">実施</span></td><td>No.03の残業　月55時間 → 41時間</td></tr>
-    <tr><td>有給休暇の取得日を決める</td><td><span class="tag ok">実施</span></td><td>未達の見込み　3人 → 0人</td></tr>
-    <tr><td>No.09との面談</td><td><span class="tag warn">一部</span></td><td>手順書は作成済み。資格の補助は検討中</td></tr>
-  </tbody></table>
+  <div class="cta"><span>レポートの判定の基準は、会社ごとに一緒に決めます。「うちの会社だとどうなるか」も、お気軽にご相談ください。</span><a href="index.html#contact">ご相談・お問い合わせ</a></div>
 </section>
-<p class="src">※ 従業員は番号で表示しています。氏名などの個人情報は、このレポートには載せません。判断と最終の確認は、社会保険労務士が行います。</p>
+
+<p class="src">※ 従業員は番号で表示し、氏名などの個人情報はレポートに載せません。分析にはデジタル技術も活用しますが、判断と最終の確認は、すべて社会保険労務士が行います。健康に関わる最終的な判断は、医師にお願いします。<br>※ 契約してすぐにお届けする1回目のレポートでは、それまでのデータから「今の状態」をまとめます。2回目からは、前回の一手の結果も振り返ります。</p>
 </main>
-
 <footer><div class="wrap"><b>育守法務事務所</b>　社会保険労務士　稲石 楓季　｜　このレポートは見本です　｜　<a href="price.html" style="color:#C9B78A">顧問契約と料金へ</a>　<a href="index.html" style="color:#C9B78A">トップへ</a></div></footer>
-
 <script>
-const data=[
- ['No.01',[12,10,14,11,9,13,12,10,11,15,12,14]],
- ['No.02',[18,20,22,19,17,21,24,20,18,22,25,28]],
- ['No.03',[38,42,46,48,44,40,47,49,46,50,52,55]],
- ['No.04',[30,33,36,41,38,35,39,44,46,42,45,48]],
- ['No.05',[8,6,9,7,5,8,10,7,6,9,8,12]],
- ['No.06',[22,25,28,30,26,24,27,29,31,33,30,35]],
- ['No.07',[15,14,18,16,13,17,19,15,14,16,18,20]],
- ['No.08',[5,4,6,3,5,4,6,5,4,6,5,7]],
- ['No.09',[0,0,0,0,10,14,16,12,9,8,6,5]],
- ['No.10',[3,2,4,3,2,3,4,2,3,4,3,5]],
- ['No.11',[19,21,17,23,20,22,25,24,21,26,24,30]],
- ['No.12',[2,3,2,4,3,2,3,4,2,3,2,4]]
-];
-const col=v=>v>45?['#B5463A','#fff']:v>=35?['#D9A55A','#1B1B1B']:v>=20?['#E6D6A8','#1B1B1B']:['#F2EFE4','#355269'];
-let h='<tr><th class="r">従業員</th>'+[...Array(12)].map((_,i)=>`<th>${i+1}月</th>`).join('')+'<th>年合計</th></tr>';
-data.forEach(([id,a])=>{const t=a.reduce((x,y)=>x+y,0);h+=`<tr><th class="r">${id}</th>`+a.map(v=>{const [b,f]=col(v);return `<td style="background:${b};color:${f}">${v}</td>`}).join('')+`<td class="tot">${t}</td></tr>`});
-document.getElementById('hm').innerHTML=h;
-const topN=data.map(([id,a])=>[id,a.reduce((x,y)=>x+y,0)]).sort((a,b)=>b[1]-a[1]).slice(0,5);
-document.getElementById('caps').innerHTML=topN.map(([id,t])=>{const pct=Math.min(100,t/450*100),cap=360/450*100,c=t>=360?'var(--bad)':t>=300?'#C79A1E':'var(--muted)';return `<div class="bar"><span>${id}</span><div class="track"><div class="fill" style="width:${pct}%;background:${c}"></div><div class="cap" style="left:${cap}%"></div></div><span class="n">${t}時間${t>=360?'（超過）':`（あと${360-t}）`}</span></div>`}).join('');
+(function(){
+  const m=['11月','12月','1月','2月','3月','4月'];
+  const S=[['#9B2C2C',[48,52,55,58,64,64]],['#B4561E',[34,38,41,48,56,58]],['#2F6B4F',[52,50,47,45,44,40]]];
+  const W=560,H=260,L=40,R=16,T=14,B=30,max=70;
+  const x=i=>L+i*(W-L-R)/5, y=v=>T+(H-T-B)*(1-v/max);
+  let g='';
+  for(let v=0;v<=70;v+=10){g+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="#E5DFCF"/><text x="${L-8}" y="${y(v)+4}" font-size="11" fill="#355269" text-anchor="end">${v}</text>`}
+  g+=`<line x1="${L}" x2="${W-R}" y1="${y(40)}" y2="${y(40)}" stroke="#9AA6BC" stroke-width="2" stroke-dasharray="5 4"/>`;
+  m.forEach((t,i)=>g+=`<text x="${x(i)}" y="${H-8}" font-size="12" fill="#355269" text-anchor="middle">${t}</text>`);
+  S.forEach(([c,a])=>{g+=`<polyline fill="none" stroke="${c}" stroke-width="3" points="${a.map((v,i)=>x(i)+','+y(v)).join(' ')}"/>`;a.forEach((v,i)=>g+=`<circle cx="${x(i)}" cy="${y(v)}" r="3.5" fill="${c}"/>`)});
+  g+=`<text x="${L}" y="${T-2}" font-size="11" fill="#355269">時間</text>`;
+  document.getElementById('tr').innerHTML=g;
+})();
 </script>
 </body>
 </html>
