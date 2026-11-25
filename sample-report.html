@@ -64,6 +64,14 @@ table.t small{color:var(--muted)}
 .dot.on{border-color:var(--kik);background:var(--kikbg)}
 .dot b{display:block;font-size:12.5px}
 .q{font-size:13px;color:var(--muted);margin:8px 0 0}
+.mx{display:grid;grid-template-columns:34px 1fr 1fr;grid-template-rows:auto auto auto;gap:10px}
+.mx .ax{grid-row:1/3;writing-mode:vertical-rl;text-orientation:upright;font-size:13px;color:var(--muted);display:flex;align-items:center;justify-content:center;letter-spacing:.3em}
+.mx .ax2{grid-column:2/4;text-align:center;font-size:13px;color:var(--muted)}
+.mx .cell{background:var(--raised);border:1px solid var(--line);padding:14px 16px}
+.mx .cell.b{border:2px solid var(--kik);background:#FBF1EE}
+.mx .z{margin:0;font-family:'Noto Serif JP',serif;font-weight:600;font-size:15px}
+.mx .ids{margin:6px 0 2px;font-size:14px}
+.mx .d{margin:0;font-size:12.5px;color:var(--muted)}
 .next .step{display:grid;grid-template-columns:120px 1fr 190px;gap:14px;background:var(--raised);border:1px solid var(--line);padding:14px 16px;margin-bottom:10px;align-items:start}
 .next .who{font-size:12.5px;color:var(--muted)}
 .next .who b{display:block;font-size:14px;color:var(--kon)}
@@ -77,7 +85,7 @@ table.t small{color:var(--muted)}
 .cta a{background:var(--kinari);color:var(--kon);text-decoration:none;font-weight:700;padding:10px 20px}
 footer{background:var(--kon);color:#B8C2D6;font-size:13px;padding:22px 0}
 footer b{color:var(--kinari);font-family:'Noto Serif JP',serif;font-weight:600;letter-spacing:.12em;font-size:16px}
-@media(max-width:760px){.sig{grid-template-columns:1fr 1fr}.rules,.trend{grid-template-columns:1fr}.dots{grid-template-columns:1fr 1fr}.next .step{grid-template-columns:1fr}.next .k{text-align:left}header h1{font-size:24px}table.t{font-size:12.5px}table.t td,table.t th{padding:7px 8px}.tw{overflow-x:auto}}
+@media(max-width:760px){.mx{grid-template-columns:1fr}.mx .ax{display:none}.mx .ax2{grid-column:1}.sig{grid-template-columns:1fr 1fr}.rules,.trend{grid-template-columns:1fr}.dots{grid-template-columns:1fr 1fr}.next .step{grid-template-columns:1fr}.next .k{text-align:left}header h1{font-size:24px}table.t{font-size:12.5px}table.t td,table.t th{padding:7px 8px}.tw{overflow-x:auto}}
 </style>
 </head>
 <body>
@@ -95,8 +103,8 @@ footer b{color:var(--kinari);font-family:'Noto Serif JP',serif;font-weight:600;l
   <div class="summary">
     <p class="t">30秒で分かる、今回の結論</p>
     <ol>
-      <li><b>製造部のNo.03が「危険」</b>。残業が6か月続けて増え、3か月休みを取れていません。面談でも疲れの言葉が増えています。</li>
-      <li><b>営業部のNo.07は、残業が半年で約1.7倍</b>。今はまだ「警戒」ですが、このまま進むと夏には危険に入ります。</li>
+      <li><b>評価Sで、いちばん失いたくないNo.03が「危険」</b>。残業が6か月続けて増え、4か月休みを取れていません。面談でも疲れの言葉が増えています。</li>
+      <li><b>評価Aの営業部No.07は、残業が半年で約1.7倍</b>。今はまだ「警戒」ですが、このまま進むと夏には危険に入ります。</li>
       <li>前回決めた<b>製造部の仕事の割り振りの見直しは効いています</b>（No.04は警戒→注意）。</li>
     </ol>
     <div class="decide"><b>社長に決めていただきたいこと</b>　① No.03の仕事を、5月中にどこまで他の人に移すか　② 営業部に、夏の繁忙期の前に人を足すか、仕事を減らすか</div>
@@ -157,7 +165,7 @@ footer b{color:var(--kinari);font-family:'Noto Serif JP',serif;font-weight:600;l
   <h2><span class="no">四</span>面談の言葉と掛け合わせる</h2>
   <p class="lead">数字だけ、面談だけでは見落とします。数字と言葉の両方で兆しが重なっている人から、手を打ちます。</p>
   <div class="flag">
-    <div class="h"><span class="id">No.03</span><span class="st kik">数字：危険</span><span class="st kik">言葉の兆し：5つのうち3つ</span></div>
+    <div class="h"><span class="id">No.03</span><span class="st" style="background:#0D1B42;color:#F7F4EA">評価S</span><span class="st kik">数字：危険</span><span class="st kik">言葉の兆し：5つのうち3つ</span></div>
     <div class="dots">
       <div class="dot on"><b>否定的な言葉</b>「正直しんどい」が2回から5回に</div>
       <div class="dot on"><b>この先の話</b>前回まであった資格の話が出なくなった</div>
@@ -168,7 +176,7 @@ footer b{color:var(--kinari);font-family:'Noto Serif JP',serif;font-weight:600;l
     <p class="q">数字と言葉の両方が悪くなっています。退職を決める前に、本人と話す時間をつくるべき段階です。</p>
   </div>
   <div class="flag" style="border-left-color:var(--kei)">
-    <div class="h"><span class="id">No.07</span><span class="st kei">数字：警戒</span><span class="st chu">言葉の兆し：5つのうち1つ</span></div>
+    <div class="h"><span class="id">No.07</span><span class="st" style="background:#0D1B42;color:#F7F4EA">評価A</span><span class="st kei">数字：警戒</span><span class="st chu">言葉の兆し：5つのうち1つ</span></div>
     <div class="dots">
       <div class="dot"><b>否定的な言葉</b>目立った変化なし</div>
       <div class="dot"><b>この先の話</b>昇格の話が出ている</div>
@@ -181,7 +189,21 @@ footer b{color:var(--kinari);font-family:'Noto Serif JP',serif;font-weight:600;l
 </section>
 
 <section>
-  <h2><span class="no">五</span>次の3か月でやること</h2>
+  <h2><span class="no">五</span>失いたくない人を、先回りで守る</h2>
+  <p class="lead">すべての退職を防ぐことはできません。だからこそ、評価SとAの人（特に失いたくない人）の兆しから先に手を打ちます。縦が評価、横が退職のリスクです（リスク中〜高＝どれかの物差しで「警戒」以上、または「注意」が2つ以上）。</p>
+  <div class="mx">
+    <div class="ax">評価</div>
+    <div class="cell a"><p class="z">評価S・A × リスク低</p><p class="ids">No.01・No.04・No.05・No.11</p><p class="d">安定している人。今の働き方を続けられるよう見守る</p></div>
+    <div class="cell b"><p class="z">評価S・A × リスク中〜高　<span class="st kik">最優先</span></p><p class="ids"><b>No.03（S）・No.07（A）</b></p><p class="d">失うと影響が大きく、兆しも出ている人。この2人から手を打つ</p></div>
+    <div class="cell c"><p class="z">評価B以下 × リスク低</p><p class="ids">No.02・No.08・No.09・No.10・No.12</p><p class="d">育てる人。面談で、伸ばしたいことを一緒に決める</p></div>
+    <div class="cell d"><p class="z">評価B以下 × リスク中〜高</p><p class="ids">No.06</p><p class="d">声をかけて様子を見る人。仕事の偏りがないか確かめる</p></div>
+    <div class="ax2">退職のリスク（低 → 高）</div>
+  </div>
+  <p class="src" style="margin-top:8px">評価は会社の人事評価（直近）を使います。評価制度がまだない会社では、最初に社長から「特に失いたくない人」を伺い、その方に印を付けて同じように見ます。評価制度があると、この優先順位をより確かに付けられます。</p>
+</section>
+
+<section>
+  <h2><span class="no">六</span>次の3か月でやること</h2>
   <p class="lead">段階ごとに、誰が、何を、いつまでにやるかを決めます。次のレポート（8月）で、効いたかを確かめます。</p>
   <div class="next">
     <div class="step"><div class="who"><span class="st kik">危険</span><b>No.03</b></div><div><b>社長と本人の面談、仕事を移す</b><p>今週中に社長と本人で話す時間をとり、仕事の一部を5月中に他の人へ移します。本人が望めば、地域産業保健センター（50人未満の会社は無料）で医師の面接を受けられるよう手配します。</p></div><div class="k">誰が：社長<b>5月中</b>面談の進め方は当事務所がお渡しします</div></div>
@@ -191,7 +213,7 @@ footer b{color:var(--kinari);font-family:'Noto Serif JP',serif;font-weight:600;l
 </section>
 
 <section>
-  <h2><span class="no">六</span>前回の「次の一手」はどうなったか</h2>
+  <h2><span class="no">七</span>前回の「次の一手」はどうなったか</h2>
   <div class="tw"><table class="t">
     <thead><tr><th>前回（2月）決めたこと</th><th>結果</th><th>数字の変化</th></tr></thead>
     <tbody>
@@ -202,8 +224,8 @@ footer b{color:var(--kinari);font-family:'Noto Serif JP',serif;font-weight:600;l
 </section>
 
 <section>
-  <h2><span class="no">七</span>社会保険労務士の所見</h2>
-  <div class="shoken">製造部の割り振りの見直しが効き、全体としては良い方向に動いています。一方で、引き継ぎが止まった分の負担がNo.03に集まり、「残業の増加・休めていない・面談での言葉の変化」の3つが重なりました。退職を決める人は、この状態がしばらく続いたあとに申し出ることが多いため、今が手を打てる時期です。No.03の仕事を移すことと、引き継ぎ先の育成を同時に進めましょう。<div class="sig2">2027年5月　社会保険労務士　稲石 楓季</div></div>
+  <h2><span class="no">八</span>社会保険労務士の所見</h2>
+  <div class="shoken">製造部の割り振りの見直しが効き、全体としては良い方向に動いています。一方で、引き継ぎが止まった分の負担がNo.03に集まり、「残業の増加・休めていない・面談での言葉の変化」の3つが重なりました。No.03は評価Sで、製造部の段取りを最もよく知る人です。退職を決める人は、この状態がしばらく続いたあとに申し出ることが多いため、今が手を打てる時期です。No.03の仕事を移すことと、引き継ぎ先の育成を同時に進めましょう。<div class="sig2">2027年5月　社会保険労務士　稲石 楓季</div></div>
 </section>
 
 <section>
