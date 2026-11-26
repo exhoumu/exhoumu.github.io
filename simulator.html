@@ -555,8 +555,8 @@ function spotCompare(id,n,fee){ const y=fee*12, over=Math.max(0,n-9), ok=sp=>sp>
   if(id==='kisoku'){ const sp=(30000+11000)*2; return `年2回、3条ずつ改定して届け出ると、スポットなら ${yen(sp)} → パックなら 年${yen(y)}${ok(sp)}`; }
   return ''; }
 function packFee(id,st){const c=S.pack[id];return c.base+st*c.step}
-function covered(id){ if(id==='l3') return M.baseOn&&M.payroll; if(BASE_IDS.includes(id)) return M.baseOn; const pk=PACK_OF[id]; return pk?!!M.packs[pk]:false }
-function tagOf(id){ if(id==='l3') return M.payroll?'基本の手続き':'スポット（給与計算をご依頼の場合は基本の手続きに含みます）'; if(BASE_IDS.includes(id)) return '基本の手続き'; const pk=PACK_OF[id]; return pk?PACKS.find(x=>x.id===pk).name:'スポット' }
+function covered(id){ if(id==='l3') return M.baseOn&&(M.payroll||M.imp); if(BASE_IDS.includes(id)) return M.baseOn; const pk=PACK_OF[id]; return pk?!!M.packs[pk]:false }
+function tagOf(id){ if(id==='l3') return (M.payroll||M.imp)?'基本の手続き':'スポット（給与計算または取り込みをご依頼の場合は基本の手続きに含みます）'; if(BASE_IDS.includes(id)) return '基本の手続き'; const pk=PACK_OF[id]; return pk?PACKS.find(x=>x.id===pk).name:'スポット' }
 
 /* ===== 描画 ===== */
 function renderPacks(){
@@ -570,13 +570,13 @@ function renderPacks(){
       <span class="pp">${price}</span>${extra}
     </button>`;
   const pc=pk=>{ let fee=packFee(pk.id,pk.id==='full'?c.pst:st), extra='';
-    if(pk.needsPayroll) extra=`<span class="pnote">給与計算のご依頼が必要です</span>`;
+    if(pk.needsPayroll) extra=`<span class="pnote">給与計算または取り込みのご依頼が必要です</span>`;
     if(pk.note) extra=`<span class="pnote">${esc(pk.note)}</span>`;
     
     return card(pk.id,pk.name,pk.for,pk.desc,`月額 ＋${yen(fee)}`,!!M.packs[pk.id],extra); };
   const P=id=>{const pk=PACKS.find(x=>x.id===id);return pk?pc(pk):''};
   let h='<div class="pcols"><div class="pcol"><p class="pch">手続き</p>';
-  h+=card('base','入社・退社・扶養の手続き','基本の手続き','資格取得・喪失、扶養の異動（離職票は給与計算をご依頼の場合のみ）',`月額 ${yen(Math.max(S.procMin,S.procUnit*c.n))}`,M.baseOn,`<span class="pnote">1人${yen(S.procUnit)}・最低${yen(S.procMin)}</span>`);
+  h+=card('base','入社・退社・扶養の手続き','基本の手続き','資格取得・喪失、扶養の異動（離職票は給与計算・取り込みをご依頼の場合のみ）',`月額 ${yen(Math.max(S.procMin,S.procUnit*c.n))}`,M.baseOn,`<span class="pnote">1人${yen(S.procUnit)}・最低${yen(S.procMin)}</span>`);
   h+=P('byoki')+P('shussan')+P('kisoku');
   h+='</div><div class="pcol"><p class="pch">給与計算</p>';
   h+=card('payroll','給与計算','毎月の給与計算','給与明細・振込データの作成、保険料率・住民税額の更新（住民税の異動届は含みません）',`月額 ${yen(S.payBase+S.payPer*c.pn)}`,M.payroll,`<span class="pnote">基本${yen(S.payBase)}＋1人${yen(S.payPer)}</span>`);
@@ -706,9 +706,9 @@ $('packArea').addEventListener('click',e=>{
   const b=e.target.closest('[data-pack]'); if(!b) return;
   const id=b.dataset.pack;
   if(id==='base') M.baseOn=!M.baseOn;
-  else if(id==='payroll'){ M.payroll=!M.payroll; if(M.payroll) M.imp=false; if(!M.payroll){ M.packs.full=false; M.packs.nenji=false; } }
-  else if(id==='imp'){ M.imp=!M.imp; if(M.imp){ M.payroll=false; M.packs.full=false; M.packs.nenji=false; } }
-  else { M.packs[id]=!M.packs[id]; if((id==='full'||id==='nenji')&&M.packs[id]){ M.payroll=true; M.imp=false; } }
+  else if(id==='payroll'){ M.payroll=!M.payroll; if(M.payroll) M.imp=false; if(!M.payroll&&!M.imp){ M.packs.full=false; M.packs.nenji=false; } }
+  else if(id==='imp'){ M.imp=!M.imp; if(M.imp) M.payroll=false; if(!M.payroll&&!M.imp){ M.packs.full=false; M.packs.nenji=false; } }
+  else { M.packs[id]=!M.packs[id]; if((id==='full'||id==='nenji')&&M.packs[id]&&!M.payroll&&!M.imp) M.payroll=true; }
   save(MKEY,M); refreshCoverage();
 });
 $('list').addEventListener('click',e=>{
