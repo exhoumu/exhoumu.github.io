@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>初回の職場診断レポート（見本）｜育守法務事務所</title><meta name="description" content="顧問契約のあと最初にお届けする、初回の職場診断レポートの見本です。"><link rel="icon" type="image/png" href="img/favicon.png">
+<style>
+:root{--yoru:#0D1B42;--kinari:#F7F4EA;--kin:#7A6230;--kin2:#C9B78A;--sumi:#1d2433;--usu:#e7e1cf;--aka:#9b2c2c;--dai:#b5651d;--ki:#a88a1e}
+*{box-sizing:border-box}
+body{margin:0;background:#efebe0;color:var(--sumi);font-family:"Hiragino Sans","Yu Gothic UI","Yu Gothic","Meiryo","Noto Sans JP",sans-serif;font-size:14px;line-height:1.7}
+.serif{font-family:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP",serif}
+header.top{background:var(--yoru);color:var(--kinari);padding:14px 24px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+header.top h1{margin:0;font-size:18px;font-weight:600;letter-spacing:.05em}
+header.top .safe{font-size:12px;color:var(--kin2)}
+nav.tabs{display:flex;gap:4px;padding:10px 24px 0;background:#e4ddc9;flex-wrap:wrap}
+nav.tabs button{border:0;background:transparent;padding:10px 16px;font-size:14px;cursor:pointer;border-radius:6px 6px 0 0;color:var(--yoru)}
+nav.tabs button[aria-pressed=true]{background:var(--kinari);font-weight:700}
+main{padding:20px 24px 60px}
+.panel{background:var(--kinari);border:1px solid var(--usu);border-radius:8px;padding:20px 22px;margin-bottom:16px;max-width:1100px}
+.panel h2{margin:0 0 6px;font-size:17px;color:var(--yoru)}
+.panel p.lead{margin:0 0 14px;color:#4b5263;font-size:13px}
+.grid{display:grid;grid-template-columns:220px 1fr;gap:10px 16px;align-items:center}
+.grid label{font-weight:600;font-size:13px}
+input,select,textarea{font:inherit;padding:6px 8px;border:1px solid #c9c2ad;border-radius:5px;background:#fff}
+input[type=number]{width:140px}
+.btn{border:1px solid var(--yoru);background:#fff;color:var(--yoru);padding:8px 16px;border-radius:6px;cursor:pointer;font-size:14px}
+.btn.solid{background:var(--yoru);color:#fff}
+.btn.gold{border-color:var(--kin);color:var(--kin)}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.note{font-size:12px;color:#6b6f7b}
+table.t{border-collapse:collapse;width:100%;font-size:13px}
+table.t th,table.t td{border-bottom:1px solid var(--usu);padding:6px 8px;text-align:left;vertical-align:top}
+table.t th{background:#efe9d8;font-weight:600;color:var(--yoru)}
+table.t td.r,table.t th.r{text-align:right}
+.ok{color:#2f6b3a}.warn{color:var(--aka)}
+.drop{border:2px dashed #c9c2ad;border-radius:8px;padding:14px;margin:8px 0;background:#fffdf7}
+.map{margin-top:10px}
+.map .row{display:grid;grid-template-columns:200px 260px 1fr;gap:10px;align-items:center;padding:3px 0}
+.lv{display:inline-block;padding:1px 8px;border-radius:10px;font-size:12px;font-weight:700;color:#fff;white-space:nowrap}
+.lv.d{background:var(--aka)}.lv.w{background:var(--dai)}.lv.c{background:var(--ki)}.lv.n{background:#8a8f99}
+.memo{border:1px solid var(--aka);background:#fff6f4;border-radius:8px;padding:12px 16px;margin:0 0 16px;max-width:210mm}
+.memo h3{margin:0 0 4px;font-size:14px;color:var(--aka)}
+
+/* report */
+.reportwrap{display:flex;flex-direction:column;align-items:center;gap:18px}
+.page{width:210mm;min-height:297mm;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.12);padding:13mm 15mm 16mm;position:relative;font-size:9.8pt;line-height:1.6}
+.page .ph{display:flex;justify-content:space-between;font-size:8.5pt;color:#777;border-bottom:1px solid var(--usu);padding-bottom:4px;margin-bottom:10px}
+.page h1{font-size:19pt;margin:6px 0 2px;color:var(--yoru);font-weight:700}
+.page h2{font-size:13pt;margin:10px 0 5px;color:var(--yoru);border-left:4px solid var(--kin);padding-left:8px}
+.page h3{font-size:10.5pt;margin:8px 0 3px;color:var(--yoru)}
+.page p{margin:2px 0 4px}
+.page .sub{color:#555;font-size:9.5pt}
+.page .eyebrow{font-size:8.5pt;letter-spacing:.2em;color:var(--kin)}
+.summary{background:var(--yoru);color:#fff;padding:10px 14px;border-radius:4px;margin:10px 0}
+.summary ol{margin:4px 0 0 1.2em;padding:0}
+.summary li{margin:3px 0}
+.summary a.jump{color:#C9B78A;font-size:8.5pt;text-decoration:none;white-space:nowrap}.box a{color:inherit;text-decoration:none}
+.boxes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:8px 0}
+.box{border:1px solid var(--usu);border-radius:4px;padding:8px 10px;background:#fbf9f3}
+.box .k{font-size:8.5pt;color:#666}.box .v{font-size:15pt;font-weight:700;color:var(--yoru)}.box .s{font-size:8.5pt;color:#666}
+.page table.t{font-size:9.5pt}
+.page table.t th,.page table.t td{padding:4px 6px}
+.edit{outline:1px dashed transparent;border-radius:3px}
+.edit:hover,.edit:focus{outline-color:var(--kin2);background:#fffbea}
+.page .foot{position:absolute;left:15mm;right:15mm;bottom:8mm;font-size:8pt;color:#888;display:flex;justify-content:space-between}
+.q{border-left:3px solid var(--kin2);padding:3px 10px;margin:4px 0;background:#fbf9f3}
+.tag{display:inline-block;border:1px solid var(--kin2);color:var(--kin);font-size:8.5pt;padding:0 6px;border-radius:8px;margin-right:4px}
+/*nw*/.page table.t th,.page table.t td:nth-child(-n+3){white-space:nowrap}
+@media print{
+  body{background:#fff}
+  header.top,nav.tabs,.panel,.noprint,.memo{display:none!important}
+  main{padding:0}
+  .page{box-shadow:none;margin:0;width:auto;min-height:auto;height:297mm;page-break-after:always;padding:12mm 14mm 14mm}
+  .page:last-child{page-break-after:auto}
+  .edit{outline:none!important;background:none!important}
+  @page{size:A4;margin:0}
+}
+
+body{background:#efebe0}
+.sbar{background:#7A6230;color:#fff;text-align:center;font-size:13px;padding:6px 12px;letter-spacing:.08em}
+.shead{background:#0D1B42;color:#F7F4EA;padding:22px 20px}
+.shead .in{max-width:900px;margin:0 auto}
+.shead a{color:#C9B78A}
+.shead h1{margin:4px 0 6px;font-size:24px;font-weight:600;font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif}
+.shead p{margin:0;font-size:14px;color:#C8CFDD}
+.shead .nav{margin-top:12px;display:flex;gap:14px;flex-wrap:wrap;font-size:14px}
+main{padding:24px 12px 40px}
+.cta{max-width:900px;margin:10px auto 40px;background:#0D1B42;color:#F7F4EA;padding:20px 24px;text-align:center}
+.cta a{display:inline-block;margin:6px;padding:10px 18px;border:1px solid #C9B78A;color:#F7F4EA;text-decoration:none}
+.page .edit:hover{outline:none;background:none}
+@media (max-width:860px){.page{width:100%;min-height:auto;padding:16px} .page .foot{position:static;margin-top:12px} .boxes{grid-template-columns:repeat(2,1fr)} .page table.t{display:block;overflow-x:auto} .page table.t td,.page table.t th{white-space:nowrap} .zone{grid-template-columns:70px 1fr 1fr}}
+</style></head><body>
+<div class="sbar">見本です。会社・人物・数字はすべて架空のものです。</div>
+<div class="shead"><div class="in"><a href="index.html">← 育守法務事務所</a><h1>初回の職場診断レポート（見本）</h1><p>顧問契約のあと、最初にお届けするレポートです。賃金台帳（在職者の12か月と、過去3年に辞めた方）から分析します。従業員は番号で表示し、氏名などは載せません。</p>
+<div class="nav"><a href="sample-report.html">定期レポート（3か月ごと）の見本を見る →</a><a href="ai.html">AIの使い方と情報の扱い →</a></div></div></div>
+<main><div class="reportwrap">
+<section class="page"><div class="ph"><span>育守法務事務所　初回の職場診断レポート</span><span>株式会社サンプル（架空の会社） 様　1/4</span></div>
+<div class="eyebrow">FIRST REPORT</div><h1 class="serif">初回の職場診断レポート</h1><div class="sub">株式会社サンプル（架空の会社） 様　／　対象：2025年11月〜2026年10月（12か月）、退職者は過去3年　／　お届け：2026年11月</div>
+<div class="summary"><b>30秒で分かる、今回の結論</b><div class="edit" data-edit="sum"><ol><li>過去に辞めた人と<b>同じ動きをしている人が、今1人</b>います（近い動きの人が3人）。 <a class="jump" href="#p-match">→ くわしく（2ページ）</a></li><li>残業・休めない働き方・有給の3つで見ると、危険4人・警戒2人・注意2人。うち失いたくない人が2人です。 <a class="jump" href="#p-work">→ くわしく（3ページ）</a></li><li>人が辞めることで、<b>1年あたり約204万円</b>を失っている計算です。 <a class="jump" href="#p-loss">→ 計算の中身（2ページ）</a></li><li>社会保険の加入が広がると、御社は<b>2035年10月</b>から対象になり、会社の負担が年約87万円増える見込みです。 <a class="jump" href="#p-shaho">→ くわしく（4ページ）</a></li></ol></div></div>
+<h2>全体の傾向</h2><div class="boxes">
+<div class="box"><div class="k">離職率（3年の平均）</div><div class="v">13.7%</div><div class="s">同じ業種の国の統計 9.8%</div></div>
+<div class="box"><div class="k">危険・警戒の人</div><div class="v">6人</div><div class="s">在職 14人のうち</div></div>
+<div class="box"><a href="#p-loss"><div class="k">辞めることで失う額 →</div><div class="v">204万円</div><div class="s">1年あたり（計算は2ページ）</div></a></div>
+<div class="box"><div class="k">残業代（12か月）</div><div class="v">903万円</div><div class="s">残業・休日・深夜の手当</div></div></div>
+<h2>気になる人</h2><table class="t"><tbody><tr><th>番号</th><th>部署</th><th>評価</th><th>判定</th><th>見えていること</th></tr><tr><td>No.20</td><td>営業</td><td>B</td><td><span class="lv d">危険</span></td><td>辞めた人と同じ動き／残業が47%増／4か月有給0日</td></tr><tr><td>No.06</td><td>製造</td><td>S</td><td><span class="lv d">危険</span></td><td>残業が49%増／4か月有給0日／残業 月64.6時間／最長19日連続／間が11時間未満 16回／連日深夜まで</td></tr><tr><td>No.08</td><td>営業</td><td>A</td><td><span class="lv d">危険</span></td><td>残業が46%増／7か月有給0日</td></tr><tr><td>No.13</td><td>製造</td><td>B</td><td><span class="lv d">危険</span></td><td>6か月有給0日</td></tr><tr><td>No.11</td><td>製造</td><td>B</td><td><span class="lv w">警戒</span></td><td>最長20日連続</td></tr></tbody></table>
+<h2>社長に決めていただきたいこと</h2><div class="edit" data-edit="dec"><ol><li>No.20（営業）の仕事を、どこまで他の人に移すか</li><li>No.06（製造）の仕事を、どこまで他の人に移すか</li><li>社会保険の対象になるパートの方と、働く時間をどう話し合うか</li></ol></div>
+<h2>次の3か月でやること</h2><div class="edit" data-edit="next"><ol><li>気になる人と、上司が30分話す時間をつくる（今月中）</li><li>3か月後のレポートで、数字が下がったかを確かめる</li></ol></div>
+<div class="foot"><span>※ 従業員は番号で表示しています。網羅的な監査ではありません。判断と最終の確認は、社会保険労務士が行います。</span><span>育守法務事務所</span></div></section>
+
+<section class="page"><div class="ph"><span>育守法務事務所　初回の職場診断レポート</span><span>株式会社サンプル（架空の会社） 様　2/4</span></div>
+<div class="eyebrow">TURNOVER</div><h2 style="margin-top:4px">一　人が辞めること</h2>
+<h3>離職率 <span class="lv c">注意</span></h3><table class="t"><tbody><tr><th>期間</th><th class="r">期首の人数</th><th class="r">辞めた人</th><th class="r">離職率</th></tr><tr><td>直近1年（2025-11〜2026-10）</td><td class="r">15人</td><td class="r">2人</td><td class="r">13.3%</td></tr><tr><td>1年前（2024-11〜2025-10）</td><td class="r">15人</td><td class="r">2人</td><td class="r">13.3%</td></tr><tr><td>2年前（2023-11〜2024-10）</td><td class="r">14人</td><td class="r">2人</td><td class="r">14.3%</td></tr></tbody></table>
+<div class="note">比べた数字：厚生労働省「令和7（2025）年雇用動向調査」「製造業」の離職率 9.8%（一般労働者 9.2%・パート 14.2%）。人数の少ない会社は、1人の退職で率が大きく動きます。</div>
+<h3>入社1年以内に辞めた人</h3><p>過去3年に入社した 7人のうち <b>4人</b>（57.1%）。</p>
+<h3 id="p-loss">辞めることで失っている金額</h3><p>求人にかけている費用 年36万円（月3万円×12）＋辞めた人の穴を埋める新人の、一人で回せるまでの6か月分の給与の半分（1人約84万円）× 1年あたり 2人 ＝ <b>約204万円</b><br><span class="note">新人の給与は、辞めた人の、辞める前の月の総支給の平均（月約28万円）で見ています。一人で回せるまでの間は、給与に見合う働きの半分くらい、という目安です。求人費には、人を増やすための分も含まれます。</span></p>
+<h3>辞めた人と、辞める前に出ていた動き</h3><table class="t"><tbody><tr><th>番号</th><th>部署・雇用形態</th><th class="r">在籍</th><th>理由（社長から）</th><th>辞める前の動き</th></tr><tr><td>No.14</td><td>製造・正社員</td><td class="r">10か月</td><td>仕事の内容</td><td>有給 3か月 0日／入社10か月</td></tr><tr><td>No.09</td><td>営業・正社員</td><td class="r">53か月</td><td>先のキャリア</td><td>残業 +41%／有給 3か月 0日</td></tr><tr><td>No.15</td><td>製造・パート</td><td class="r">7か月</td><td>家庭の事情</td><td>入社7か月</td></tr><tr><td>No.16</td><td>製造・正社員</td><td class="r">11か月</td><td>体調</td><td>残業 +48%／有給 3か月 0日／入社11か月</td></tr><tr><td>No.07</td><td>事務・正社員</td><td class="r">81か月</td><td>家庭の事情</td><td>残業 +2%／有給 1か月 0日</td></tr><tr><td>No.19</td><td>営業・正社員</td><td class="r">10か月</td><td>給与・待遇</td><td>残業 +42%／有給 3か月 0日／入社10か月</td></tr></tbody></table>
+<h3>辞める前の12か月（辞めた人の平均）</h3><svg viewBox="0 0 520 118" width="100%" style="max-width:430px"><rect x="23" y="78" width="14" height="20" fill="#C9B78A"></rect><rect x="64.81818181818181" y="98" width="14" height="0" fill="#C9B78A"></rect><rect x="106.63636363636364" y="88" width="14" height="10" fill="#C9B78A"></rect><rect x="148.45454545454544" y="83" width="14" height="15" fill="#C9B78A"></rect><rect x="190.27272727272728" y="68" width="14" height="30" fill="#C9B78A"></rect><rect x="232.0909090909091" y="78" width="14" height="20" fill="#C9B78A"></rect><rect x="273.9090909090909" y="78" width="14" height="20" fill="#C9B78A"></rect><rect x="315.72727272727275" y="82" width="14" height="16" fill="#C9B78A"></rect><rect x="357.54545454545456" y="82" width="14" height="16" fill="#C9B78A"></rect><rect x="399.3636363636364" y="91.33333333333333" width="14" height="6.666666666666666" fill="#C9B78A"></rect><rect x="441.1818181818182" y="91.33333333333333" width="14" height="6.666666666666666" fill="#C9B78A"></rect><rect x="483" y="94.66666666666667" width="14" height="3.333333333333333" fill="#C9B78A"></rect><path d="M30,70.3671497584541 L71.81818181818181,50.727272727272734 L113.63636363636364,45.189284145805885 L155.45454545454544,45.81730346947738 L197.27272727272728,40.73605621431708 L239.0909090909091,58.126482213438734 L280.9090909090909,55.75142731664471 L322.72727272727275,48.763285024154584 L364.54545454545456,42.688625384277564 L406.3636363636364,36.41604450300102 L448.1818181818182,34.246523203044944 L490,30.17391304347825" fill="none" stroke="#0D1B42" stroke-width="2.5"></path><circle cx="30" cy="70.3671497584541" r="3" fill="#0D1B42"></circle><text x="30" y="63.367149758454104" font-size="9" text-anchor="middle" fill="#0D1B42">12</text><circle cx="71.81818181818181" cy="50.727272727272734" r="3" fill="#0D1B42"></circle><text x="71.81818181818181" y="43.727272727272734" font-size="9" text-anchor="middle" fill="#0D1B42">21</text><circle cx="113.63636363636364" cy="45.189284145805885" r="3" fill="#0D1B42"></circle><text x="113.63636363636364" y="38.189284145805885" font-size="9" text-anchor="middle" fill="#0D1B42">23</text><circle cx="155.45454545454544" cy="45.81730346947738" r="3" fill="#0D1B42"></circle><text x="155.45454545454544" y="38.81730346947738" font-size="9" text-anchor="middle" fill="#0D1B42">23</text><circle cx="197.27272727272728" cy="40.73605621431708" r="3" fill="#0D1B42"></circle><text x="197.27272727272728" y="33.73605621431708" font-size="9" text-anchor="middle" fill="#0D1B42">25</text><circle cx="239.0909090909091" cy="58.126482213438734" r="3" fill="#0D1B42"></circle><text x="239.0909090909091" y="51.126482213438734" font-size="9" text-anchor="middle" fill="#0D1B42">17</text><circle cx="280.9090909090909" cy="55.75142731664471" r="3" fill="#0D1B42"></circle><text x="280.9090909090909" y="48.75142731664471" font-size="9" text-anchor="middle" fill="#0D1B42">19</text><circle cx="322.72727272727275" cy="48.763285024154584" r="3" fill="#0D1B42"></circle><text x="322.72727272727275" y="41.763285024154584" font-size="9" text-anchor="middle" fill="#0D1B42">22</text><circle cx="364.54545454545456" cy="42.688625384277564" r="3" fill="#0D1B42"></circle><text x="364.54545454545456" y="35.688625384277564" font-size="9" text-anchor="middle" fill="#0D1B42">24</text><circle cx="406.3636363636364" cy="36.41604450300102" r="3" fill="#0D1B42"></circle><text x="406.3636363636364" y="29.416044503001018" font-size="9" text-anchor="middle" fill="#0D1B42">27</text><circle cx="448.1818181818182" cy="34.246523203044944" r="3" fill="#0D1B42"></circle><text x="448.1818181818182" y="27.246523203044944" font-size="9" text-anchor="middle" fill="#0D1B42">28</text><circle cx="490" cy="30.17391304347825" r="3" fill="#0D1B42"></circle><text x="490" y="23.17391304347825" font-size="9" text-anchor="middle" fill="#0D1B42">30</text><text x="30" y="113" font-size="9" text-anchor="middle" fill="#666">12か月前</text><text x="155.45454545454544" y="113" font-size="9" text-anchor="middle" fill="#666">9か月前</text><text x="280.9090909090909" y="113" font-size="9" text-anchor="middle" fill="#666">6か月前</text><text x="406.3636363636364" y="113" font-size="9" text-anchor="middle" fill="#666">3か月前</text><text x="490" y="113" font-size="9" text-anchor="middle" fill="#666">1か月前</text><text x="4" y="12" font-size="9" fill="#0D1B42">― 残業（時間・平均）</text><text x="120" y="12" font-size="9" fill="#7A6230">■ 有給（日・平均）</text></svg>
+<h3>この会社の「辞める前の型」</h3><div class="q">・辞める前の3か月で、残業がそれまでより2割以上増えた<br>・有給休暇を3か月以上、1日も取っていなかった<br>・入社から1年以内に辞めた<br><span class="note">辞めた人の半分以上に共通していた動きです。</span></div>
+<h3 id="p-match">同じ動きをしている、今いる人</h3><p><b>No.20</b>（営業）<br>近い動き：No.06（製造）、No.08（営業）、No.17（製造）</p>
+<div class="foot"><span>※ 従業員は番号で表示しています。網羅的な監査ではありません。判断と最終の確認は、社会保険労務士が行います。</span><span>育守法務事務所</span></div></section>
+
+<section class="page"><div class="ph"><span>育守法務事務所　初回の職場診断レポート</span><span>株式会社サンプル（架空の会社） 様　3/4</span></div>
+<div class="eyebrow">WORK</div><h2 style="margin-top:4px">二　働き方</h2>
+<h3 id="p-work">3つの物差し（残業・休めない働き方・有給）と3段階（直近3か月）</h3><table class="t"><tbody><tr><th>番号</th><th>部署</th><th>評価</th><th>残業</th><th>休めない働き方</th><th>有給の取り方</th><th>判定</th></tr><tr><td>No.06 <span class="tag">失いたくない人</span></td><td>製造</td><td>S</td><td><span class="lv w">警戒</span> 64.6h</td><td><span class="lv d">危険</span> <span style="font-size:8.5pt">最長19日連続／間が11時間未満 16回／連日深夜まで</span></td><td><span class="lv d">危険</span> 0日（4か月0日）</td><td><span class="lv d">危険</span> <b>優先</b></td></tr><tr><td>No.08 <span class="tag">失いたくない人</span></td><td>営業</td><td>A</td><td><span class="lv c">注意</span> 54.4h</td><td><span class="lv c">注意</span> <span style="font-size:8.5pt">最長5日連続／間が11時間未満 6回</span></td><td><span class="lv d">危険</span> 0日（7か月0日）</td><td><span class="lv d">危険</span></td></tr><tr><td>No.13</td><td>製造</td><td>B</td><td><span class="lv n">基準の内側</span> 35.1h</td><td><span class="lv n">基準の内側</span> <span style="font-size:8.5pt">最長5日連続</span></td><td><span class="lv d">危険</span> 0日（6か月0日）</td><td><span class="lv d">危険</span></td></tr><tr><td>No.20</td><td>営業</td><td>B</td><td><span class="lv n">基準の内側</span> 31.5h</td><td><span class="lv n">基準の内側</span> <span style="font-size:8.5pt">最長5日連続</span></td><td><span class="lv d">危険</span> 0日（4か月0日）</td><td><span class="lv d">危険</span></td></tr><tr><td>No.17</td><td>製造</td><td>B</td><td><span class="lv n">基準の内側</span> 43.9h</td><td><span class="lv n">基準の内側</span> <span style="font-size:8.5pt">最長5日連続</span></td><td><span class="lv w">警戒</span> 0日（3か月0日）</td><td><span class="lv w">警戒</span></td></tr><tr><td>No.11</td><td>製造</td><td>B</td><td><span class="lv n">基準の内側</span> 40h</td><td><span class="lv w">警戒</span> <span style="font-size:8.5pt">最長20日連続</span></td><td><span class="lv n">基準の内側</span> 2日</td><td><span class="lv w">警戒</span></td></tr><tr><td>No.05</td><td>営業</td><td>B</td><td><span class="lv c">注意</span> 47.1h</td><td><span class="lv n">基準の内側</span> <span style="font-size:8.5pt">最長5日連続</span></td><td><span class="lv c">注意</span> 1日</td><td><span class="lv c">注意</span></td></tr><tr><td>No.02</td><td>事務</td><td>B</td><td><span class="lv n">基準の内側</span> 10.7h</td><td><span class="lv n">基準の内側</span> <span style="font-size:8.5pt">最長5日連続</span></td><td><span class="lv c">注意</span> 1日</td><td><span class="lv c">注意</span></td></tr></tbody></table>
+<div class="note">ほか 6人は3つとも基準の内側。基準：残業 月45・60・80時間を超える／休めない働き方は、休日労働（台帳）・勤務の間11時間未満の日がある＝注意、14日以上の連続勤務＝警戒、30日以上または連日深夜＝危険／有給は3か月で1日以下・0日・4か月以上0日。「優先」は2つ以上の物差しで警戒以上。</div>
+<h3>残業の偏り</h3><p>残業の多い上位2割（3人）で、会社全体の残業の <b>41.7%</b> を抱えています。</p>
+<h3>失いたくない人</h3><p>失いたくない人の残業は平均 月50時間、それ以外の人は 月21.8時間。上位の人のうち <b>No.06、No.08</b> が警戒以上です。失いたくない人から先に手を打ちます。</p>
+<h3>休めているか</h3><p>12か月で有給休暇が5日未満の人：<b>1人</b>（No.13）。<span class="note">年10日以上付与される人は、年5日の取得が必要です。</span></p>
+<p>いちばん長い連続勤務：No.11 20日、No.06 19日、No.01 5日</p>
+<div class="foot"><span>※ 従業員は番号で表示しています。網羅的な監査ではありません。判断と最終の確認は、社会保険労務士が行います。</span><span>育守法務事務所</span></div></section>
+
+<section class="page"><div class="ph"><span>育守法務事務所　初回の職場診断レポート</span><span>株式会社サンプル（架空の会社） 様　4/4</span></div>
+<div class="eyebrow">MONEY &amp; FUTURE</div><h2 style="margin-top:4px">三　お金</h2>
+<h3>残業代</h3><p>直近12か月の残業・休日・深夜の手当：<b>9,030,590円</b></p>
+<h3>最低賃金が上がると</h3><p>来年の見込み（時給1190円）を下回る人：<b>4人</b>。見直すと 年約<b>20万円</b> 増えます（見込みでの試算）。</p>
+<h3 id="p-shaho">社会保険の加入が広がると</h3><p>今の厚生年金の加入者は 10人。会社の規模の要件で、御社は <b>2035年10月</b> から対象です。週20時間以上で今は加入していない人が <b>4人</b>、会社の負担は 年約<b>87万円</b> 増える見込みです。</p>
+<h3>給与の差</h3><div class="q">「営業」で、勤続の長い No.01 より、後から入った No.05 のほうが基本給が高くなっています（29万円と31万円）。<b>この差を、本人に説明できますか？</b></div><div class="q">「製造」で、勤続の長い No.13 より、後から入った No.17 のほうが基本給が高くなっています（23万円と25万円）。<b>この差を、本人に説明できますか？</b></div><div class="q">「製造」で、勤続の長い No.04 より、後から入った No.18 のほうが時給が高くなっています（1140円と1180円）。<b>この差を、本人に説明できますか？</b></div>
+<h3>残業代の計算の例</h3><p>例えば <b>No.06</b> さんの出勤簿を、法律どおり1分単位で計算し直すと、1か月で約<b>6,800円</b>の差が出ます。同じ働き方が続くと、1年で約8万円、さかのぼって請求できる3年分では約24万円になります。<br>今から直せば間に合います。固定残業代の設計など、払い方を整える方法を一緒に考えましょう。</p>
+<h2>四　これから</h2>
+<h3>年齢の構成と5年後</h3><p>60歳以上：<b>3人</b>。5年以内に定年（60歳）を迎える人：<b>1人</b>（No.03）。技能の引き継ぎを早めに考えたい人数です。</p>
+<h3>使えそうな助成金・補助金</h3><table class="t"><tbody><tr><td style="width:38%"><b>エイジフレンドリー補助金</b></td><td>60歳以上の方がいるため。転倒・熱中症対策の設備などに使える</td></tr><tr><td style="width:38%"><b>キャリアアップ助成金</b></td><td>パート・有期の方がいるため。正社員にする、賃金規定を整えるなど</td></tr><tr><td style="width:38%"><b>業務改善助成金</b></td><td>最低賃金の改定で時給を上げる方がいるため。設備の導入とセットで</td></tr><tr><td style="width:38%"><b>働き方改革推進支援助成金</b></td><td>残業が多い方がいるため。残業を減らす取り組みの費用に</td></tr></tbody></table><div class="note">金額や受付の時期は年度で変わります。実際に使えるかは、面談で確かめます。</div>
+<h2>社労士の所見</h2><div class="edit" data-edit="shoken">数字だけでなく、面談で一人ひとりの言葉を聞きながら、次の3か月で手を打つ順番を一緒に決めていきましょう。</div>
+<div class="foot"><span>※ 従業員は番号で表示しています。網羅的な監査ではありません。判断と最終の確認は、社会保険労務士が行います。</span><span>育守法務事務所</span></div></section></div></main>
+<div class="cta"><p style="margin:0 0 8px">「うちの会社だとどう出るのか」を、まずはお気軽にご相談ください。</p><a href="index.html#contact">相談する</a><a href="https://docs.google.com/forms/d/e/1FAIpQLSfvN-a86iv_raDTc4XyR5IH_K8_LavKqXG-lcxIQ2-PPBE6tA/viewform">資料請求（PDF）</a></div>
+</body></html>
