@@ -538,6 +538,7 @@ function calc(){
   const planFee=p.base+st*p.step; lines.push([p.name+(st?`（${S.baseUpTo+1}人以上の加算 ${st}段階を含む）`:''),planFee]);
   if(M.baseOn) lines.push([`入社・退社・扶養の手続き（${yen(S.procUnit)}×${n}人、最低${yen(S.procMin)}）`,Math.max(S.procMin,S.procUnit*n)]);
   if(M.payroll) lines.push([`給与計算（基本${yen(S.payBase)}＋${yen(S.payPer)}×${pn}人）`,S.payBase+S.payPer*pn]);
+  if(M.imp&&!M.payroll) lines.push([`給与データ取り込みのみ（${yen(500)}×${pn}人）`,500*pn]);
   const set = false; // セット割は2026-11-22に廃止
   PACKS.forEach(pk=>{ if(!M.packs[pk.id]) return;
     let fee=packFee(pk.id,pk.id==='full'?pst:st); let label=pk.name;
@@ -579,6 +580,7 @@ function renderPacks(){
   h+=P('byoki')+P('shussan')+P('kisoku');
   h+='</div><div class="pcol"><p class="pch">給与計算</p>';
   h+=card('payroll','給与計算','毎月の給与計算','給与明細・振込データの作成、保険料率・住民税額の更新（住民税の異動届は含みません）',`月額 ${yen(S.payBase+S.payPer*c.pn)}`,M.payroll,`<span class="pnote">基本${yen(S.payBase)}＋1人${yen(S.payPer)}</span>`);
+  h+=card('imp','給与データ取り込みのみ','計算は社内で済ませている会社に','計算済みのデータを、当事務所が指定するシステムへ取り込む作業のみ（給与明細・振込データの作成と納品は含みません）',`月額 ${yen(500*c.pn)}`,!!M.imp&&!M.payroll,`<span class="pnote">1人${yen(500)}。給与計算とはどちらか一方</span>`);
   h+=P('full')+P('nenji');
   h+='</div></div>';
   $('packArea').innerHTML=h;
@@ -704,8 +706,9 @@ $('packArea').addEventListener('click',e=>{
   const b=e.target.closest('[data-pack]'); if(!b) return;
   const id=b.dataset.pack;
   if(id==='base') M.baseOn=!M.baseOn;
-  else if(id==='payroll'){ M.payroll=!M.payroll; if(!M.payroll){ M.packs.full=false; M.packs.nenji=false; } }
-  else { M.packs[id]=!M.packs[id]; if((id==='full'||id==='nenji')&&M.packs[id]) M.payroll=true; }
+  else if(id==='payroll'){ M.payroll=!M.payroll; if(M.payroll) M.imp=false; if(!M.payroll){ M.packs.full=false; M.packs.nenji=false; } }
+  else if(id==='imp'){ M.imp=!M.imp; if(M.imp){ M.payroll=false; M.packs.full=false; M.packs.nenji=false; } }
+  else { M.packs[id]=!M.packs[id]; if((id==='full'||id==='nenji')&&M.packs[id]){ M.payroll=true; M.imp=false; } }
   save(MKEY,M); refreshCoverage();
 });
 $('list').addEventListener('click',e=>{
