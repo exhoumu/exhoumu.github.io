@@ -148,6 +148,17 @@ footer.note{font-size:12px;color:var(--muted);padding:26px 0 10px;line-height:1.
 .svc s{color:#8A93A6}.svc .hl{font-weight:700;color:var(--kon)}.svc .off{display:inline-block;font-size:11px;background:var(--kin);color:var(--yoru);padding:0 6px;margin-left:4px;font-weight:700}
 .pill{display:inline-block;font-size:12px;padding:1px 10px;margin-right:6px;letter-spacing:.1em}.pill.s{background:var(--kon);color:var(--kinari)}.pill.m{background:var(--gold-ink);color:#fff}
 .qadd{font:inherit;font-size:12px;border:1px solid var(--kon);background:#fff;color:var(--kon);padding:3px 8px;cursor:pointer;white-space:nowrap}.qadd:hover{background:var(--kon);color:var(--kinari)}
+@media(max-width:700px){
+.svc,.svc tbody,.svc tr,.svc td{display:block;width:100%}
+.svc tr:first-child{display:none}
+.svc tr{border-bottom:1px solid var(--line);padding:12px 14px}
+.svc td{border:none!important;padding:2px 0!important;text-align:left!important;white-space:normal!important}
+.svc td:first-child{font-weight:600;font-size:15px;margin-bottom:4px}.svc td:first-child small{font-weight:400;margin-top:2px}
+.svc.sv td:nth-child(2)::before{content:'通常　';color:var(--muted);font-size:12px;font-weight:400}
+.svc.sv td:nth-child(3)::before{content:'軍師顧問・採用プロデュース顧問なら　';color:var(--muted);font-size:12px;font-weight:400}
+.svc.mv td:nth-child(2)::before{content:'料金　';color:var(--muted);font-size:12px;font-weight:400}
+.svc td.r small{display:inline;margin-left:6px}
+}
 .tonext{margin:20px 0 6px;text-align:right}
 @media(max-width:760px){.pcards{grid-template-columns:1fr}.tabs button{font-size:13px;padding:9px 10px}.svc{font-size:12.5px}}
 h2.sec{margin:26px 0 4px;font-family:'Noto Serif JP',serif;font-weight:600;font-size:19px;letter-spacing:.06em}
@@ -670,9 +681,9 @@ function renderPlan(){
   $('planArea').innerHTML=`<h2 class="sec">顧問プランを選ぶ</h2><p class="secl">押すと選べます。手続きと給与計算は含まない料金です（②で足します）。年の途中で人数が増えても、次の見直し（毎年10月分）まで顧問料は変わりません。</p>
   <div class="pcards">${cards}</div>
   <h2 class="sec"><span class="pill s">育てる</span>人が辞めずに育つ会社をつくる</h2><p class="secl">組織づくり軍師　顧問と採用プロデュース顧問のお客様は、多くを半額で承ります（採用の支援は、採用プロデュース顧問なら0円）。右の列は、いま選んでいるプランでの料金です（相談顧問を選んでいるときは、軍師顧問の料金を表示します）。</p>
-  <table class="svc"><tr><th>サービス</th><th style="text-align:right">通常</th><th style="text-align:right">${esc(pn)}なら</th><th></th></tr>${sRows}</table>
+  <table class="svc sv"><tr><th>サービス</th><th style="text-align:right">通常</th><th style="text-align:right">${esc(pn)}なら</th><th></th></tr>${sRows}</table>
   <h2 class="sec"><span class="pill m">守る</span>法律と手続きで会社を守る</h2><p class="secl">守るサービスは、どのプランでも同じ料金です（税別）。</p>
-  <table class="svc"><tr><th>サービス</th><th style="text-align:right">料金</th><th></th></tr>${mRows}</table>
+  <table class="svc mv"><tr><th>サービス</th><th style="text-align:right">料金</th><th></th></tr>${mRows}</table>
   <div class="tonext"><button type="button" class="btn light" id="toProc" style="min-height:44px">② 手続きと給与計算へ →</button></div>`;
   document.querySelectorAll('#planArea [data-plan]').forEach(b=>b.onclick=()=>{M.plan=b.dataset.plan;save(MKEY,M);const sel=$('plan');if(sel)sel.value=M.plan;renderAll()});
   $('toProc').onclick=()=>showTab('proc');
