@@ -536,7 +536,7 @@ function calc(){
   const lines=[];
   const pn=n, pst=st;
   const planFee=p.base+st*p.step; lines.push([p.name+(st?`（${S.baseUpTo+1}人以上の加算 ${st}段階を含む）`:''),planFee]);
-  if(M.baseOn) lines.push([`入社・退社・扶養の手続き（${yen(S.procUnit)}×${n}人、最低${yen(S.procMin)}）`,Math.max(S.procMin,S.procUnit*n)]);
+  if(M.baseOn) lines.push([`入社・退社・扶養の手続き（${n<=6?'6人まで':`6人まで${yen(S.procMin)}＋${n-6}人×${yen(S.procUnit)}`}）`,Math.max(S.procMin,S.procUnit*n)]);
   if(M.payroll) lines.push([`給与計算（基本${yen(S.payBase)}＋${yen(S.payPer)}×${pn}人）`,S.payBase+S.payPer*pn]);
   if(M.imp&&!M.payroll) lines.push([`給与データ取り込みのみ（${yen(500)}×${pn}人）`,500*pn]);
   const set = false; // セット割は2026-11-22に廃止
@@ -576,11 +576,11 @@ function renderPacks(){
     return card(pk.id,pk.name,pk.for,pk.desc,`月額 ＋${yen(fee)}`,!!M.packs[pk.id],extra); };
   const P=id=>{const pk=PACKS.find(x=>x.id===id);return pk?pc(pk):''};
   let h='<div class="pcols"><div class="pcol"><p class="pch">手続き</p>';
-  h+=card('base','入社・退社・扶養の手続き','基本の手続き','資格取得・喪失、扶養の異動（離職票は給与計算・取り込みをご依頼の場合のみ）',`月額 ${yen(Math.max(S.procMin,S.procUnit*c.n))}`,M.baseOn,`<span class="pnote">1人${yen(S.procUnit)}・最低${yen(S.procMin)}</span>`);
+  h+=card('base','入社・退社・扶養の手続き','基本の手続き','資格取得・喪失、扶養の異動（離職票は給与計算・取り込みをご依頼の場合のみ）',`月額 ${yen(Math.max(S.procMin,S.procUnit*c.n))}`,M.baseOn,`<span class="pnote">6人まで${yen(S.procMin)}、7人目から1人追加ごとに${yen(S.procUnit)}</span>`);
   h+=P('byoki')+P('shussan')+P('kisoku');
   h+='</div><div class="pcol"><p class="pch">給与計算</p>';
   h+=card('payroll','給与計算','毎月の給与計算','給与明細・振込データの作成、保険料率・住民税額の更新（住民税の異動届は含みません）',`月額 ${yen(S.payBase+S.payPer*c.pn)}`,M.payroll,`<span class="pnote">基本${yen(S.payBase)}＋1人${yen(S.payPer)}</span>`);
-  h+=card('imp','給与データ取り込みのみ','計算は社内で済ませている会社に','計算済みのデータを、当事務所が指定するシステムへ取り込む作業のみ（給与明細・振込データの作成と納品は含みません）',`月額 ${yen(500*c.pn)}`,!!M.imp&&!M.payroll,`<span class="pnote">1人${yen(500)}。給与計算とはどちらか一方</span>`);
+  h+=card('imp','給与データ取り込みのみ','計算は社内で済ませている会社に','計算済みのデータを、当事務所が指定するシステムへ取り込む作業のみ。賞与も同じく取り込みのみです（給与明細・振込データの作成と納品は含みません）',`月額 ${yen(500*c.pn)}`,!!M.imp&&!M.payroll,`<span class="pnote">1人${yen(500)}。給与計算とはどちらか一方</span>`);
   h+=P('full')+P('nenji');
   h+='</div></div>';
   $('packArea').innerHTML=h;
