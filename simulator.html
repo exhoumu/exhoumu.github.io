@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>料金シミュレーター｜育守法務事務所</title>
+<meta name="description" content="札幌の社会保険労務士事務所「育守法務事務所」の料金シミュレーター。顧問プラン、育てる・守るのサービス、手続きと給与計算の月額を、人数に合わせてその場で試算できます。">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600&display=swap">
+<style>
+:root{
+  --kon:#0D1B42; --yoru:#010C24; --kinari:#F7F4EA; --kin:#C9B78A; --gold-ink:#7A6230;
+  --muted:#355269; --line:#D9D2BF; --raised:#FCFBF5; --soft:#EFEADB; --warn:#9A3B2E;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--kinari);color:var(--kon);font-family:'Noto Sans JP',sans-serif;font-size:15px;line-height:1.6;padding-bottom:150px}
+.serif{font-family:'Noto Serif JP',serif}
+button,input,select,textarea{font:inherit;color:inherit}
+header.top{background:var(--kon);color:var(--kinari);padding:22px 28px 20px}
+header.top .office{font-size:12px;letter-spacing:.2em;color:var(--kin)}
+header.top h1{margin:4px 0 0;font-family:'Noto Serif JP',serif;font-weight:600;font-size:23px;letter-spacing:.08em}
+header.top p{margin:8px 0 0;font-size:13px;color:#C7CEDD;max-width:760px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.meta{display:flex;flex-wrap:wrap;gap:14px 28px;align-items:end;padding:20px 0 6px}
+.meta label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted);letter-spacing:.06em}
+.meta input,.meta select{border:1px solid var(--line);background:var(--raised);padding:10px 12px;min-height:44px;border-radius:2px;font-size:15px}
+.meta input[type=number]{width:110px}
+.meta .company{width:280px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--muted);padding:10px 0 4px}
+.legend b{color:var(--kon);font-weight:500}
+nav.jump{display:flex;flex-wrap:wrap;gap:6px;padding:10px 0 4px}
+nav.jump a{font-size:12.5px;text-decoration:none;color:var(--kon);border:1px solid var(--line);background:var(--raised);padding:6px 10px;border-radius:999px}
+section.grp{margin-top:26px}
+section.grp h2{display:flex;align-items:baseline;gap:12px;margin:0 0 6px;padding-bottom:8px;border-bottom:1px solid var(--kin);font-family:'Noto Serif JP',serif;font-weight:600;font-size:18px;letter-spacing:.06em}
+section.grp h2 .num{font-size:13px;color:var(--gold-ink)}
+section.grp h2 .lead{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:12.5px;color:var(--muted);letter-spacing:0}
+.row{display:grid;grid-template-columns:minmax(0,1fr) 174px 96px 250px;gap:10px 14px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.row .name{font-size:14.5px}
+.row .note{display:block;font-size:12px;color:var(--muted);margin-top:1px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--raised)}
+.seg button{border:0;background:transparent;padding:0 12px;min-height:40px;min-width:52px;font-size:13px;cursor:pointer;border-left:1px solid var(--line);white-space:nowrap}
+.seg button:first-child{border-left:0}
+.seg button[aria-pressed=true]{background:var(--kon);color:var(--kinari)}
+.seg.req button[aria-pressed=true][data-v=in]{background:var(--kon)}
+.seg.req button[aria-pressed=true][data-v=sep]{background:var(--muted)}
+.trouble{border:1px solid var(--line);background:var(--raised);border-radius:3px;min-height:40px;padding:0 12px;font-size:13px;cursor:pointer;white-space:nowrap}
+.trouble[aria-pressed=true]{background:#F3E3C9;border-color:var(--gold-ink);color:#5A4520;font-weight:500}
+.fixed{font-size:12.5px;color:var(--gold-ink);border:1px solid var(--kin);padding:9px 12px;border-radius:3px;white-space:nowrap;text-align:center}
+.addon{display:block;font-size:11.5px;color:var(--gold-ink);text-align:right;margin-top:2px;white-space:nowrap}
+.reqcell{display:flex;flex-direction:column;align-items:stretch}
+.row.base{background:linear-gradient(90deg,rgba(201,183,138,.10),transparent)}
+.colhead{display:grid;grid-template-columns:minmax(0,1fr) 174px 96px 250px;gap:14px;font-size:11.5px;color:var(--muted);letter-spacing:.08em;padding:4px 0}
+.colhead span:nth-child(n+2){text-align:center}
+.row .seg{display:flex;width:100%}
+.row .seg button{flex:1;min-width:0;padding:0 6px}
+.row .trouble{width:100%}
+
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--kon);color:var(--kinari);box-shadow:0 -6px 24px rgba(1,12,36,.25);z-index:10}
+.bar .in{max-width:1080px;margin:0 auto;padding:12px 20px 14px;display:grid;grid-template-columns:auto 1fr auto;gap:8px 24px;align-items:center}
+.bar .calc{display:flex;flex-wrap:wrap;gap:4px 22px;font-size:13px;color:#C7CEDD}
+.bar .calc b{color:var(--kinari);font-weight:500}
+.bar .total{text-align:right}
+.bar .total .lbl{font-size:12px;color:var(--kin);letter-spacing:.1em}
+.bar .total .yen{font-family:'Noto Serif JP',serif;font-weight:600;font-size:28px;letter-spacing:.04em;line-height:1.2}
+.bar .total .yen small{font-size:13px;font-weight:400;margin-left:4px}
+.bar .total .pending{font-size:11.5px;color:#F0D9A8}
+.bar .btns{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:1px solid var(--kin);background:transparent;color:var(--kinari);min-height:42px;padding:0 14px;border-radius:3px;cursor:pointer;font-size:13px}
+.btn.solid{background:var(--kin);color:var(--yoru);font-weight:500}
+.btn.light{border-color:var(--line);color:var(--kon);background:var(--raised)}
+.delta{display:inline-block;margin-left:8px;font-size:13px;color:#F0D9A8;opacity:0;transition:opacity .3s}
+.delta.show{opacity:1}
+
+.modal{position:fixed;inset:0;background:rgba(1,12,36,.55);display:none;align-items:flex-start;justify-content:center;z-index:20;overflow:auto;padding:30px 14px}
+.modal.open{display:flex}
+.sheet{background:var(--kinari);max-width:860px;width:100%;border-top:4px solid var(--kon);padding:24px 26px 26px;box-shadow:0 10px 40px rgba(0,0,0,.3)}
+.sheet h3{margin:0 0 4px;font-family:'Noto Serif JP',serif;font-weight:600;font-size:19px;letter-spacing:.06em}
+.sheet .sub{font-size:12.5px;color:var(--muted);margin:0 0 14px}
+.sheet h4{margin:18px 0 6px;font-family:'Noto Serif JP',serif;font-weight:600;font-size:15px;border-bottom:1px solid var(--line);padding-bottom:4px}
+.sheet ul{margin:0;padding-left:1.2em;font-size:14px}
+.sheet .tot{display:flex;justify-content:space-between;align-items:baseline;background:var(--kon);color:var(--kinari);padding:12px 16px;margin-top:16px}
+.sheet .tot .yen{font-family:'Noto Serif JP',serif;font-size:24px;font-weight:600}
+.sheet .actions{display:flex;gap:8px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}
+.sheet .hint{font-size:12px;color:var(--muted)}
+.ptable{width:100%;border-collapse:collapse;font-size:13.5px}
+.ptable td,.ptable th{border-bottom:1px solid var(--line);padding:6px 4px;text-align:left;vertical-align:middle}
+.ptable th{font-weight:500;font-size:12px;color:var(--muted)}
+.ptable input[type=number]{width:110px;border:1px solid var(--line);background:var(--raised);padding:6px 8px;min-height:36px}
+.ptable .g{background:var(--soft);font-family:'Noto Serif JP',serif;font-weight:600}
+.planedit{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.planedit div{border:1px solid var(--line);background:var(--raised);padding:10px}
+.planedit label{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;margin-top:6px;align-items:center}
+.planedit input{width:100px;border:1px solid var(--line);padding:5px 7px;min-height:34px}
+textarea.io{width:100%;min-height:90px;border:1px solid var(--line);background:var(--raised);padding:8px;font-size:12px;font-family:monospace}
+.toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);background:var(--kon);color:var(--kinari);padding:10px 18px;font-size:13px;border-radius:3px;opacity:0;transition:opacity .25s;z-index:40;pointer-events:none}
+.toast.show{opacity:1}
+.gear{position:fixed;right:14px;top:14px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(201,183,138,.6);background:transparent;color:var(--kin);cursor:pointer;font-size:18px;z-index:11}
+footer.note{font-size:12px;color:var(--muted);padding:26px 0 10px;line-height:1.8}
+
+
+.qform{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:8px 0}
+.qform label,.qmemo{display:flex;flex-direction:column;gap:3px;font-size:12px;color:var(--muted)}
+.qform input,.qmemo textarea,.qx input,.qx select{border:1px solid var(--line);background:var(--raised);padding:7px 9px;min-height:38px;font-size:14px;color:var(--kon)}
+.qform .ck{flex-direction:row;align-items:center;grid-column:1/-1;gap:8px;color:var(--kon);font-size:13px}
+.qform .ck input{min-height:0;width:20px;height:20px}
+.qdoc tr.disc td{color:#9B2C2C}
+.qextra{display:flex;flex-direction:column;gap:6px;margin:8px 0;font-size:13px}
+.qx{display:grid;grid-template-columns:1fr 130px 80px auto;gap:6px}
+.qprev{margin-top:12px;background:#E9E5D8;padding:0;overflow:hidden;border:1px solid var(--line)}
+.qscale{transform-origin:0 0;width:794px}
+@media (max-width:700px){.qform{grid-template-columns:1fr 1fr}.qx{grid-template-columns:1fr 1fr}}
+.pcols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:8px 0 6px;align-items:start}.pcol{display:flex;flex-direction:column;gap:10px}.pch{margin:0;font-family:'Noto Serif JP',serif;font-weight:600;font-size:14px;color:var(--gold-ink);letter-spacing:.1em}
+@media (max-width:700px){.pcols{grid-template-columns:1fr}}
+.packs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:8px 0 6px}
+.pack{position:relative;text-align:left;border:1px solid var(--line);background:var(--raised);padding:14px 16px 14px;border-radius:3px;cursor:pointer;display:flex;flex-direction:column;gap:3px;min-height:150px}
+.pack .ck{position:absolute;right:12px;top:12px;width:24px;height:24px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;background:#fff}
+.pack .pn{font-weight:600;font-size:16px;letter-spacing:.04em;padding-right:28px}
+.pack .pf{font-size:12px;color:var(--gold-ink)}
+.pack .pd{font-size:12.5px;color:var(--muted);line-height:1.6}
+.pack .pp{margin-top:auto;padding-top:6px;font-family:'Noto Serif JP',serif;font-weight:600;font-size:16px}
+.pack .pnote.sc{color:#7A6230;font-weight:600}
+.pnote{font-size:11.5px;color:var(--muted)}
+.pack.on{border-color:var(--kon);background:var(--kon);color:var(--kinari)}
+.pack.on .pd,.pack.on .pnote{color:#C7CEDD}
+.pack.on .pf{color:var(--kin)}
+.pack.on .ck{background:var(--kin);border-color:var(--kin);color:var(--yoru)}
+.tabs{display:flex;gap:0;margin:22px 0 6px;border-bottom:2px solid var(--kon)}
+.tabs button{font:inherit;font-size:15px;padding:11px 20px;border:1px solid var(--line);border-bottom:none;background:var(--raised);color:var(--kon);cursor:pointer;margin-right:4px}
+.tabs button.on{background:var(--kon);color:var(--kinari);border-color:var(--kon)}
+.pcards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:10px 0 6px}
+.pcard{text-align:left;font:inherit;color:inherit;background:var(--raised);border:1px solid var(--line);padding:16px 18px;cursor:pointer;position:relative}
+.pcard.on{border:2px solid var(--kon);box-shadow:0 4px 14px rgba(13,27,66,.12)}
+.pcard .ck{position:absolute;top:12px;right:14px;width:22px;height:22px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:13px}
+.pcard.on .ck{background:var(--kon);color:var(--kinari);border-color:var(--kon)}
+.pcard .no{font-size:12px;color:var(--gold-ink)}.pcard .nm{font-family:'Noto Serif JP',serif;font-weight:600;font-size:18px;margin:2px 0}
+.pcard .tg{font-size:12.5px;color:var(--muted);min-height:38px}
+.pcard .pr{font-family:'Noto Serif JP',serif;font-weight:600;font-size:26px;margin:8px 0 2px}.pcard .pr small{font-size:13px;font-weight:400}
+.pcard ul{margin:8px 0 0;padding-left:1.1em;font-size:13px;line-height:1.65}
+.pcard .perk{margin-top:8px;font-size:12.5px;background:var(--kon);color:var(--kinari);padding:4px 8px;display:inline-block}
+.svc{width:100%;border-collapse:collapse;font-size:14px;background:var(--raised);border:1px solid var(--line);margin-top:8px}
+.svc th{background:var(--kon);color:var(--kinari);font-weight:500;font-size:12.5px;text-align:left;padding:8px 10px}
+.svc td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.svc td.r{text-align:right;white-space:nowrap}
+.svc td small{color:var(--muted);display:block;font-size:12px}
+.svc s{color:#8A93A6}.svc .hl{font-weight:700;color:var(--kon)}.svc .off{display:inline-block;font-size:11px;background:var(--kin);color:var(--yoru);padding:0 6px;margin-left:4px;font-weight:700}
+.pill{display:inline-block;font-size:12px;padding:1px 10px;margin-right:6px;letter-spacing:.1em}.pill.s{background:var(--kon);color:var(--kinari)}.pill.m{background:var(--gold-ink);color:#fff}
+.qadd{font:inherit;font-size:12px;border:1px solid var(--kon);background:#fff;color:var(--kon);padding:3px 8px;cursor:pointer;white-space:nowrap}.qadd:hover{background:var(--kon);color:var(--kinari)}
+.tonext{margin:20px 0 6px;text-align:right}
+@media(max-width:760px){.pcards{grid-template-columns:1fr}.tabs button{font-size:13px;padding:9px 10px}.svc{font-size:12.5px}}
+h2.sec{margin:26px 0 4px;font-family:'Noto Serif JP',serif;font-weight:600;font-size:19px;letter-spacing:.06em}
+p.secl{margin:0 0 8px;font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:12px;padding:7px 10px;border-radius:3px;border:1px solid var(--line);background:var(--raised);white-space:nowrap}
+.tag.in{background:var(--kon);color:var(--kinari);border-color:var(--kon)}
+.tag.pk{border-color:var(--kin);color:var(--gold-ink)}
+.tag.spot{color:var(--muted)}
+.tag small{font-size:11.5px;color:var(--muted);display:inline-block;margin-top:2px}
+.tag small.inv{color:#C7CEDD}
+.spotsw{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:6px 0 2px}
+.spotsw .btn{min-height:40px}
+#spotBtn[aria-pressed=true]{background:var(--kon);color:var(--kinari);border-color:var(--kon)}
+.tag{white-space:normal;text-align:left;line-height:1.5}
+.kind{text-align:right}
+.row.cov{background:linear-gradient(90deg,rgba(13,27,66,.05),transparent)}
+@media (max-width:860px){.packs{grid-template-columns:1fr 1fr}.kind{grid-column:1/-1;text-align:left}}
+@media (max-width:520px){.packs{grid-template-columns:1fr}}
+
+@media (max-width:860px){
+  .row{grid-template-columns:1fr 1fr;}
+  .row .name{grid-column:1/-1}
+  .row .reqcell{grid-column:1/-1;align-items:stretch}
+  .row .reqcell .seg{display:flex}
+  .row .reqcell .seg button{flex:1}
+  .fixed{min-width:0}
+  .colhead{display:none}
+  .bar .in{grid-template-columns:1fr auto}
+  .bar .calc{grid-column:1/-1;order:3}
+  .bar .total .yen{font-size:23px}
+}
+
+.val .big{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.val .box{padding:16px 18px;border:1px solid var(--line);background:#fff}
+.val .box.k{background:var(--kon);color:var(--kinari);border-color:var(--kon)}
+.val .box .l{font-size:12.5px;opacity:.85}
+.val .box .v{font-family:'Noto Serif JP',serif;font-weight:600;font-size:26px;margin-top:4px}
+.val .box .s{font-size:12.5px;margin-top:4px;opacity:.85}
+.val details{margin-top:18px;border-top:1px solid var(--line);padding-top:10px}
+.val summary{cursor:pointer;font-size:14.5px;color:var(--kon);font-weight:600;padding:6px 0}
+.val .mode{display:flex;gap:0;margin:4px 0 14px;border:1px solid var(--kon);width:max-content;max-width:100%}
+.val .mode button{font:inherit;font-size:14px;padding:8px 16px;border:none;background:#fff;color:var(--kon);cursor:pointer}
+.val .mode button.on{background:var(--kon);color:var(--kinari)}
+.val .mq{display:flex;gap:8px;align-items:center;margin:4px 0}
+.val .risk{border:2px solid #9B2C2C;background:#fff;padding:14px 18px;margin:12px 0 6px}
+.val .risk .sl{font-size:13px;color:#9B2C2C;font-weight:700}
+.val .risk .sv{font-family:'Noto Serif JP',serif;font-weight:600;font-size:24px;color:#9B2C2C;margin:2px 0}
+.val .risk .ss{font-size:13.5px}
+.val .risk .sn{font-size:11.5px;color:#6b6b6b;margin-top:6px}
+.val .save{border:2px solid var(--kin);background:#fff;padding:14px 18px;margin:10px 0 6px}
+.val .save .sl{font-size:13px}
+.val .save .sv{font-family:'Noto Serif JP',serif;font-weight:600;font-size:26px;color:var(--kon);margin:2px 0}
+.val .save .ss{font-size:13.5px}
+.val .save .sn{font-size:11.5px;color:#6b6b6b;margin-top:6px}
+.val .resh{font-size:20px;border-top:2px solid var(--kin);padding-top:14px;margin-top:22px}
+.val .hrc{background:#fff;border:1px solid var(--line);padding:10px 14px;margin:8px 0;font-size:13.5px;line-height:1.9}
+.val .hri{margin-top:4px}
+.val .hrc input{min-height:28px;margin:0 3px}
+.val .hv{font-family:'Noto Serif JP',serif;font-size:17px;color:var(--kon)}
+.val table{width:100%;border-collapse:collapse;font-size:13.5px}
+.val th,.val td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.val td.r{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.val input[type=text]{width:72px;min-height:34px;text-align:right}
+.val #vWage{width:84px}
+.val .stp{display:inline-flex;align-items:center;gap:4px}
+.val .sb{width:34px;height:34px;border:1px solid var(--line,#ccc);background:#fff;border-radius:6px;font-size:16px;cursor:pointer}
+.val .ins{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:13.5px;align-items:center}
+.val .ins label{display:flex;align-items:center;gap:6px}
+.val .msg{font-family:'Noto Serif JP',serif;font-weight:600;font-size:17px;margin:6px 0 2px;line-height:1.7}
+@media (max-width:640px){.val .big{grid-template-columns:1fr}}
+</style>
+<style id="qcss">
+.qdoc{width:794px;min-height:1123px;box-sizing:border-box;background:#fff;color:#0D1B42;font-family:'Noto Sans JP',sans-serif;padding:56px 60px 48px;font-size:12.5px;line-height:1.7}
+.qdoc .qtop{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #0D1B42;padding-bottom:10px}
+.qdoc h1{margin:0;font-family:'Noto Serif JP',serif;font-weight:600;font-size:28px;letter-spacing:.4em}
+.qdoc .qmeta{text-align:right;font-size:12px;color:#355269}
+.qdoc .qhead{display:grid;grid-template-columns:1fr 230px;gap:28px;margin-top:22px}
+.qdoc .corp{font-family:'Noto Serif JP',serif;font-weight:600;font-size:19px;border-bottom:1px solid #0D1B42;padding-bottom:4px;display:inline-block;min-width:300px}
+.qdoc .qto p{margin:10px 0 0}
+.qdoc .sum{display:flex;justify-content:space-between;align-items:baseline;background:#0D1B42;color:#F7F4EA;padding:10px 16px;margin-top:12px;max-width:380px}
+.qdoc .sum b{font-family:'Noto Serif JP',serif;font-size:22px;font-weight:600}
+.qdoc .sum.s2{background:#355269;margin-top:6px}.qdoc .sum.s2 b{font-size:17px}
+.qdoc .cond{font-size:12px;color:#355269}
+.qdoc .qfrom{font-size:11.5px;line-height:1.75;border-left:2px solid #C9B78A;padding-left:14px}
+.qdoc .qfrom .on{font-size:10.5px;letter-spacing:.15em;color:#7A6230}
+.qdoc .qfrom .onm{font-family:'Noto Serif JP',serif;font-weight:600;font-size:16px;letter-spacing:.12em}
+.qdoc h2{font-family:'Noto Serif JP',serif;font-weight:600;font-size:14px;margin:24px 0 6px;letter-spacing:.06em}
+.qdoc .qt{width:100%;border-collapse:collapse}
+.qdoc .qt th{background:#F7F4EA;font-weight:500;font-size:11.5px;text-align:left;padding:6px 10px;border-top:1px solid #0D1B42;border-bottom:1px solid #0D1B42}
+.qdoc .qt td{padding:7px 10px;border-bottom:1px solid #D9D2BF}
+.qdoc .qt .a{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.qdoc .qt .k{text-align:center;width:60px;white-space:nowrap}
+.qdoc .qt tfoot td{border-bottom:1px solid #D9D2BF}
+.qdoc .qt tr.qtot td{font-weight:700;border-top:1px solid #0D1B42;border-bottom:2px solid #0D1B42;font-size:13.5px}
+.qdoc .qt tr.gs td{color:#355269;font-size:12px}
+.qdoc .qn{margin:0;padding-left:1.2em;font-size:11.5px;color:#355269}
+.qdoc .memo{margin:0;font-size:12px}
+
+body.pub .gear,body.pub #quoteBtn,body.pub #resetBtn,body.pub #sumBtn,body.pub .legend,body.pub .seg,body.pub .trouble,body.pub .qadd,body.pub .meta label:has(#company),body.pub .meta label:has(#mdate){display:none!important}
+body.pub .row{grid-template-columns:minmax(0,1fr) 260px}
+body.pub .colhead{grid-template-columns:minmax(0,1fr) 260px}
+body.pub .colhead span:nth-child(2),body.pub .colhead span:nth-child(3){display:none}
+@media(max-width:700px){body.pub .row,body.pub .colhead{grid-template-columns:1fr}body.pub .bar .btns{display:flex;flex-wrap:wrap;gap:6px;flex-direction:row}body.pub .bar .btn{min-height:34px!important;font-size:12px;padding:0 10px;width:auto}body.pub #calc{display:none}}
+</style>
+</head>
+<body class="pub">
+
+<header class="top">
+  <div class="office"><a href="index.html" style="color:inherit;text-decoration:none">社会保険労務士事務所　育守法務事務所 ←トップへ</a></div>
+  <h1>料金シミュレーター</h1>
+  <p>月額顧問料は、顧問プランに必要なパックを組み合わせて決まります。人数を入れて、①でプランを、②で手続きと給与計算を選んでみてください。入力した内容はこの画面の中だけで計算し、どこにも送信・保存しません（「この内容で相談する」を押したときだけ、相談の内容として送られます）。</p>
+</header>
+<button class="gear" id="gearBtn" title="料金の設定（事務所用）" aria-label="料金の設定">⚙</button>
+
+<div class="wrap">
+  <div class="meta">
+    <label>区分<select id="entity"><option value="corp">法人</option><option value="sole">個人事業主</option></select></label>
+    <label>会社名・屋号<input class="company" id="company" placeholder="例：株式会社〇〇"></label>
+    <label>打ち合わせ日<input type="date" id="mdate"></label>
+    <label>ご検討のプラン<select id="plan"></select></label>
+    <label>人数（給与を支払う全員・役員を含む）<input type="number" id="people" min="1" max="999" value="5" inputmode="numeric"></label>
+  </div>
+  <nav class="tabs" id="tabs"><button data-tab="plan" class="on">① プランと「育てる・守る」</button><button data-tab="proc">② 手続きと給与計算</button></nav>
+<section id="tabPlan"><div id="planArea"></div></section>
+<section id="tabProc" hidden>
+  <h2 class="sec">顧問料の組み立て</h2>
+  <p class="secl" style="font-size:15px;color:var(--kon);font-weight:500">パックは、いつ起きても月額のまま。産休や労災が急に起きても、追加の費用を心配しなくて大丈夫です。</p>
+  <p class="secl">押すと選択・解除できます。金額は人数に合わせて自動で変わります（税別）。人数は毎年9月30日時点（同日に退職する方を除く）で数え、10月分（11月のご請求分）から見直します。</p>
+  <div id="packArea"></div>
+  <h2 class="sec">発生する手続きの一覧</h2>
+  <p class="secl">選んだプランとパックに含まれる手続きには「✓」が付きます。含まれていない手続きは、スポット（都度お見積り）で承ります。</p>
+  <div class="spotsw"><button class="btn light" id="spotBtn" aria-pressed="false">スポット料金を表示する</button><span class="hint">押すと、各手続きをスポットで頼んだ場合の料金（税別）が出ます。</span></div>
+  <div class="legend">
+    <span><b>現在の対応</b>：社内（自社で対応）／他社（他の事務所などに依頼）／未対応</span>
+    <span><b>困っている</b>：手間がかかる・よくわからない・不安がある手続き</span>
+  </div>
+  <nav class="jump" id="jump"></nav>
+  <div id="list"></div>
+</section>
+
+  <footer class="note">
+    ・金額はすべて税別です。法人のお客様は、報酬から源泉所得税を差し引いてお支払いいただきます。<br>
+    ・ご契約は期間の定めがなく、自動で継続します。解約は3か月前までにお申し出ください。上位プランへの変更はいつでも承ります。<br>
+    ・年の途中で人数が増えても、次の見直し（毎年10月分）まで顧問料は変わりません。<br>
+    ・パックの追加はいつでも承ります（お申し出の翌月分から。パックの対象は、追加した月の翌月以降に起きたことです）。下位プランへの変更とパックの取りやめは、毎年9月30日までにお申し出いただき、10月分（11月のご請求分）から反映します。人数も9月30日時点（同日に退職する方を除く）で数え、同じく10月分から見直します。<br>
+    ・顧問料は月末締め・翌月末払いです。口座振替（翌月の引き落とし）が原則で、お振込みの場合は翌月末日までにお支払いください（振込手数料はお客様のご負担）。<br>
+    ・スポットのご依頼は、顧問契約のお客様は月末締めで顧問料と一緒にご請求します。顧問契約のないお客様は全額前払いで、入金を確認してから着手します（助成金の申請を除く）。<br>
+    ・含まれていない手続きはスポット（都度お見積り）で承ります。顧問契約のお客様は、スポット料金を1割引きで承ります。<br>
+    ・年末調整は承っておりません。<br>
+    ・助成金の申請は成功報酬（受給額の30％、最低報酬100,000円、着手金なし）で承ります。<br>
+    ・経済産業省管轄の補助金については、情報の提供と活用の助言のみ承ります。<br>
+    ・この画面の金額は目安です。正式なお見積もりは、一度お会いしてお話を伺ってからお出しします。
+  </footer>
+</div>
+
+<div class="bar">
+  <div class="in">
+    <div class="btns">
+      <button class="btn solid" id="sumBtn">まとめを見る</button>
+      <button class="btn" id="valBtn">顧問の価値</button>
+      <a class="btn" href="https://exhoumu.github.io/sample-report.html" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center">レポートの見本</a>
+      <button class="btn" id="quoteBtn">見積書を作る</button>
+      <button class="btn" id="resetBtn">新しい打ち合わせ</button>
+      <a class="btn solid" id="askBtn" href="#" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center;color:var(--yoru)">この内容で相談する</a>
+      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfvN-a86iv_raDTc4XyR5IH_K8_LavKqXG-lcxIQ2-PPBE6tA/viewform" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center">資料請求（PDF）</a>
+    </div>
+    <div class="calc" id="calc"></div>
+    <div class="total">
+      <div class="lbl">月額顧問料（税別）<span class="delta" id="delta"></span></div>
+      <div class="yen" id="totalYen">—</div>
+      <div class="pending" id="pending"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="sumModal" role="dialog" aria-modal="true"><div class="sheet" id="sumSheet"></div></div>
+<div class="modal" id="quoteModal" role="dialog" aria-modal="true"><div class="sheet" id="quoteSheet" style="max-width:900px"></div></div>
+<div class="modal" id="valModal" role="dialog" aria-modal="true"><div class="sheet" id="valSheet" style="max-width:900px"></div></div>
+<div class="modal" id="setModal" role="dialog" aria-modal="true"><div class="sheet" id="setSheet"></div></div>
+<div class="modal" id="confirmModal" role="dialog" aria-modal="true"><div class="sheet" style="max-width:440px">
+  <h3>新しい打ち合わせを始めますか？</h3>
+  <p class="sub">会社名とチェックした内容を消して、最初の状態に戻します。料金の設定は消えません。</p>
+  <div class="actions"><button class="btn light" data-close>やめる</button><button class="btn solid" id="doReset" style="color:var(--yoru)">消して始める</button></div>
+</div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const GROUPS = [
+ {id:'g-hire', t:'入社', lead:'従業員を雇ったとき', items:[
+  {id:'h1', n:'健康保険・厚生年金保険の資格取得届', base:true},
+  {id:'h2', n:'雇用保険の資格取得届', base:true},
+  {id:'h3', n:'入社時の被扶養者（異動）届・国民年金第3号被保険者関係届', base:true},
+  {id:'h4', n:'外国人雇用状況の届出', note:'雇用保険に加入しない外国人を雇ったとき'},
+  {id:'h5', n:'70歳以上被用者の該当届', note:'70歳以上の方を雇ったとき'},
+  {id:'h6', n:'二以上事業所勤務届', note:'複数の会社で社会保険に加入する方'},
+  {id:'h7', n:'雇用契約書・労働条件通知書の作成'},
+ ]},
+ {id:'g-leave', t:'退社', lead:'従業員が辞めたとき',items:[
+  {id:'l1', n:'健康保険・厚生年金保険の資格喪失届', base:true},
+  {id:'l2', n:'雇用保険の資格喪失届', base:true},
+  {id:'l3', n:'雇用保険の離職証明書（離職票の発行）', base:true},
+  {id:'l4', n:'外国人雇用状況の届出（離職時）', note:'雇用保険に加入しない外国人が辞めたとき'},
+  {id:'l5', n:'70歳以上被用者の不該当届'},
+  {id:'l6', n:'退職証明書・解雇理由証明書の作成'},
+  {id:'l7', n:'退職後の健康保険・年金の切り替えのご案内', note:'任意継続・国民健康保険など'},
+ ]},
+ {id:'g-family', t:'家族・個人情報の変更', lead:'結婚・出産・引っ越しなど',items:[
+  {id:'f1', n:'被扶養者（異動）届', note:'結婚・出産・就職などによる扶養の追加・削除', base:true},
+  {id:'f2', n:'国民年金第3号被保険者関係届', note:'配偶者の扶養の追加・削除', base:true},
+  {id:'f3', n:'氏名・住所の変更届（健康保険・厚生年金保険）'},
+  {id:'f4', n:'雇用保険の氏名変更'},
+  {id:'f5', n:'氏名・生年月日などの訂正届'},
+  {id:'f6', n:'資格確認書・各種通知書の再交付申請'},
+  {id:'f7', n:'雇用保険被保険者証の再交付'},
+  {id:'f8', n:'介護保険適用除外等の該当・非該当届', note:'海外に住む場合など'},
+ ]},
+ {id:'g-pay', t:'給与・賞与と毎年の手続き', lead:'社会保険料・労働保険料に関わるもの',items:[
+  {id:'p1', n:'算定基礎届', note:'毎年7月'},
+  {id:'p2', n:'労働保険の年度更新', note:'毎年6月〜7月'},
+  {id:'p3', n:'月額変更届', note:'昇給・降給などで固定的な賃金が変わったとき'},
+  {id:'p4', n:'賞与支払届', note:'賞与を支払ったとき'},
+  {id:'p5', n:'高年齢者雇用状況等報告', note:'毎年6月／常時雇用する労働者21人以上'},
+  {id:'p6', n:'障害者雇用状況報告', note:'毎年6月／常時雇用する労働者40人以上'},
+ ]},
+ {id:'g-birth', t:'出産・育児', lead:'産休・育休をとるとき',items:[
+  {id:'b1', n:'産前産後休業取得者申出書・変更（終了）届'},
+  {id:'b2', n:'出産手当金の申請'},
+  {id:'b3', n:'出産育児一時金の申請', note:'差額の申請など'},
+  {id:'b4', n:'育児休業等取得者申出書・終了届'},
+  {id:'b5', n:'育児休業給付金の申請', note:'出生時育児休業給付金（産後パパ育休）・延長を含む'},
+  {id:'b6', n:'出生後休業支援給付金の申請'},
+  {id:'b7', n:'育児時短就業給付金の申請'},
+  {id:'b8', n:'産前産後休業・育児休業終了時の報酬月額変更届'},
+  {id:'b9', n:'養育期間標準報酬月額特例申出書'},
+ ]},
+ {id:'g-care', t:'介護', lead:'家族の介護で休むとき',items:[
+  {id:'c1', n:'介護休業給付金の申請'},
+ ]},
+ {id:'g-sick', t:'病気・ケガ（仕事以外）', lead:'健康保険の給付',items:[
+  {id:'s1', n:'傷病手当金の申請'},
+  {id:'s2', n:'限度額適用認定・高額療養費の申請'},
+  {id:'s3', n:'療養費の申請', note:'治療費を立て替えたときなど'},
+ ]},
+ {id:'g-rosai', t:'労働災害', lead:'仕事中・通勤中のケガや病気',items:[
+  {id:'r1', n:'療養（補償）給付の請求'},
+  {id:'r2', n:'休業（補償）給付の請求'},
+  {id:'r3', n:'障害（補償）給付・傷病（補償）年金の請求'},
+  {id:'r4', n:'遺族（補償）給付・葬祭料の請求'},
+  {id:'r5', n:'労働者死傷病報告'},
+  {id:'r6', n:'第三者行為災害届', note:'交通事故など、相手がいる災害'},
+  {id:'r7', n:'転院の届出（指定病院等変更届）'},
+  {id:'r8', n:'二次健康診断等給付の請求'},
+ ]},
+ {id:'g-senior', t:'60歳以上・定年後の再雇用', lead:'',items:[
+  {id:'o1', n:'同日得喪の手続き', note:'定年後に再雇用し、給与が下がったとき'},
+  {id:'o2', n:'高年齢雇用継続給付の申請', note:'60歳到達時等賃金証明書を含む'},
+  {id:'o3', n:'70歳到達時の届出'},
+ ]},
+ {id:'g-death', t:'従業員が亡くなったとき', lead:'',items:[
+  {id:'d1', n:'資格喪失の手続き・埋葬料の申請'},
+ ]},
+ {id:'g-labor', t:'労働時間・就業規則の届出', lead:'労働基準監督署への届出・労使協定',items:[
+  {id:'k1', n:'36協定届', note:'時間外・休日労働に関する協定'},
+  {id:'k2', n:'就業規則の届出', note:'就業規則の作成・改定そのものは別メニュー'},
+  {id:'k3', n:'1年単位の変形労働時間制の協定届'},
+  {id:'k4', n:'1か月単位の変形労働時間制の協定届'},
+  {id:'k5', n:'事業場外みなし労働時間制の協定届'},
+  {id:'k6', n:'裁量労働制（専門業務型・企画業務型）の届出'},
+  {id:'k7', n:'届出が不要な労使協定の作成', note:'賃金控除、年次有給休暇の計画的付与など'},
+  {id:'k8', n:'監視・断続的労働の適用除外許可申請'},
+  {id:'k9', n:'解雇予告除外認定申請'},
+  {id:'k10', n:'寄宿舎規則の届出'},
+ ]},
+ {id:'g-safety', t:'安全衛生', lead:'主に労働者50人以上の事業場',items:[
+  {id:'a1', n:'衛生管理者・産業医の選任報告'},
+  {id:'a2', n:'定期健康診断結果報告'},
+  {id:'a3', n:'ストレスチェックの実施報告'},
+ ]},
+ {id:'g-books', t:'帳簿の整備', lead:'',items:[
+  {id:'m1', n:'法定四帳簿の整備', note:'労働者名簿・賃金台帳・出勤簿・年次有給休暇管理簿'},
+ ]},
+ {id:'g-office', t:'会社の設立・変更・廃止', lead:'事業所としての手続き',items:[
+  {id:'e1', n:'労働保険の保険関係成立届・概算保険料申告'},
+  {id:'e2', n:'雇用保険の適用事業所設置届'},
+  {id:'e3', n:'健康保険・厚生年金保険の新規適用届'},
+  {id:'e4', n:'適用事業報告', note:'労働基準監督署'},
+  {id:'e5', n:'事業所の名称・所在地の変更届', note:'社会保険・労働保険・雇用保険'},
+  {id:'e6', n:'事業主・代表者の変更届'},
+  {id:'e7', n:'継続事業の一括認可申請', note:'支店・営業所がある場合'},
+  {id:'e8', n:'雇用保険の事業所非該当承認申請', note:'小規模な支店・営業所など'},
+  {id:'e9', n:'任意適用の申請', note:'個人事業所など'},
+  {id:'e10', n:'特定適用事業所の届出', note:'パート・アルバイトの社会保険加入の拡大'},
+  {id:'e11', n:'建設業の労働保険の手続き', note:'一括有期事業報告など'},
+  {id:'e12', n:'保険料の口座振替の申出'},
+  {id:'e13', n:'事業所を廃止するときの手続き', note:'全喪届・廃止届・確定保険料申告'},
+ ]},
+ {id:'g-audit', t:'調査への対応', lead:'',items:[
+  {id:'v1', n:'労働基準監督署の調査（臨検）対応・是正報告'},
+  {id:'v2', n:'年金事務所の調査対応'},
+  {id:'v3', n:'労働保険料の算定基礎調査への対応'},
+ ]},
+ {id:'g-grant', t:'助成金', lead:'',items:[
+  {id:'z1', n:'助成金の要件確認・計画届・支給申請', fixed:'成功報酬（受給額の30％）'},
+ ]},
+];
+
+const PROPOSAL = {
+ h1:{m:'base',s:'5,500円'}, h2:{m:'base',s:'5,500円'}, h3:{m:'base',s:'5,500円'},
+ h4:{m:0,s:'5,500円'}, h5:{m:0,s:'5,500円'}, h6:{m:500,s:'16,500円'}, h7:{m:1000,s:'ひな形 33,000円／個別 5,500円'},
+ l1:{m:'base',s:'5,500円'}, l2:{m:'base',s:'5,500円'}, l3:{m:'base',s:'11,000円'},
+ l4:{m:0,s:'5,500円'}, l5:{m:0,s:'5,500円'}, l6:{m:0,s:'5,500円'}, l7:{m:0,s:'3,500円'},
+ f1:{m:'base',s:'5,500円'}, f2:{m:'base',s:'5,500円'}, f3:{m:0,s:'5,500円'}, f4:{m:0,s:'5,500円'}, f5:{m:0,s:'5,500円'}, f6:{m:0,s:'5,500円'}, f7:{m:0,s:'5,500円'}, f8:{m:0,s:'5,500円'},
+ p1:{m:2000,s:'33,000円（10人以上は1人＋1,000円）'}, p2:{m:2000,s:'33,000円（10人以上は1人＋1,000円）'}, p3:{m:1000,s:'1人目 11,000円／2人目から＋3,500円'}, p4:{m:0,s:'11,000円（10人以上は1人＋1,000円）'}, p5:{m:500,s:'11,000円'}, p6:{m:500,s:'11,000円'},
+ b1:{m:0,s:'9,000円'}, b2:{m:500,s:'22,000円'}, b3:{m:0,s:'11,000円'}, b4:{m:0,s:'9,000円'}, b5:{m:1000,s:'16,500円'}, b6:{m:0,s:'11,000円'}, b7:{m:500,s:'16,500円'}, b8:{m:500,s:'11,000円'}, b9:{m:0,s:'5,500円'},
+ c1:{m:500,s:'22,000円'},
+ s1:{m:1000,s:'16,500円'}, s2:{m:0,s:'9,000円'}, s3:{m:0,s:'9,000円'},
+ r1:{m:500,s:'16,500円'}, r2:{m:1000,s:'16,500円'}, r3:{m:null,s:'55,000円〜'}, r4:{m:null,s:'88,000円〜'}, r5:{m:500,s:'16,500円'}, r6:{m:null,s:'33,000円〜'}, r7:{m:0,s:'5,500円'}, r8:{m:null,s:'11,000円'},
+ o1:{m:500,s:'16,500円／人'}, o2:{m:500,s:'11,000円'}, o3:{m:0,s:'5,500円'},
+ d1:{m:null,s:'22,000円'},
+ k1:{m:1000,s:'22,000円（特別条項付き＋11,000円）'}, k2:{m:500,s:'11,000円（届出のみ）'}, k3:{m:1500,s:'33,000円（カレンダー作成を含む）'}, k4:{m:1000,s:'22,000円'}, k5:{m:500,s:'22,000円'}, k6:{m:null,s:'55,000円〜'}, k7:{m:500,s:'1件 11,000円'}, k8:{m:null,s:'33,000円〜'}, k9:{m:null,s:'55,000円〜'}, k10:{m:null,s:'55,000円〜'},
+ a1:{m:500,s:'11,000円'}, a2:{m:500,s:'11,000円'}, a3:{m:500,s:'11,000円'},
+ m1:{m:1000,s:'整備 33,000円〜'},
+ e1:{m:null,s:'33,000円（概算保険料申告を含む）'}, e2:{m:null,s:'44,000円（資格取得は人数分）'}, e3:{m:null,s:'33,000円（資格取得は人数分）'}, e4:{m:null,s:'5,500円'}, e5:{m:null,s:'一式 33,000円'}, e6:{m:null,s:'11,000円'}, e7:{m:null,s:'16,500円'}, e8:{m:null,s:'16,500円'}, e9:{m:null,s:'55,000円〜'}, e10:{m:null,s:'16,500円＋資格取得の人数分'}, e11:{m:null,s:'お見積り'}, e12:{m:null,s:'5,500円'}, e13:{m:null,s:'33,000円〜'},
+ v1:{m:null,s:'立会い 33,000円〜／是正報告 22,000円〜'}, v2:{m:null,s:'33,000円〜'}, v3:{m:null,s:'22,000円〜'},
+ z1:{m:null,s:'成功報酬30%（最低100,000円）'},
+};
+
+/* ===== パックと手続きの対応 ===== */
+const BASE_IDS = ['h1','h2','h3','l1','l2','l3','f1','f2'];
+const PACKS = [
+  {id:'nenji', name:'年次手続きパック', for:'毎年の保険料の手続きを任せたい会社に', needsPayroll:true,
+   items:['p1','p2'], desc:'算定基礎届・労働保険の年度更新（36協定は会社で作成いただくものとして、スポットで承ります）'},
+  {id:'shussan', name:'出産・育児パック', for:'産休・育休が見込まれる会社に',
+   items:['b1','b2','b3','b4','b5','b6','b7','b8','b9'], desc:'産休・育休の届出、出産手当金、育児休業給付（毎回の申請を含む）、休業終了時の月額変更など'},
+  {id:'byoki', name:'労災サポートパック', for:'現場の仕事が多い会社に',
+   items:['r1','r2','r5','r7'], desc:'労災の療養（補償）給付・休業（補償）給付の請求、労働者死傷病報告、転院の届出', note:'ご契約のお客様には、社労士の顧問先限定の労災上乗せ保険をご紹介します'},
+  {id:'kisoku', name:'就業規則メンテナンスパック', for:'法改正のたびに慌てたくない会社に', flat:true,
+   items:['k2'], desc:'規程の改定と労基署への届出を、月額で何度でも（法改正に伴う改定を含みます。新しい規程の作成・全面改定は含みません）', note:'法改正の情報提供と、改定が必要かどうかの助言は、すべての顧問プランに含まれます'},
+  {id:'full', name:'給与計算フルサポート', for:'給与まわりをまとめて任せたい会社に', needsPayroll:true,
+   items:['p3','p4'], desc:'賞与計算・賞与支払届・月額変更届・賃金台帳の作成'},
+];
+const PACK_OF = {}; PACKS.forEach(p=>p.items.forEach(id=>PACK_OF[id]=p.id));
+
+const DEFAULT_SETTINGS = {
+  plans:[
+    {id:'p1', name:'相談顧問', base:20000, step:5000},
+    {id:'p2', name:'組織づくり軍師　顧問', base:35000, step:7500},
+    {id:'p3', name:'採用プロデュース顧問', base:80000, step:10000},
+  ],
+  baseUpTo:9, stepSize:5,
+  procUnit:500, procMin:3000,
+  payBase:5000, payPer:1000,
+  pack:{ nenji:{base:4000,step:500}, shussan:{base:5000,step:500}, byoki:{base:4500,step:500}, full:{base:3000,step:1000}, kisoku:{base:5000,step:0} },
+  setRate:50
+};
+
+const SKEY='ikusu-pub-settings-v1', MKEY='ikusu-pub-sim-v1';
+function load(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function merge(d,v){const o=structuredClone(d);for(const k in v){ if(v[k]&&typeof v[k]==='object'&&!Array.isArray(v[k])&&o[k]) o[k]=merge(o[k],v[k]); else o[k]=v[k]; } return o}
+
+let S = merge(DEFAULT_SETTINGS, load(SKEY,{}));
+if(S.pack&&S.pack.shussan&&S.pack.shussan.base===4000){S.pack.shussan.base=5000;save(SKEY,S)}
+let M = load(MKEY,null) || newMeeting();
+function newMeeting(){return {company:'',date:new Date().toISOString().slice(0,10),plan:'p1',entity:'corp',people:5,baseOn:true,payroll:false,showSpot:false,packs:{},who:{},trouble:{}}}
+
+const ALL = GROUPS.flatMap(g=>g.items.map(i=>({...i,g:g.id})));
+const yen = n => n.toLocaleString('ja-JP')+'円';
+const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const $ = id => document.getElementById(id);
+
+function steps(n){return n<=S.baseUpTo?0:Math.floor((n-S.baseUpTo-1)/S.stepSize)+1}
+function calc(){
+  const p=S.plans.find(x=>x.id===M.plan)||S.plans[0], n=Math.max(1,parseInt(M.people)||1), st=steps(n);
+  const lines=[];
+  const pn=n, pst=st;
+  const planFee=p.base+st*p.step; lines.push([p.name+(st?`（${S.baseUpTo+1}人以上の加算 ${st}段階を含む）`:''),planFee]);
+  if(M.baseOn) lines.push([`入社・退社・扶養の手続き（${yen(S.procUnit)}×${n}人、最低${yen(S.procMin)}）`,Math.max(S.procMin,S.procUnit*n)]);
+  if(M.payroll) lines.push([`給与計算（基本${yen(S.payBase)}＋${yen(S.payPer)}×${pn}人）`,S.payBase+S.payPer*pn]);
+  const set = false; // セット割は2026-11-22に廃止
+  PACKS.forEach(pk=>{ if(!M.packs[pk.id]) return;
+    let fee=packFee(pk.id,pk.id==='full'?pst:st); let label=pk.name;
+    if(pk.id==='nenji'&&set){ fee=Math.round(fee*(100-S.setRate)/100); label+=`（給与計算フルサポートとのセット割 ${S.setRate}%引き）`; }
+    lines.push([label,fee]);
+  });
+  return {p,n,st,pn,pst,lines,set,total:lines.reduce((a,l)=>a+l[1],0)};
+}
+function spotCompare(id,n,fee){ const y=fee*12, over=Math.max(0,n-9), ok=sp=>sp>y?`（年${yen(sp-y)}お得）`:'';
+  if(id==='nenji'){ const sp=(33000+over*1000)*2; return `毎年スポットなら 年${yen(sp)} → パックなら 年${yen(y)}${ok(sp)}`; }
+  if(id==='shussan'){ const sp=9000+22000+9000+16500*6+11000+5500; return `1人が産休・育休を取ると、スポットなら 約${yen(sp)} → パックなら 年${yen(y)}${ok(sp)}`; }
+  if(id==='byoki'){ const sp=16500+16500*3+16500; return `休業をともなう労災1件で、スポットなら 約${yen(sp)} → パックなら 年${yen(y)}${ok(sp)}`; }
+  if(id==='full'){ const sp=(11000+over*1000)*2+(11000+3500)*2; return `賞与年2回・月額変更年2回で、スポットなら 約${yen(sp)} → パックなら 年${yen(y)}${ok(sp)}`; }
+  if(id==='kisoku'){ const sp=(30000+11000)*2; return `年2回、3条ずつ改定して届け出ると、スポットなら ${yen(sp)} → パックなら 年${yen(y)}${ok(sp)}`; }
+  return ''; }
+function packFee(id,st){const c=S.pack[id];return c.base+st*c.step}
+function covered(id){ if(id==='l3') return M.baseOn&&M.payroll; if(BASE_IDS.includes(id)) return M.baseOn; const pk=PACK_OF[id]; return pk?!!M.packs[pk]:false }
+function tagOf(id){ if(id==='l3') return M.payroll?'基本の手続き':'スポット（給与計算をご依頼の場合は基本の手続きに含みます）'; if(BASE_IDS.includes(id)) return '基本の手続き'; const pk=PACK_OF[id]; return pk?PACKS.find(x=>x.id===pk).name:'スポット' }
+
+/* ===== 描画 ===== */
+function renderPacks(){
+  const c=calc(), st=c.st;
+  const card=(id,name,forTxt,desc,price,on,extra='')=>`
+    <button class="pack${on?' on':''}" data-pack="${id}" aria-pressed="${on}">
+      <span class="ck">${on?'✓':''}</span>
+      <span class="pn serif">${esc(name)}</span>
+      <span class="pf">${esc(forTxt)}</span>
+      <span class="pd">${esc(desc)}</span>
+      <span class="pp">${price}</span>${extra}
+    </button>`;
+  const pc=pk=>{ let fee=packFee(pk.id,pk.id==='full'?c.pst:st), extra='';
+    if(pk.needsPayroll) extra=`<span class="pnote">給与計算のご依頼が必要です</span>`;
+    if(pk.note) extra=`<span class="pnote">${esc(pk.note)}</span>`;
+    
+    return card(pk.id,pk.name,pk.for,pk.desc,`月額 ＋${yen(fee)}`,!!M.packs[pk.id],extra); };
+  const P=id=>{const pk=PACKS.find(x=>x.id===id);return pk?pc(pk):''};
+  let h='<div class="pcols"><div class="pcol"><p class="pch">手続き</p>';
+  h+=card('base','入社・退社・扶養の手続き','基本の手続き','資格取得・喪失、扶養の異動（離職票は給与計算をご依頼の場合のみ）',`月額 ${yen(Math.max(S.procMin,S.procUnit*c.n))}`,M.baseOn,`<span class="pnote">1人${yen(S.procUnit)}・最低${yen(S.procMin)}</span>`);
+  h+=P('byoki')+P('shussan')+P('kisoku');
+  h+='</div><div class="pcol"><p class="pch">給与計算</p>';
+  h+=card('payroll','給与計算','毎月の給与計算','給与明細・振込データの作成、保険料率・住民税額の更新（住民税の異動届は含みません）',`月額 ${yen(S.payBase+S.payPer*c.pn)}`,M.payroll,`<span class="pnote">基本${yen(S.payBase)}＋1人${yen(S.payPer)}</span>`);
+  h+=P('full')+P('nenji');
+  h+='</div></div>';
+  $('packArea').innerHTML=h;
+}
+function renderList(){
+  $('jump').innerHTML = GROUPS.map(g=>`<a href="#${g.id}">${esc(g.t)}</a>`).join('');
+  $('list').innerHTML = GROUPS.map((g,gi)=>`
+    <section class="grp" id="${g.id}">
+      <h2><span class="num">${String(gi+1).padStart(2,'0')}</span>${esc(g.t)}${g.lead?`<span class="lead">${esc(g.lead)}</span>`:''}</h2>
+      <div class="colhead"><span>手続き</span><span>現在の対応</span><span></span><span>対応の区分</span></div>
+      ${g.items.map(rowHTML).join('')}
+    </section>`).join('');
+}
+function rowHTML(it){
+  const who=M.who[it.id]||'', tr=!!M.trouble[it.id], cov=covered(it.id), tag=tagOf(it.id);
+  const kind = it.fixed ? `<span class="tag spot">${esc(it.fixed)}</span>` :
+    cov ? `<span class="tag in">✓ ${esc(tag)}に含まれます${M.showSpot&&PROPOSAL[it.id]?.s&&PROPOSAL[it.id].m!=='base'?'<br><small class="inv">スポットなら '+esc(spotText(it.id))+'</small>':''}</span>` :
+    tag.startsWith('スポット（給与') ? `<span class="tag spot">${esc(tag)}${M.showSpot?'<br><small>スポットなら '+esc(spotText(it.id))+'</small>':''}</span>` :
+    tag==='スポット' ? `<span class="tag spot">${M.showSpot&&PROPOSAL[it.id]?.s ? 'スポット '+esc(spotText(it.id)) : 'スポット（都度お見積り）'}</span>` :
+    `<span class="tag pk">${esc(tag)}の対象${M.showSpot&&PROPOSAL[it.id]?.s?'<br><small>スポットなら '+esc(spotText(it.id))+'</small>':''}</span>`;
+  return `<div class="row${cov?' cov':''}" data-row="${it.id}">
+    <div class="name">${esc(it.n)}${it.note?`<span class="note">${esc(it.note)}</span>`:''}</div>
+    <div class="seg" data-k="who" data-id="${it.id}">${btn('in','社内',who)}${btn('out','他社',who)}${btn('none','未対応',who)}</div>
+    <button class="trouble" data-k="trouble" data-id="${it.id}" aria-pressed="${tr}">困っている</button>
+    <div class="kind">${kind}</div>
+  </div>`;
+}
+function btn(v,label,cur){return `<button data-v="${v}" aria-pressed="${cur===v}">${label}</button>`}
+
+let lastTotal=null;
+function renderBar(){
+  const c=calc();
+  $('calc').innerHTML = c.lines.map(l=>`<span>${esc(l[0].replace(/（.*）/,''))}　<b>${yen(l[1])}</b></span>`).join('')+
+''; updAsk();
+  $('totalYen').innerHTML = c.total.toLocaleString('ja-JP')+'<small>円</small>';
+  const d=$('delta');
+  if(lastTotal!==null && c.total!==lastTotal){
+    const diff=c.total-lastTotal; d.textContent=(diff>0?'＋':'−')+yen(Math.abs(diff));
+    d.classList.add('show'); clearTimeout(d._t); d._t=setTimeout(()=>d.classList.remove('show'),1800);
+  }
+  lastTotal=c.total;
+}
+function renderMeta(){
+  $('plan').innerHTML=S.plans.map(p=>`<option value="${p.id}">${esc(p.name)}（${yen(p.base)}〜）</option>`).join('');
+  $('plan').value=M.plan; $('company').value=M.company; $('mdate').value=M.date; $('people').value=M.people; $('entity').value=M.entity||'corp';
+}
+function renderSpotBtn(){const b=$('spotBtn');b.textContent=M.showSpot?'スポット料金を隠す':'スポット料金を表示する';b.setAttribute('aria-pressed',M.showSpot)}
+
+/* ===== ① プランと育てる・守る ===== */
+const PLAN_INFO={
+ p1:{no:'一',tg:'人事・労務のことを、気軽に相談できるプラン',li:['労務相談（Chatwork）','法令・制度の助言、問題が起きたときの初期相談','オンライン面談は無料']},
+ p2:{no:'二',tg:'こちらから次の一手を届け、人が辞めずに育つ会社をつくるプラン',li:['相談顧問の内容','契約してすぐ、職場の健康診断レポート','3か月ごとのレポートと面談（5・8・11・2月）','働いた時間に対して休めているか、辞める前の兆しを見つけ、失いたくない人から先に手を打つ'],perk:'「育てるサービス」の多くが半額'},
+ p3:{no:'三',tg:'採用の準備から入社後の定着まで、伴走して支えるプラン',li:['組織づくり軍師　顧問の内容','採用コンセプト、求人票、書類選考、面接の設計','面接への同席（月2回まで）','入社前後のフォロー、オンボーディング'],perk:'「育てるサービス」の多くが半額、採用の支援は0円'}
+};
+const SODATE=[
+ {n:'評価制度の作成',d:'会社の考え方に合った、運用できる評価の仕組み',p:200000,up:true,h:true},
+ {n:'賃金制度と連動させた設計',d:'評価と昇給・賞与のつながりまで',p:350000,up:true,h:true},
+ {n:'面談の仕組みづくり',d:'面談1種類の設計＋面談する人向けの研修1回（2時間）',p:80000,h:true},
+ {n:'面談のふりかえり（個別）',d:'1人1回。録音を文字に起こし、聞き方の良い点・直す点をお返し',p:15000,unit:'／1人1回',h:true},
+ {n:'従業員サーベイ（6か月）',d:'月1回のアンケート、1枚のレポート、社長との30分の振り返り',survey:true,h:true},
+ {n:'職場の健康診断レポート（1回）',d:'勤怠・給与のデータから今の状態と次の一手',p:50000,inc:['p2','p3']},
+ {n:'採用の設計',d:'求める人物像を言葉に、同業3社の求人票との比較、書類選考と面接で使う評価シート',p:80000,rec:true},
+ {n:'求人票の作成',d:'1件。ハローワーク・Indeed・自社サイトに書き分け、労働条件の明示漏れや法令のチェック',p:30000,unit:'／件',rec:true},
+ {n:'求人票の作り直し',d:'同じ職種の条件や文面の更新（1件）',p:10000,unit:'／件',rec:true},
+ {n:'書類選考の支援',d:'1回の募集（10人まで）。評価シートで同じ基準で点数化し、面接で確かめる点を整理。合否は会社が決めます',p:30000,unit:'／回',rec:true},
+ {n:'面接の設計',d:'評価シートに沿った質問リスト・時間配分・面接の評価シート',p:50000,rec:true},
+ {n:'面接への同席と振り返り',d:'1回（訪問料が別）。次の面接で確かめる点と、聞き方のフィードバック',p:30000,unit:'／回',rec:true,recNote:'月2回まで0円'},
+ {n:'内定から入社まで',d:'合否連絡の文面、内定通知書・労働条件通知書（明示事項のチェック）、内定者向けのよくある質問、入社手続きのチェックリスト',p:50000,rec:true},
+];
+const MAMORU=[
+ {n:'就業規則の作成・全面改定（本則）',d:'会社の実情に合わせた就業規則',t:'175,000円',a:175000},
+ {n:'賃金規程',d:'給与の決め方・手当・昇給などのルール',t:'30,000円',a:30000},
+ {n:'そのほかの規程',d:'育児・介護休業規程、パートタイマー規程など（1つごと）',t:'25,000円',a:25000},
+ {n:'就業規則メンテナンスパック',d:'改定と届出を何度でも（②で選べます）',t:'月額 5,000円'},
+ {n:'ハラスメント対策（一式）',d:'方針づくりと相談窓口の整備から、研修まで。追加の研修は1時間 50,000円（顧問先 30,000円）',t:'150,000円',a:150000},
+ {n:'カスタマーハラスメント対策',d:'2026年10月から事業主の義務。お客様からの迷惑行為に、会社として対応できる体制と研修',t:'150,000円',a:150000},
+ {n:'入社時のコンプライアンス研修',d:'入社したばかりの方が、就業規則や社内のルールでつまずかないように。内容は会社に合わせてご提案します',t:'120,000円',a:120000},
+ {n:'労務監査',d:'書類と運用の両方を確かめ、優先順位つきの改善案',t:'個別にお見積り'},
+ {n:'会社をつくったときの手続き一式',d:'成立届・設置届・新規適用＋5人までの資格取得と扶養',t:'<s>165,000円</s> 75,000円',a:75000},
+ {n:'調査への対応',d:'書類の準備 22,000円〜／持参 33,000円〜／立ち会い 55,000円〜／是正報告 22,000円〜（顧問先は1割引き）',t:'22,000円〜'},
+ {n:'助成金の申請',d:'着手金なし。最低報酬 100,000円',t:'成功報酬 30%'},
+];
+function surveyPrice(n){return n<=9?90000:n<=29?120000:150000}
+function renderPlan(){
+  const n=Math.max(1,parseInt(M.people)||1), extra=Math.max(0,Math.ceil((n-S.baseUpTo)/S.stepSize));
+  const cards=S.plans.map(pl=>{const I=PLAN_INFO[pl.id]||{li:[]},fee=pl.base+pl.step*extra,on=M.plan===pl.id;
+    return `<button type="button" class="pcard${on?' on':''}" data-plan="${pl.id}"><span class="ck">${on?'✓':''}</span><div class="no">${I.no||''}</div><div class="nm">${esc(pl.name)}</div><div class="tg">${esc(I.tg||'')}</div><div class="pr">${yen(fee)}<small>／月</small></div><div style="font-size:12px;color:var(--muted)">${n}人の場合（税別）</div><ul>${I.li.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>${I.perk?`<span class="perk">${esc(I.perk)}</span>`:''}</button>`}).join('');
+  const cp=M.plan==='p1'?'p2':M.plan, half=true, rec=cp==='p3', pn=M.plan==='p1'?'軍師顧問・採用プロデュース顧問':((S.plans.find(x=>x.id===M.plan)||{}).name||'');
+  const price=x=>{ let base=x.survey?surveyPrice(n):x.p, up=x.up?'〜':'', u=x.unit||'';
+    const sv=x.survey?`<small>月${yen(base/6)}${n<=9?'〜':''}（6か月）</small>`:'';
+    if(x.inc&&x.inc.includes(cp)) return [`${yen(base)}${u}${sv}`,`<span class="hl">顧問料に含む</span>`];
+    if(x.rec&&rec) return [`${yen(base)}${up}${u}`,`<span class="hl">${x.recNote||'0円'}</span>`];
+    if(x.rec&&!rec) return [`${yen(base)}${up}${u}`,`${yen(base)}${up}${u}<small>採用プロデュース顧問なら${x.recNote||'0円'}</small>`];
+    if(x.h&&half) return [`<s>${yen(base)}${up}${u}</s>${sv}`,`<span class="hl">${yen(base/2)}${up}${u}</span><span class="off">半額</span>`];
+    return [`${yen(base)}${up}${u}${sv}`,`${yen(base)}${up}${u}`]; };
+  const amt=x=>{ if(x.inc&&x.inc.includes(M.plan)) return 0; let b=x.survey?surveyPrice(n):x.p; if(x.rec&&M.plan==='p3') return 0; if(x.h&&(M.plan==='p2'||M.plan==='p3')) b=b/2; return b; };
+  const addB=(nm,a)=>a>0?`<button type="button" class="qadd" data-qn="${esc(nm)}" data-qa="${a}">＋見積りへ</button>`:'';
+  const sRows=SODATE.map(x=>{const [a,b]=price(x);return `<tr><td>${esc(x.n)}<small>${esc(x.d)}</small></td><td class="r">${a}</td><td class="r">${b}</td><td class="r">${addB(x.n+(x.up?'（〜）':''),amt(x))}</td></tr>`}).join('');
+  const mRows=MAMORU.map(x=>`<tr><td>${esc(x.n)}<small>${esc(x.d)}</small></td><td class="r">${x.t}</td><td class="r">${addB(x.n,x.a||0)}</td></tr>`).join('');
+  $('planArea').innerHTML=`<h2 class="sec">顧問プランを選ぶ</h2><p class="secl">押すと選べます。手続きと給与計算は含まない料金です（②で足します）。年の途中で人数が増えても、次の見直し（毎年10月分）まで顧問料は変わりません。</p>
+  <div class="pcards">${cards}</div>
+  <h2 class="sec"><span class="pill s">育てる</span>人が辞めずに育つ会社をつくる</h2><p class="secl">組織づくり軍師　顧問と採用プロデュース顧問のお客様は、多くを半額で承ります（採用の支援は、採用プロデュース顧問なら0円）。右の列は、いま選んでいるプランでの料金です（相談顧問を選んでいるときは、軍師顧問の料金を表示します）。</p>
+  <table class="svc"><tr><th>サービス</th><th style="text-align:right">通常</th><th style="text-align:right">${esc(pn)}なら</th><th></th></tr>${sRows}</table>
+  <h2 class="sec"><span class="pill m">守る</span>法律と手続きで会社を守る</h2><p class="secl">守るサービスは、どのプランでも同じ料金です（税別）。</p>
+  <table class="svc"><tr><th>サービス</th><th style="text-align:right">料金</th><th></th></tr>${mRows}</table>
+  <div class="tonext"><button type="button" class="btn light" id="toProc" style="min-height:44px">② 手続きと給与計算へ →</button></div>`;
+  document.querySelectorAll('#planArea [data-plan]').forEach(b=>b.onclick=()=>{M.plan=b.dataset.plan;save(MKEY,M);const sel=$('plan');if(sel)sel.value=M.plan;renderAll()});
+  $('toProc').onclick=()=>showTab('proc');
+  document.querySelectorAll('#planArea .qadd').forEach(b=>b.onclick=()=>{ if(!Q) Q=newQuote(); Q.extras.push({n:b.dataset.qn,a:+b.dataset.qa,kind:'o'}); toast('見積書の「一時のご料金」に入れました（見積書で金額を直せます）'); });
+}
+function showTab(t){M.tab=t;save(MKEY,M);$('tabPlan').hidden=t!=='plan';$('tabProc').hidden=t!=='proc';document.querySelectorAll('#tabs [data-tab]').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));window.scrollTo({top:$('tabs').offsetTop-10,behavior:'smooth'})}
+document.querySelectorAll('#tabs [data-tab]').forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
+
+
+function updAsk(){ const a=document.getElementById('askBtn'); if(!a) return; const c=calc(), n=Math.max(1,parseInt(M.people)||1);
+  const t=['（料金シミュレーターから）','人数：'+n+'人',...c.lines.map(l=>l[0].replace(/（.*）/,'')+'：'+l[1].toLocaleString('ja-JP')+'円'),'月額の目安（税別）：'+c.total.toLocaleString('ja-JP')+'円','','ご相談したいこと：'].join('\n');
+  a.href='https://docs.google.com/forms/d/e/1FAIpQLScL5SvfhChUnfJKygrNnXuP_KBU9Hcldvt1UHSblvse-y-Cog/viewform?usp=pp_url&entry.578792485='+encodeURIComponent(t); }
+function renderAll(){renderMeta();renderPlan();renderPacks();renderList();renderBar();renderSpotBtn()}
+function refreshCoverage(){renderPlan();renderPacks();renderList();renderBar()}
+
+/* ===== 操作 ===== */
+$('packArea').addEventListener('click',e=>{
+  const b=e.target.closest('[data-pack]'); if(!b) return;
+  const id=b.dataset.pack;
+  if(id==='base') M.baseOn=!M.baseOn;
+  else if(id==='payroll'){ M.payroll=!M.payroll; if(!M.payroll){ M.packs.full=false; M.packs.nenji=false; } }
+  else { M.packs[id]=!M.packs[id]; if((id==='full'||id==='nenji')&&M.packs[id]) M.payroll=true; }
+  save(MKEY,M); refreshCoverage();
+});
+$('list').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  const host=b.closest('[data-k]'); if(!host) return;
+  const k=host.dataset.k, id=host.dataset.id;
+  if(k==='trouble') M.trouble[id]=!M.trouble[id];
+  else { const v=b.dataset.v; M.who[id]=(M.who[id]===v)?'':v; }
+  save(MKEY,M);
+  host.closest('.row').outerHTML=rowHTML(ALL.find(x=>x.id===id));
+  renderBar();
+});
+[['entity','entity'],['company','company'],['mdate','date'],['people','people'],['plan','plan']].forEach(([el,key])=>{
+  $(el).addEventListener('input',e=>{ M[key]=e.target.value; save(MKEY,M); renderPlan(); renderPacks(); renderBar(); });
+});
+document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{
+  if(e.target===m||e.target.closest('[data-close]')) m.classList.remove('open');
+}));
+$('spotBtn').onclick=()=>{M.showSpot=!M.showSpot;save(MKEY,M);renderList();renderSpotBtn()};
+$('resetBtn').onclick=()=>$('confirmModal').classList.add('open');
+$('doReset').onclick=()=>{ M=newMeeting(); save(MKEY,M); lastTotal=null; renderAll(); $('confirmModal').classList.remove('open'); window.scrollTo(0,0); toast('新しい打ち合わせを始めました'); };
+function toast(t){const el=$('toast');el.textContent=t;el.classList.add('show');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('show'),2000)}
+
+/* ===== まとめ ===== */
+const WHO={in:'社内',out:'他社',none:'未対応'};
+function summaryData(){
+  const c=calc();
+  const tr=ALL.filter(i=>M.trouble[i.id]);
+  return {c, trIn:tr.filter(i=>covered(i.id)), trOut:tr.filter(i=>!covered(i.id))};
+}
+function summaryText(){
+  const {c,trIn,trOut}=summaryData(); const L=[];
+  L.push(`【手続きのヒアリング結果】${M.company||'（会社名未入力）'}　${M.date}`);
+  L.push(`ご検討のプラン：${c.p.name}／人数（給与を支払う全員・役員を含む）：${c.n}人`,'');
+  L.push('■ お困りの手続きのうち、顧問料に含まれるもの'); L.push(...(trIn.length?trIn.map(i=>`・${i.n}（${tagOf(i.id)}）`):['・なし']),'');
+  L.push('■ お困りの手続きのうち、スポットで承るもの（社内で対応できるようにするご支援もご相談ください）'); L.push(...(trOut.length?trOut.map(i=>`・${i.n}${M.who[i.id]?`（現在：${WHO[M.who[i.id]]}）`:''}`):['・なし']),'');
+  L.push('■ 月額顧問料（税別）'); c.lines.forEach(l=>L.push(`・${l[0]}：${yen(l[1])}`)); L.push(`　合計：${yen(c.total)}`,'');
+  L.push('※含まれていない手続きは、スポット（都度お見積り）で承ります。','※パックの追加・取りやめは、毎年9月30日までのお申し出で10月分（11月のご請求分）から反映します。すでに発生している手続きはスポットでの対応となります。','※年末調整は承っておりません。');
+  L.push('','育守法務事務所　ご連絡・ご相談はChatworkで承ります（Web：exhoumu.github.io）');
+  return L.join('\n');
+}
+
+/* ===== 顧問の価値 ===== */
+const VAL_H = [
+  // id, 名前, 時間, 単位, 条件
+  {id:'in',  nm:'入社の手続き（社会保険・雇用保険の加入、書類の準備）', h:2.5, u:'1人あたり', on:()=>M.baseOn, q:v=>v.inout/2},
+  {id:'out', nm:'退社の手続き（資格喪失、離職票）', h:3, u:'1人あたり', on:()=>M.baseOn, q:v=>v.inout/2},
+  {id:'fuyo', nm:'扶養の変更', h:1.5, u:'1件あたり', on:()=>M.baseOn, q:v=>v.fuyo},
+  {id:'pay', nm:'給与計算（勤怠の確認・計算・明細）', h:0, u:'毎月（1時間＋1人15分）', on:()=>M.payroll, q:v=>12, f:n=>1+0.25*n},
+  {id:'rate', nm:'保険料率・住民税額の更新', h:3, u:'1年あたり', on:()=>M.payroll, q:v=>1},
+  {id:'nen', nm:'算定基礎届・労働保険の年度更新', h:0, u:'1年あたり（8時間＋1人12分）', on:()=>!!M.packs.nenji, q:v=>1, f:n=>8+0.2*n},
+  {id:'sho', nm:'産休・育休の届出と給付の申請', h:10, u:'1人が取得した場合', on:()=>!!M.packs.shussan, q:v=>1},
+  {id:'rou', nm:'労災の請求・報告', h:6, u:'1件あたり', on:()=>!!M.packs.byoki, q:v=>1},
+  {id:'sho2', nm:'賞与計算・賞与支払届・月額変更届', h:0, u:'1年あたり（6時間＋1人12分）', on:()=>!!M.packs.full, q:v=>1, f:n=>6+0.2*n},
+  {id:'kis', nm:'法改正に合わせた就業規則の改定と届出', h:8, u:'1年あたり', on:()=>!!M.packs.kisoku, q:v=>1},
+  {id:'sod', nm:'労務の調べもの（法令の確認など。相談するほどではないもの）', h:1, u:'毎月', on:()=>true, q:v=>12},
+  {id:'kai', nm:'法改正の情報収集', h:1, u:'毎月', on:()=>true, q:v=>12},
+  {id:'ana', nm:'勤怠・賃金データの確認と分析、課題の整理（四半期レポート）', h:6, u:'毎月', on:()=>M.plan!=='p1', q:v=>12},
+  {id:'jin', nm:'人事の仕組みづくりの検討（面談・評価・社内ルールなど）', h:3, u:'毎月', on:()=>M.plan!=='p1', q:v=>12},
+  {id:'sai', nm:'採用の設計、求人票、面接の準備と振り返り', h:20, u:'毎月', on:()=>M.plan==='p3', q:v=>12},
+];
+function valState(){ const n=Math.max(1,parseInt(M.people)||1);
+  const d={mode:'none',curFee:0,wage:3000, consult:6, inout:Math.max(2,Math.round(n*0.3)), fuyo:Math.max(1,Math.round(n*0.1)), h:{}};
+  if(!M.val) M.val={}; for(const k in d) if(M.val[k]==null) M.val[k]=d[k];
+  const hd={quitN:Math.max(1,Math.round(n*0.15)),quitCut:1,ad:300000,pay:250000,mon:6,vac:1,otN:0,otH:5,otW:1500,yuN:0,earlyN:0,earlyMon:3,q1:false,q2:false,q3:false,q4:false,q5:false,q6:false,q7:false,q8:false,q9:false,q10:false,q11:false,upN:1,upH:5,upW:1500};
+  if(!M.val.hr) M.val.hr={}; for(const k in hd) if(M.val.hr[k]==null) M.val.hr[k]=hd[k];
+  return M.val }
+function upCalc(){const h=valState().hr;return h.upN*h.upH*h.upW*1.25*36}
+function hrCalc(){ const h=valState().hr, plan=M.plan;
+  const on2=plan!=='p1', on3=plan==='p3';
+  const fill=h.pay*0.25*h.vac, loss=h.ad+h.pay*h.mon*0.5+fill, quit=on2?h.quitCut*loss:0;
+  const ot=on2?h.otN*h.otH*h.otW*1.25*12:0, yu=on2?h.yuN*300000:0;
+  const earlyLoss=h.ad+h.pay*h.earlyMon*0.5, early=on3?h.earlyN*earlyLoss:0;
+  return {on2,on3,loss,fill,quit,ot,yu,earlyLoss,early,save:quit+ot+early+yu} }
+function valCalc(){ const v=valState(), n=Math.max(1,parseInt(M.people)||1); let rows=[], hrs=0;
+  VAL_H.forEach(r=>{ if(!r.on()) return; const per = v.h[r.id]!=null? v.h[r.id] : (r.f? Math.round(r.f(n)*10)/10 : r.h); const q=r.q(v); const t=per*q; hrs+=t; rows.push({...r,per,q,t}); });
+  const c=calc(); return {rows,hrs,yenSelf:Math.round(hrs*v.wage), consult:Math.round((+v.consult||0)*10000), fee:c.total*12, monthly:c.total, n} }
+let valMore=false;
+function valLose(r,v){ if(v.mode==='has') return false; const H=hrCalc(), hrv=H.on2?H.save:0; return r.fee>0 && (r.yenSelf+r.consult+hrv)<r.fee }
+function valRiskHTML(v){ const h=v.hr; const n=[h.q1&&'固定残業代',h.q2&&'管理職の扱い',(h.q3||h.q4)&&'労働時間の数え方'].filter(Boolean).join('・'); let o='';
+  if(h.q1||h.q2||h.q3||h.q4) o+=`<div class="risk"><div class="sl">もしもの試算：未払い残業代（合計には含めていません）</div><div class="sv">最大 約 ${yen(Math.round(upCalc()/1000)*1000)}</div><div class="ss">気になる点：${n}。もし${h.upN}人に月${h.upH}時間ずつ未払いがあると、さかのぼって3年分を請求される可能性があります。裁判になると、同じ額の「付加金」を上乗せされることもあります。</div><div class="sn">※ 仮定の試算です。ご契約後、最初の「職場の健康診断レポート」で実際の数字を確かめます。</div></div>`;
+  if(h.q5) o+=`<div class="risk" style="border-color:#C79A1E"><div class="sl" style="color:#8A6A12">気になる点：労災</div><div class="ss">労災の手続きは「労災サポートパック」でまとめてお受けできます。重い事故では、労災保険の給付とは別に、会社が損害賠償を求められることがあります。その備えとして、社労士の顧問先向けの労災の上乗せ保険もご紹介できます（ご紹介のみ。詳しくは保険会社から）。60歳以上の方が働いている場合は、転倒や腰痛などを防ぐ対策の費用を補助する「エイジフレンドリー補助金」（厚生労働省）を使える場合があり、申請もお手伝いします。</div></div>`;
+  const T={q6:['36協定の代表','36協定の従業員の代表は、従業員が選ぶものです。会社が指名した人では協定が無効になるおそれがあり、その場合は残業させること自体が違反になります。','代表の選び方と、従業員と話し合う場のつくり方からお手伝いします。'],q7:['辞めた理由が分からない','理由が分からないままだと、同じ理由で辞める人が続きます。','退職者面談や定期的な面談を設計し、記録を読み解いて原因を見つけます（面談の分析レポート）。'],q8:['仕事や残業の偏り','偏りは、その人の離職や体調の悪化、残業代の増加につながります。','勤怠のデータで偏りを見える形にし、仕事の割り振りを一緒に見直します。'],q9:['スキルや生産性','育つ道筋が見えないと、意欲のある人ほど離れていきます。','定期的な面談を設計して、キャリアの希望や悩みを聞き出し、育成と評価の仕組みにつなげます。'],q10:['心の不調での休職','不調は、気づくのが遅れるほど休みが長くなりがちです。','面談で早めに変化に気づける仕組みをつくり、休職・復職のルールも整えます。'],q11:['ハラスメントの対策','ハラスメントを防ぐための措置は、中小企業も2022年4月から義務になっています。','方針づくりと相談窓口の設計、管理職への伝え方まで支えます。']};
+  const on=Object.keys(T).filter(k=>h[k]);
+  if(on.length) o+=`<div class="risk" style="border-color:#355269"><div class="sl" style="color:#0D1B42">気になる点と、当事務所でできること</div>${on.map(k=>`<div class="ss" style="margin-top:8px"><b>${T[k][0]}</b>：${T[k][1]}<br>→ ${T[k][2]}</div>`).join('')}</div>`;
+  return o }
+function renderVal(){ const v=valState(), r=valCalc(), H=hrCalc(), h=v.hr, none=v.mode!=='has';
+  const inp=(k,unit,w)=>`<input type="text" inputmode="numeric" data-hr="${k}" value="${h[k]}" style="width:${w||70}px">${unit}`;
+  const ck=(k,t)=>`<label class="mq"><input type="checkbox" data-uq="${k}" ${h[k]?'checked':''}> ${t}</label>`;
+  $('valSheet').innerHTML=`<div class="val">
+  <h3>顧問の価値（${esc(M.company||'貴社')}の場合の目安）</h3>
+  <p class="sub">${esc(calc().p.name)}・${r.n}人でお任せいただいた場合の、1年間の目安です。</p>
+  <div class="mode"><button type="button" data-mode="none" class="${none?'on':''}">今は社労士に頼んでいない</button><button type="button" data-mode="has" class="${!none?'on':''}">今、社労士に頼んでいる</button></div>
+  <div class="ins qk">
+    ${none?`<label>作業する方の時給 <input type="text" inputmode="numeric" id="vWage" value="${v.wage}" style="width:80px">円</label>
+    <label>相談したいこと 年 <input type="text" inputmode="numeric" id="vCons" value="${v.consult}" style="width:48px">回</label>`:`<label>今の社労士に払っている月額 <input type="text" inputmode="numeric" id="vCur" value="${v.curFee||''}" style="width:100px">円（税別）</label>`}
+    ${H.on2?`<label>1年に辞める人 <input type="text" inputmode="numeric" id="vQuit" value="${h.quitN}" style="width:48px">人</label>`:''}
+  </div>
+  <p class="hint" style="margin:4px 0 0">数字は、お話を伺いながらその場で直せます。${none?'相談は、顧問契約がない場合の面談料（30分5,000円）で、1回1時間として換算しています。':'手続きや給与計算はすでに任せている前提で、差額と、その差額で加わるものを比べます。'}</p>
+  <div id="vRes">${valResHTML(r,v)}</div>
+  <div id="vRisk">${valRiskHTML(v)}</div>
+  <h4>気になる点（当てはまるものに☑）</h4>
+  <div class="hrc"><b>お金・法律のリスク</b>${ck('q1','固定残業代（みなし残業代）を払っている')}${ck('q2','「管理職」として残業代を払っていない人がいる')}${ck('q3','タイムカードと実際の時刻がずれている、または残業を15分・30分単位で切り捨てている')}${ck('q5','仕事中のけが（労災）が年に1件以上ある、または、いつ起きるか不安')}${ck('q6','36協定を、従業員の代表と話し合わずに作っている')}</div>
+  <div class="hrc"><b>人と組織</b>${ck('q7','辞めた人の本当の理由が、よく分からない')}${ck('q8','仕事や残業が、特定の人に偏っている')}${ck('q9','従業員のスキルや生産性が、なかなか上がらない')}${ck('q10','心の不調で、休職した従業員がいる')}${ck('q11','ハラスメントの対策をしていない（方針・相談窓口・研修など）')}</div>
+  <h4 id="vValH">${valLose(r,v)?'この差で備えること（お金に換えにくい価値）':'お金に換えにくい価値'}</h4>
+  <ul>
+    <li><b>迷ったときに、すぐ聞ける</b>：労務のことはChatworkでご相談いただけます。原則、翌営業日までにお返事し、やり取りはいつでも後から確認できます。自分で調べて判断を誤るリスクを減らせます。</li>
+    <li><b>期限の遅れ・誤りを防ぐ</b>：手続きの遅れは、従業員の保険証や給付の遅れにつながります。</li>
+    <li><b>いつでも進み具合が分かる</b>：手続きが終わって控え（公文書）を保管したときや、給与計算が確定したときは、御社のChatworkに自動で通知が届きます。「あの手続き、どうなった？」と電話で確かめる必要はありません。</li>
+    <li><b>未払い残業などのリスクを減らす</b>：残業代は過去3年分までさかのぼって請求されることがあり、1人分でも大きな金額になりえます。</li>
+    <li><b>労基署の調査や労使トラブルへの備え</b>：書類と記録が整っていれば、慌てずに対応できます。</li>
+    <li><b>使える助成金を取り逃さない</b>：こちらからお知らせし、申請まで行います（別料金）。</li>
+    <li><b>書類を探さなくていい</b>：手続きの控え（公文書）は、いつでも見返せる場所に保管します。</li>
+  </ul>
+  <details id="vMore" ${valMore?'open':''}><summary>くわしい数字（開くと前提を変えられます）</summary>
+  ${none?`
+  <div class="ins">
+    <label>1年間の入社・退社 <input type="text" inputmode="numeric" id="vInout" value="${v.inout}">人</label>
+    <label>1年間の扶養の変更 <input type="text" inputmode="numeric" id="vFuyo" value="${v.fuyo}">件</label>
+  </div>
+  <p class="hint" style="margin:6px 0 0">時給の目安：社長がご自身で行う場合は5,000円以上、事務の方なら1,500〜2,000円など。</p>
+  <h4>社内で行った場合の時間</h4>
+  <table><thead><tr><th>作業</th><th>目安</th><th class="r">回数（1年）</th><th class="r">時間（1年）</th></tr></thead><tbody>
+  ${r.rows.map(x=>`<tr><td>${esc(x.nm)}</td><td><input type="text" inputmode="decimal" data-vh="${x.id}" value="${x.per}">時間／${esc(x.u)}</td><td class="r" id="vq-${x.id}">${x.q%1?x.q.toFixed(1):x.q}</td><td class="r" id="vt-${x.id}">${(Math.round(x.t*10)/10)}時間</td></tr>`).join('')}
+  </tbody></table>
+  <p class="hint">※ 時間は、手続きに慣れていない方が調べながら行う場合の目安です。</p>`:''}
+  ${H.on2?`<h4>人事の取り組みの効果</h4>
+    <div class="hrc"><b>① 退職を減らす</b>
+      <div class="hri">1人辞めたときの損失＝ 求人の費用 ${inp('ad','円',90)} ＋ 新しい人が一人前になるまでの給与の半分（月給 ${inp('pay','円',90)} × ${inp('mon','か月',40)}）＋ 次の人が来るまでの ${inp('vac','か月',40)}、ほかの人が残業で埋める割増分（月給の25%×月数＝<span id="hf">${yen(H.fill)}</span>）</div>
+      <div class="hri">→ 1人あたり <b id="hl">${yen(H.loss)}</b>。辞める人のうち ${inp('quitCut','人',40)} 減らせたら <b class="hv" id="hq">${yen(H.quit)}</b></div></div>
+    <div class="hrc"><b>② 残業代を減らす</b><span class="hint">（仕事が特定の人に集中している場合に、割り振りを見直す）</span>
+      <div class="hri">${inp('otN','人',40)} の残業が、1人あたり月 ${inp('otH','時間',40)} 減ると（時給 ${inp('otW','円',70)} × 1.25 × 12か月）→ 1年で <b class="hv" id="ho">${yen(H.ot)}</b></div></div>
+    <div class="hrc"><b>③ 有給休暇の年5日の義務を守る</b>
+      <div class="hri">このままだと年5日に届かない人が ${inp('yuN','人',40)}。法律上は1人につき30万円以下の罰金の対象 → 防げるリスク <b class="hv" id="hy">${yen(H.yu)}</b><span class="hint">（罰金の上限で計算）</span></div></div>
+    ${H.on3?`<div class="hrc"><b>④ 入社してすぐ辞める人を減らす（採用プロデュース）</b>
+      <div class="hri">1人あたり＝ 求人の費用（①と同じ）＋ 在籍した ${inp('earlyMon','か月',40)} の給与の半分 → <b id="hel">${yen(H.earlyLoss)}</b>。1年に ${inp('earlyN','人',40)} 減らせたら <b class="hv" id="he">${yen(H.early)}</b></div></div>`:''}
+    <p class="hint">※ 数字は例です。効果を約束するものではありません。</p>`:''}
+  <h4>未払い残業代の試算の前提</h4><div class="hrc"><div class="hri" style="margin-top:8px">もし ${inp('upN','人',40)}に、1人あたり月 ${inp('upH','時間',40)}の未払いがあったら（時給 ${inp('upW','円',70)} × 1.25 × 最大3年＝36か月）→ <b class="hv" id="hup">${yen(upCalc())}</b></div></div>
+  </details>
+  <div class="actions"><button class="btn solid" data-close style="color:var(--yoru)">閉じる</button></div></div>`;
+  const num=x=>{const t=String(x).replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-65248)).replace(/[^0-9.]/g,'');return t===''?null:+t};
+  const bind=(el,set)=>{ if(!el) return; el.oninput=()=>{const n=num(el.value); if(n==null) return; set(n); save(MKEY,M); updateVal()};
+    el.onblur=()=>{ if(num(el.value)==null){ renderVal() } } };
+  bind($('vWage'),n=>v.wage=n); bind($('vInout'),n=>{v.inout=n;v.inoutEdited=true}); bind($('vFuyo'),n=>v.fuyo=n);
+  bind($('vCur'),n=>v.curFee=n); bind($('vCons'),n=>v.consult=n);
+  bind($('vQuit'),n=>{v.hr.quitN=n; if(!v.inoutEdited) v.inout=Math.max(2,n*2); const io=$('vInout'); if(io) io.value=v.inout});
+  $('vMore').ontoggle=()=>{valMore=$('vMore').open};
+  document.querySelectorAll('#valSheet [data-mode]').forEach(b=>b.onclick=()=>{v.mode=b.dataset.mode;save(MKEY,M);renderVal()});
+  document.querySelectorAll('#valSheet [data-vh]').forEach(i=>bind(i,n=>v.h[i.dataset.vh]=n));
+  document.querySelectorAll('#valSheet [data-hr]').forEach(i=>bind(i,n=>v.hr[i.dataset.hr]=n));
+  document.querySelectorAll('#valSheet [data-uq]').forEach(c=>c.onchange=()=>{v.hr[c.dataset.uq]=c.checked;save(MKEY,M);updateVal()});
+  $('valSheet').querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>$('valModal').classList.remove('open'));
+}
+function valResHTML(r,v){ const H=hrCalc(), hrv=H.on2?H.save:0, k=x=>yen(Math.round(x/1000)*1000);
+  if(v.mode==='has'){ const cur=(+v.curFee||0)*12, diff=r.fee-cur, plan=M.plan;
+    const adds=plan==='p1'?['労務相談（Chatwork）','法改正の情報と、御社に関係があるかのお知らせ','使えそうな助成金のお知らせ']:['契約してすぐ、職場の健康診断レポート','3か月ごとのレポートと面談（働いた時間に対して休めているか、辞める前の兆しを見つけて次の一手を）','評価S・Aなど失いたくない人から先に手を打つ','「育てるサービス」の多くが半額'].concat(plan==='p3'?['採用の設計・求人票・面接の改善']:[]);
+    return `<div class="big">
+      <div class="box"><div class="l">今の社労士の顧問料（1年間）</div><div class="v">${cur?yen(cur):'—'}</div><div class="s">月額 ${yen(+v.curFee||0)}（税別）</div></div>
+      <div class="box k"><div class="l">当事務所の顧問料（1年間）</div><div class="v">${yen(r.fee)}</div><div class="s">月額 ${yen(r.monthly)}（税別）</div><div class="s" style="margin-top:8px">${!cur?'今の月額を入れると差額が出ます。':diff<=0?`今より 年${yen(-diff)} 低い金額です。`:`差額は 年${yen(diff)}（月${yen(Math.round(diff/12))}）です。`}</div></div>
+    </div>
+    <div class="save"><div class="sl">${!cur?'当事務所に切り替えると加わるもの':diff<=0?'今より低い顧問料で、さらに加わるもの':'この差額で加わるもの'}</div>
+      <ul style="margin:6px 0 0;padding-left:1.2em;font-size:14px">${adds.map(x=>`<li>${x}</li>`).join('')}</ul>
+      ${H.on2&&hrv?`<div class="sv" style="margin-top:8px">人事の取り組みの効果 約 ${k(hrv)}</div><div class="ss">${cur&&diff>0?`差額の約${(hrv/diff).toFixed(1)}倍。`:''}（${[['退職を減らす',H.quit],['残業代を減らす',H.ot],['有給5日の罰金リスク',H.yu],['早期離職を減らす',H.early]].filter(x=>x[1]>0).map(x=>x[0]+' '+k(x[1])).join('・')}）</div>`:''}
+      <div class="sn">※ 今の事務所のサービス内容と比べるものではありません。当事務所でお受けする内容と、その目安です。</div></div>`; }
+  const tot=r.yenSelf+r.consult+hrv, ratio=r.fee?tot/r.fee:0;
+  return `<div class="big">
+    <div class="box"><div class="l">当事務所に任せることで生まれる価値（1年間）</div><div class="v">${k(tot)}<span style="font-size:.55em;font-weight:500">（約）</span></div>
+      <div class="s" style="margin-top:8px">作業時間を減らす：約 ${k(r.yenSelf)}<br>（社内で約${Math.round(r.hrs)}時間＝月に約${(r.hrs/12).toFixed(1)}時間、時給${yen(v.wage)}で換算）</div>
+      ${r.consult?`<div class="s" style="margin-top:6px">相談：約 ${k(r.consult)}<br>（年${v.consult}回、顧問契約がない場合の面談料30分5,000円・1回1時間で換算）</div>`:''}
+      ${H.on2?`<div class="s" style="margin-top:6px">人事の取り組みの効果：約 ${k(hrv)}<br>（${[['退職を減らす',H.quit],['残業代を減らす',H.ot],['有給5日の罰金リスク',H.yu],['早期離職を減らす',H.early]].filter(x=>x[1]>0).map(x=>x[0]+' '+k(x[1])).join('・')||'入力なし'}）</div>`:''}</div>
+    <div class="box k"><div class="l">当事務所の顧問料（1年間）</div><div class="v">${yen(r.fee)}</div><div class="s">月額 ${yen(r.monthly)}（税別）</div><div class="s" style="margin-top:10px">浮いた時間を、本業・売上をつくる仕事に使えます。</div></div>
+  </div>
+  ${ratio>=1?`<p class="msg">顧問料の約${ratio.toFixed(1)}倍の価値になります。</p><div class="save"><div class="sl">顧問料を差し引いても、1年で</div><div class="sv">約 ${k(tot-r.fee)} 浮く計算です</div><div class="ss">浮いたお金は、賃上げ・設備・採用など、会社を育てることに回せます。</div><div class="sn">※ 時間をお金に換えた額や、防げるリスクを含む目安です。そのまま現金が増えるわけではありません。</div></div>`:`<p class="msg">作業時間と相談だけで比べると、顧問料のほうが年 ${k(r.fee-tot)} 高くなります。</p><p class="hint" style="margin-top:4px">この差は、作業の代わりではなく、下の${(['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10','q11'].some(k=>v.hr[k]))?'「気になる点」や':''}「お金に換えにくい価値」への備えです。</p>`}`}
+function updateVal(){ const v=valState(), r=valCalc(); if($('vRes')) $('vRes').innerHTML=valResHTML(r,v); if($('vRisk')) $('vRisk').innerHTML=valRiskHTML(v); if($('vValH')) $('vValH').textContent=valLose(r,v)?'この差で備えること（お金に換えにくい価値）':'お金に換えにくい価値';
+  const H=hrCalc(); [['hup',upCalc()],['hq',H.quit],['hl',H.loss],['hf',H.fill],['ho',H.ot],['hy',H.yu],['he',H.early],['hel',H.earlyLoss]].forEach(([id,x])=>{const e=$(id); if(e) e.textContent=yen(Math.round(x))});
+  r.rows.forEach(x=>{ const q=$('vq-'+x.id), t=$('vt-'+x.id); if(q) q.textContent=x.q%1?x.q.toFixed(1):x.q; if(t) t.textContent=(Math.round(x.t*10)/10)+'時間' }) }
+function renderValKeep(id,vh){ const sc=$('valModal').scrollTop; renderVal(); $('valModal').scrollTop=sc;
+  const el= id? $(id) : document.querySelector(`[data-vh="${vh}"]`); if(el){el.focus(); const L=el.value.length; try{el.setSelectionRange(L,L)}catch(e){}} }
+$('valBtn').onclick=()=>{renderVal();$('valModal').classList.add('open');$('valModal').scrollTop=0};
+$('sumBtn').onclick=()=>{
+  const {c,trIn,trOut}=summaryData();
+  const li=a=>a.length?`<ul>${a.join('')}</ul>`:'<p class="hint">なし</p>';
+  $('sumSheet').innerHTML=`
+    <h3>ヒアリングのまとめ</h3>
+    <p class="sub">${esc(M.company||'（会社名未入力）')}　${esc(M.date)}　｜　${esc(c.p.name)}　人数${c.n}人</p>
+    <h4>お困りの手続きのうち、顧問料に含まれるもの（${trIn.length}件）</h4>${li(trIn.map(i=>`<li>${esc(i.n)} <span class="hint">${esc(tagOf(i.id))}</span></li>`))}
+    <h4>お困りの手続きのうち、スポットで承るもの（${trOut.length}件）</h4>${li(trOut.map(i=>`<li>${esc(i.n)}${M.who[i.id]?` <span class="hint">現在：${WHO[M.who[i.id]]}</span>`:''}</li>`))}
+    ${trOut.length?'<p class="hint">社内で対応できるようにするご支援（手順書づくり・電子申請の導入・提出前のチェックなど）もご相談ください。</p>':''}
+    <h4>月額顧問料の内訳（税別）</h4>
+    <table class="ptable">${c.lines.map(l=>`<tr><td>${esc(l[0])}</td><td style="text-align:right;white-space:nowrap">${yen(l[1])}</td></tr>`).join('')}</table>
+    <div class="tot"><span>月額顧問料（税別）</span><span class="yen">${yen(c.total)}</span></div>
+    <div class="actions"><button class="btn light" id="copySum">文章をコピー</button><button class="btn solid" data-close style="color:var(--yoru)">閉じる</button></div>
+    <p class="hint" style="text-align:right;margin:6px 0 0">コピーした文章は、メールやメモに貼り付けて使えます。</p>`;
+  $('sumModal').classList.add('open');
+  $('copySum').onclick=async()=>{ try{await navigator.clipboard.writeText(summaryText());toast('まとめをコピーしました')}catch(e){toast('コピーできませんでした。画面の文字を選択してコピーしてください')} };
+};
+
+/* ===== 料金の設定（事務所用） ===== */
+$('gearBtn').onclick=openSettings;
+function spotText(id){const t=PROPOSAL[id]?.s||'';return t+'（顧問先 '+memberPrice(t)+'）'}
+function memberPrice(t){ if(/成功報酬|お見積り/.test(t)) return t; return t.replace(/([\d,]+)円/g,(m,n)=>{const v=Math.round(parseInt(n.replace(/,/g,''))*0.9/500)*500;return v.toLocaleString('ja-JP')+'円'}); }
+function num(id,v,w=100){return `<input type="number" step="500" id="${id}" value="${v}" style="width:${w}px">`}
+function openSettings(){
+  const spotRows=GROUPS.map(g=>`<tr><td class="g" colspan="4">${esc(g.t)}</td></tr>`+g.items.map(it=>`<tr><td>${esc(it.n)}</td><td class="hint">${esc(tagOf(it.id))}</td><td class="hint">${esc(PROPOSAL[it.id]?.s||'')}</td><td class="hint">${esc(memberPrice(PROPOSAL[it.id]?.s||''))}</td></tr>`).join('')).join('');
+  $('setSheet').innerHTML=`
+    <h3>料金の設定（事務所用）</h3>
+    <p class="sub">この設定は、この端末のブラウザにだけ保存されます。打ち合わせで使う端末で設定してください。金額はすべて税別です。</p>
+    <h4>顧問プラン</h4>
+    <div class="planedit">${S.plans.map(p=>`<div><b class="serif">${esc(p.name)}</b>
+      <label>基本料金<input type="number" step="500" data-plan="${p.id}" data-f="base" value="${p.base}"></label>
+      <label>人数による加算<input type="number" step="500" data-plan="${p.id}" data-f="step" value="${p.step}"></label></div>`).join('')}</div>
+    <p class="hint" style="margin-top:8px">基本料金に含む人数：${num('baseUpTo',S.baseUpTo,64)}人まで　／　${num('stepSize',S.stepSize,64)}人ごとに加算（プランとパック共通）</p>
+    <h4>基本の手続きと給与計算</h4>
+    <p class="hint">入社・退社・扶養：1人 ${num('procUnit',S.procUnit,90)}円　最低 ${num('procMin',S.procMin)}円<br>
+      給与計算：基本 ${num('payBase',S.payBase)}円　＋1人 ${num('payPer',S.payPer,90)}円</p>
+    <h4>パック</h4>
+    <table class="ptable"><tr><th>パック</th><th>9人までの月額</th><th>人数による加算</th></tr>
+      ${PACKS.map(pk=>`<tr><td>${esc(pk.name)}</td><td><input type="number" step="500" data-pk="${pk.id}" data-f="base" value="${S.pack[pk.id].base}"></td><td><input type="number" step="500" data-pk="${pk.id}" data-f="step" value="${S.pack[pk.id].step}"></td></tr>`).join('')}
+    </table>
+    <h4>見積書</h4>
+    <p class="hint">インボイス登録番号 <input id="invoiceNo" value="${esc(S.invoiceNo||'')}" placeholder="T1234567890123" style="width:180px;min-height:32px">　有効期限 発行日から <input type="number" id="quoteDays" value="${S.quoteDays||30}" style="width:64px;min-height:32px">日</p>
+    <h4>スポット料金（税別／顧問先は1割引き）</h4>
+    <p class="hint">お客様の画面には出ません。相場の約1.1倍を目安に、500円単位で丸めています。</p>
+    <table class="ptable"><tr><th>手続き</th><th>区分</th><th>スポット料金（通常）</th><th>顧問先（1割引き）</th></tr>${spotRows}</table>
+    <h4>設定のバックアップ</h4>
+    <p class="hint">別の端末に移すときは、「設定をコピー」で出てくる文字を、移した先の端末で貼り付けて「読み込む」を押してください。</p>
+    <textarea class="io" id="ioText"></textarea>
+    <div class="actions">
+      <button class="btn light" id="exportBtn">設定をコピー</button>
+      <button class="btn light" id="importBtn">貼り付けた設定を読み込む</button>
+      <button class="btn solid" id="saveSet" style="color:var(--yoru)">保存して閉じる</button>
+    </div>`;
+  $('setModal').classList.add('open');
+  $('exportBtn').onclick=async()=>{ const t=JSON.stringify(S); $('ioText').value=t; try{await navigator.clipboard.writeText(t);toast('設定をコピーしました')}catch(e){toast('上の枠の文字を選択してコピーしてください')} };
+  $('importBtn').onclick=()=>{ try{const v=JSON.parse($('ioText').value); if(!v.plans) throw 0; S=merge(DEFAULT_SETTINGS,v); save(SKEY,S); $('setModal').classList.remove('open'); renderAll(); toast('設定を読み込みました')}catch(e){toast('読み込めませんでした。コピーした文字をそのまま貼り付けてください')} };
+  $('saveSet').onclick=()=>{
+    const sh=$('setSheet'), iv=el=>Math.max(0,parseInt(el.value)||0);
+    sh.querySelectorAll('[data-plan]').forEach(i=>{S.plans.find(x=>x.id===i.dataset.plan)[i.dataset.f]=iv(i)});
+    sh.querySelectorAll('[data-pk]').forEach(i=>{S.pack[i.dataset.pk][i.dataset.f]=iv(i)});
+    ['baseUpTo','procUnit','procMin','payBase','payPer','setRate'].forEach(k=>S[k]=iv($(k)));
+    S.invoiceNo=$('invoiceNo').value.trim(); S.quoteDays=Math.max(1,iv($('quoteDays'))||30);
+    S.stepSize=Math.max(1,iv($('stepSize'))); S.setRate=Math.min(100,S.setRate);
+    save(SKEY,S); $('setModal').classList.remove('open'); renderAll(); toast('料金の設定を保存しました');
+  };
+}
+
+/* ===== 見積書 ===== */
+const OFFICE = {name:'育守法務事務所', title:'社会保険労務士', rep:'稲石 楓季', addr:'北海道札幌市厚別区', tel:'', mail:'ex.houmu@gmail.com', web:'https://exhoumu.github.io/'};
+if(S.invoiceNo===undefined) S.invoiceNo='';
+if(S.quoteDays===undefined) S.quoteDays=30;
+let Q = null;
+function addDays(d,n){const x=new Date(d+'T00:00:00');x.setDate(x.getDate()+n);return x.toISOString().slice(0,10)}
+function jdate(d){if(!d)return'';const [y,m,dd]=d.split('-').map(Number);return `${y}年${m}月${dd}日`}
+function setupFee(n){return n<=9?10000:n<=29?20000:30000}
+function newQuote(){
+  const today=new Date().toISOString().slice(0,10);
+  return {no:'IKS-'+today.replace(/-/g,'')+'-01', date:today, until:addDays(today,S.quoteDays), corp:true, extras:[], memo:''};
+}
+function isCorp(){return (M.entity||'corp')!=='sole'}
+function quoteHTML(){
+  const c=calc();
+  const monthly=c.lines.map(l=>({n:l[0],a:l[1]}));
+  const exM=Q.extras.filter(e=>e.kind==='m'&&e.n&&e.a>0), exO=[...(M.payroll?[{n:`給与計算の初期設定（初回のみ・${c.n<=9?'9人まで':c.n<=29?'10〜29人':'30人以上'}）`,a:setupFee(c.n)}]:[]),...Q.extras.filter(e=>e.kind==='o'&&e.n&&e.a>0)], dM=Q.extras.filter(e=>e.kind==='dm'&&e.a>0), dO=Q.extras.filter(e=>e.kind==='do'&&e.a>0);
+  const mSub=Math.max(0,monthly.reduce((s,x)=>s+x.a,0)+exM.reduce((s,x)=>s+x.a,0)-dM.reduce((s,x)=>s+x.a,0));
+  const mTax=Math.floor(mSub*0.1), mTot=mSub+mTax;
+  const oSub=Math.max(0,exO.reduce((s,x)=>s+x.a,0)-dO.reduce((s,x)=>s+x.a,0)), oTax=Math.floor(oSub*0.1), oTot=oSub+oTax;
+  const gen=a=>Math.floor(a*0.1021);
+  const row=(n,a,k)=>`<tr><td>${esc(n)}</td><td class="k">${k}</td><td class="a">${yen(a)}</td></tr>`;
+  const drow=(n,a)=>`<tr class="disc"><td>${esc(n||'お値引き')}</td><td class="k">値引き</td><td class="a">−${yen(a)}</td></tr>`;
+  return `<div class="qdoc">
+  <div class="qtop">
+    <div><h1>御見積書</h1></div>
+    <div class="qmeta"><div>見積番号　${esc(Q.no)}</div><div>発行日　${jdate(Q.date)}</div><div>有効期限　${jdate(Q.until)}</div></div>
+  </div>
+  <div class="qhead">
+    <div class="qto">
+      <div class="corp">${esc(M.company||'　　　　　　　　')}　${isCorp()?'御中':'様'}</div>
+      <p>下記のとおり、お見積り申し上げます。</p>
+      <div class="sum"><span>月額顧問料（税込）</span><b>${yen(mTot)}</b></div>
+      ${exO.length?`<div class="sum s2"><span>そのほか（一時・税込）</span><b>${yen(oTot)}</b></div>`:''}
+      <p class="cond">ご検討のプラン：${esc(c.p.name)}　／　人数（給与を支払う全員・役員を含む）：${c.n}人</p>
+    </div>
+    <div class="qfrom">
+      <div class="on">社会保険労務士事務所</div>
+      <div class="onm">${OFFICE.name}</div>
+      <div>${OFFICE.title}　${OFFICE.rep}</div>
+      <div>${OFFICE.addr}</div>
+      ${OFFICE.tel?`<div>電話 ${OFFICE.tel}</div>`:""}
+      <div>${OFFICE.mail}</div>
+      ${S.invoiceNo?`<div>登録番号　${esc(S.invoiceNo)}</div>`:''}
+    </div>
+  </div>
+  <h2>月額のご料金</h2>
+  <table class="qt"><thead><tr><th>項目</th><th class="k">区分</th><th class="a">金額（税別）</th></tr></thead><tbody>
+    ${monthly.map(x=>row(x.n,x.a,'月額')).join('')}
+    ${exM.map(x=>row(x.n,x.a,'月額')).join('')}
+    ${dM.map(x=>drow(x.n,x.a)).join('')}
+  </tbody><tfoot>
+    <tr><td colspan="2">小計（税別）</td><td class="a">${yen(mSub)}</td></tr>
+    <tr><td colspan="2">消費税（10%）</td><td class="a">${yen(mTax)}</td></tr>
+    <tr class="qtot"><td colspan="2">月額合計（税込）</td><td class="a">${yen(mTot)}</td></tr>
+    ${isCorp()?`<tr class="gs"><td colspan="2">源泉徴収税額（税別金額の10.21%）</td><td class="a">−${yen(gen(mSub))}</td></tr>
+    <tr class="gs"><td colspan="2">差引お支払額（月額）</td><td class="a">${yen(mTot-gen(mSub))}</td></tr>`:''}
+  </tfoot></table>
+  ${exO.length?`<h2>そのほか（一時のご料金）</h2>
+  <table class="qt"><thead><tr><th>項目</th><th class="k">区分</th><th class="a">金額（税別）</th></tr></thead><tbody>
+    ${exO.map(x=>row(x.n,x.a,'一時')).join('')}
+    ${dO.map(x=>drow(x.n,x.a)).join('')}
+  </tbody><tfoot>
+    <tr><td colspan="2">小計（税別）</td><td class="a">${yen(oSub)}</td></tr>
+    <tr><td colspan="2">消費税（10%）</td><td class="a">${yen(oTax)}</td></tr>
+    <tr class="qtot"><td colspan="2">合計（税込）</td><td class="a">${yen(oTot)}</td></tr>
+    ${isCorp()&&oSub?`<tr class="gs"><td colspan="2">源泉徴収税額（税別金額の10.21%）</td><td class="a">−${yen(gen(oSub))}</td></tr>
+    <tr class="gs"><td colspan="2">差引お支払額（一時）</td><td class="a">${yen(oTot-gen(oSub))}</td></tr>`:''}
+  </tfoot></table>`:''}
+  <h2>ご契約の条件</h2>
+  <ul class="qn">
+    <li>ご契約は期間の定めがなく、自動で継続します。解約は3か月前までにお申し出ください。</li>
+    <li>年の途中で人数が増えても、次の見直し（毎年10月分）まで顧問料は変わりません。</li>
+    <li>上位プランへの変更はいつでも承ります。下位プランへの変更とパックの追加・取りやめは、毎年9月30日までにお申し出いただき、10月分（11月のご請求分）から反映します。人数も9月30日時点（同日に退職する方を除く）で数え、同じく10月分から見直します。</li>
+    <li>顧問料は月末締め・翌月末払いです。口座振替（翌月の所定の振替日に引き落とし）を原則とし、お振込みの場合は翌月末日までにお支払いください（振込手数料はお客様のご負担）。</li>
+    <li>上記に含まれない手続きは、スポットで承ります。顧問契約のお客様はスポット料金を1割引きとし、月末締めで顧問料と一緒にご請求します。年末調整は承っておりません。</li>
+    ${isCorp()?'<li>法人のお客様は、報酬から源泉所得税を差し引いてお支払いください。</li>':''}
+    <li>人数が変わった場合は、変わった月の翌月分から月額を見直します。</li>
+  </ul>
+  ${Q.memo?`<h2>備考</h2><p class="memo">${esc(Q.memo).replace(/\n/g,'<br>')}</p>`:''}
+  </div>`;
+}
+function openQuote(){
+  if(!Q) Q=newQuote();
+  const ex=Q.extras.map((e,i)=>`<div class="qx"><input data-x="${i}" data-f="n" value="${esc(e.n)}" placeholder="項目（例：36協定届の作成・届出／開業記念のお値引き）"><input data-x="${i}" data-f="a" type="number" step="500" value="${e.a||''}" placeholder="金額（税別）"><select data-x="${i}" data-f="kind"><option value="o"${e.kind==='o'?' selected':''}>一時</option><option value="m"${e.kind==='m'?' selected':''}>月額</option><option value="dm"${e.kind==='dm'?' selected':''}>月額の値引き</option><option value="do"${e.kind==='do'?' selected':''}>一時の値引き</option></select><button class="btn light" data-xdel="${i}">削除</button></div>`).join('');
+  $('quoteSheet').innerHTML=`
+    <h3>見積書を作る</h3>
+    <p class="sub">いまのシミュレーターの内容から作ります。プランやパックを変えたい場合は、閉じてから選び直してください。</p>
+    <div class="qform">
+      <label>宛名（会社名・屋号）<input id="qCorp" value="${esc(M.company)}"></label>
+      <label>見積番号<input id="qNo" value="${esc(Q.no)}"></label>
+      <label>発行日<input type="date" id="qDate" value="${Q.date}"></label>
+      <label>有効期限<input type="date" id="qUntil" value="${Q.until}"></label>
+      <label>区分<select id="qEnt"><option value="corp">法人</option><option value="sole">個人事業主</option></select></label>
+    </div>
+    <div class="qextra"><b>項目を追加</b><span class="hint">スポットの手続きや就業規則の作成など、一時のご料金も入れられます。値引きは区分で「月額の値引き」「一時の値引き」を選び、金額を入れると、見積書に「−」で載ります。給与計算を選んでいると、初期設定料（9人まで10,000円／10〜29人20,000円／30人以上30,000円）が自動で入ります。いただかない場合は「一時の値引き」で同じ額を引いてください。</span>${ex}<button class="btn light" id="qAdd">＋ 項目を追加</button><button class="btn light" id="qDisc">＋ 値引きを追加</button></div>
+    <label class="qmemo">備考<textarea id="qMemo" rows="2">${esc(Q.memo)}</textarea></label>
+    ${S.invoiceNo?'':'<p class="hint">インボイスの登録番号は、料金の設定（歯車）で入れると見積書に表示されます。</p>'}
+    <div class="qprev"><div class="qscale" id="qScale">${quoteHTML()}</div></div>
+    <div class="actions"><span class="hint" id="qMsg"></span><button class="btn light" data-close>閉じる</button><button class="btn light" id="qHtml">HTMLで保存</button><button class="btn solid" id="qPdf" style="color:var(--yoru)">PDFで保存</button></div>`;
+  $('quoteModal').classList.add('open');
+  fitQuote();
+  const upd=()=>{ $('qScale').innerHTML=quoteHTML(); fitQuote(); };
+  $('qCorp').oninput=e=>{M.company=e.target.value;save(MKEY,M);$('company').value=M.company;upd()};
+  $('qNo').oninput=e=>{Q.no=e.target.value;upd()};
+  $('qDate').oninput=e=>{Q.date=e.target.value;Q.until=addDays(Q.date,S.quoteDays);$('qUntil').value=Q.until;upd()};
+  $('qUntil').oninput=e=>{Q.until=e.target.value;upd()};
+  $('qEnt').value=M.entity||'corp';
+  $('qEnt').onchange=e=>{M.entity=e.target.value;save(MKEY,M);$('entity').value=M.entity;upd()};
+  $('qMemo').oninput=e=>{Q.memo=e.target.value;upd()};
+  $('qAdd').onclick=()=>{Q.extras.push({n:'',a:0,kind:'o'});openQuote()};
+  $('qDisc').onclick=()=>{Q.extras.push({n:'お値引き',a:0,kind:'dm'});openQuote()};
+  $('quoteSheet').querySelectorAll('[data-x]').forEach(el=>{el.oninput=el.onchange=e=>{const x=Q.extras[+el.dataset.x];const f=el.dataset.f;x[f]=f==='a'?Math.max(0,parseInt(el.value)||0):el.value;upd()}});
+  $('quoteSheet').querySelectorAll('[data-xdel]').forEach(b=>b.onclick=()=>{Q.extras.splice(+b.dataset.xdel,1);openQuote()});
+  $('qPdf').onclick=savePdf; $('qHtml').onclick=saveHtml;
+}
+function fitQuote(){const box=document.querySelector('.qprev');const sc=$('qScale');if(!box||!sc)return;const w=box.clientWidth;const s=Math.min(1,w/794);sc.style.transform=`scale(${s})`;box.style.height=(sc.firstElementChild.offsetHeight*s+2)+'px'}
+window.addEventListener('resize',fitQuote);
+function qName(ext){return `御見積書_${(M.company||'お客様').replace(/[\\/:*?"<>|\s]/g,'')}_${Q.no}.${ext}`}
+let DL=null; (async()=>{try{if(window.claude&&claude.use) DL=await claude.use('downloads')}catch(e){DL=null}})();
+async function saveFile(name,data){
+  if(!DL){ $('qMsg').textContent='この画面では保存できません。claude.aiでアーティファクトを開いてお試しください。'; return }
+  try{ await DL.save({filename:name,data}); toast('保存しました') }
+  catch(e){ if(e&&e.code==='declined') return; $('qMsg').textContent='保存できませんでした（'+(e&&e.code||'エラー')+'）'; }
+}
+function loadScript(src){return new Promise((ok,ng)=>{const s=document.createElement('script');s.src=src;s.onload=ok;s.onerror=ng;document.head.appendChild(s)})}
+async function savePdf(){
+  $('qMsg').textContent='PDFを作っています…';
+  try{
+    if(!window.html2canvas) await loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js');
+    if(!window.jspdf) await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
+    const host=document.createElement('div');host.style.cssText='position:fixed;left:-10000px;top:0;width:794px;background:#fff';host.innerHTML=quoteHTML();document.body.appendChild(host);
+    await document.fonts.ready;
+    const canvas=await html2canvas(host.firstElementChild,{scale:2,backgroundColor:'#ffffff'});
+    host.remove();
+    const pdf=new jspdf.jsPDF({unit:'mm',format:'a4'});
+    const pw=210, ph=297, ih=canvas.height*pw/canvas.width;
+    const img=canvas.toDataURL('image/jpeg',0.92);
+    let y=0; pdf.addImage(img,'JPEG',0,0,pw,ih);
+    let left=ih-ph; while(left>0){ y-=ph; pdf.addPage(); pdf.addImage(img,'JPEG',0,y,pw,ih); left-=ph; }
+    $('qMsg').textContent='';
+    await saveFile(qName('pdf'), pdf.output('blob'));
+  }catch(e){ $('qMsg').textContent='PDFを作れませんでした。「HTMLで保存」をお試しください。'; }
+}
+function saveHtml(){
+  const css=document.getElementById('qcss').textContent;
+  const html=`<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><title>${esc(qName('').slice(0,-1))}</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600&display=swap"><style>body{margin:0;background:#eee}${css}@media print{body{background:#fff}.qdoc{box-shadow:none;margin:0}}.qdoc{margin:20px auto;box-shadow:0 2px 12px rgba(0,0,0,.15)}@page{size:A4;margin:0}</style></head><body>${quoteHTML()}</body></html>`;
+  saveFile(qName('html'), html);
+}
+$('quoteBtn').onclick=()=>{Q=null;openQuote()};
+
+renderAll();
+if(M.tab==='proc') showTab('proc');
+
+</script>
+</body>
+</html>
