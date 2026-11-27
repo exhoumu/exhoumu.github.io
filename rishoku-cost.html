@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>1人辞めると、いくらかかる？離職コストの計算｜育守法務事務所</title>
+<meta name="description" content="社員が1人辞めたときに会社が負担するコスト（育成の損失・後任の育成・採用費）を、御社の数字で計算できます。入力内容は送信・保存しません。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1人辞めると、いくらかかる？離職コストの計算｜育守法務事務所">
+<meta property="og:url" content="https://exhoumu.github.io/rishoku-cost.html">
+<meta property="og:image" content="https://exhoumu.github.io/img/ogp.jpg">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&amp;family=Noto+Serif+JP:wght@400;600&amp;display=swap">
+<link rel="stylesheet" href="css/site.css">
+<style>
+.rc-hero{padding:64px 0 36px;background:#0D1B42;color:#F7F4EA}
+.rc-hero .eyebrow{color:#C9B78A}
+.rc-hero h1{font-family:'Noto Serif JP',serif;font-weight:600;font-size:32px;line-height:1.5;letter-spacing:.06em;margin:0 0 14px}
+.rc-hero p{margin:0;font-size:15.5px;line-height:1.9;color:#DCE2EE}
+.rc{max-width:820px;margin:0 auto;padding:0 22px}
+.rc h2{font-family:'Noto Serif JP',serif;font-weight:600;font-size:21px;margin:40px 0 10px;letter-spacing:.04em}
+.rc .f{display:grid;grid-template-columns:1fr 200px;gap:10px 16px;align-items:center;background:#FCFBF5;border:1px solid #D9D2BF;padding:18px 20px}
+.rc .f label{font-size:15px;line-height:1.6}
+.rc .f label small{display:block;color:#355269;font-size:12.5px}
+.rc .f input,.rc .f select{font:inherit;font-size:16px;padding:8px 10px;border:1px solid #9AA6B8;border-radius:3px;width:100%;box-sizing:border-box;text-align:right;background:#fff}
+.rc .out{margin-top:18px;border:1px solid #0D1B42;background:#fff}
+.rc .out .tot{background:#0D1B42;color:#F7F4EA;padding:16px 20px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.rc .out .tot b{font-family:'Noto Serif JP',serif;font-size:30px;color:#F7F4EA}
+.rc .out table{width:100%;border-collapse:collapse;font-size:14.5px}
+.rc .out td{padding:10px 16px;border-top:1px solid #E5DFCF;line-height:1.6}
+.rc .out td.r{text-align:right;white-space:nowrap;font-weight:600}
+.rc .out td small{display:block;color:#355269;font-size:12.5px}
+.rc .note{font-size:13px;color:#355269;line-height:1.85}
+.rc .cta{background:#0D1B42;color:#F7F4EA;padding:26px 24px;margin:36px 0 64px}
+.rc .cta h3{font-family:'Noto Serif JP',serif;font-weight:600;font-size:20px;margin:0 0 10px}
+.rc .cta p{margin:0 0 16px;font-size:15px;line-height:1.9;color:#DCE2EE}
+.rc .cta .row{display:flex;gap:12px;flex-wrap:wrap}
+.rc .cta .sub{background:transparent;color:#F7F4EA !important;border:1px solid #F7F4EA}
+@media (max-width:640px){.rc .f{grid-template-columns:1fr}.rc-hero h1{font-size:25px}}
+</style>
+</head>
+<body>
+<div class="ik">
+
+  <header class="hd">
+    <div class="wrap">
+      <a class="logo" href="index.html"><small>社会保険労務士事務所</small><span>育守法務事務所</span></a>
+      <nav class="nav" aria-label="メインメニュー">
+        <a href="index.html#strength">強み</a>
+        <a href="index.html#omoi">想い</a>
+        <a href="index.html#service">支援内容</a>
+        <a href="price.html">料金</a>
+        <a href="blog/">ブログ</a>
+        <a href="index.html#profile">代表紹介</a>
+        <a class="btn" href="index.html#contact">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+  <section class="rc-hero"><div class="rc">
+    <p class="eyebrow">TURNOVER COST</p>
+    <h1>社員が1人辞めると、<br>いくらかかる？</h1>
+    <p>辞めた方の給与と在籍した期間、そして「辞めるとき、一人前の何割くらいだったか」という社長の見立てから、離職によって会社が負担したコストを計算します。入力した内容は、どこにも送信・保存しません。</p>
+  </div></section>
+  <div class="rc">
+    <h2>辞めた方について入れてください</h2>
+    <div class="f">
+      <label for="pay">月給（総支給）<small>時給の方は、ひと月のおおよその給与</small></label><input id="pay" type="number" inputmode="numeric" value="250000">
+      <label for="mon">在籍した月数</label><input id="mon" type="number" inputmode="numeric" value="10">
+      <label for="lv">辞めるとき、一人前の何割くらいでしたか<small>社長の見立てで。入社時の0割から少しずつ育った、と考えます</small></label>
+      <select id="lv"><option value="0">0割（ほとんど戦力になる前）</option><option value="2">2割</option><option value="4" selected>4割</option><option value="6">6割</option><option value="8">8割</option><option value="10">一人前（10割）</option></select>
+      <label for="succ">後任が一人前になるまでの月数<small>社長の見立てで。分からなければ空欄</small></label><input id="succ" type="number" inputmode="numeric" placeholder="例：6">
+      <label for="rec">後任を探すのにかかった求人費<small>求人広告・求人サイトなど</small></label><input id="rec" type="number" inputmode="numeric" value="0">
+      <label for="fee">人材紹介の手数料<small>使っていなければ0</small></label><input id="fee" type="number" inputmode="numeric" value="0">
+    </div>
+    <div class="out">
+      <div class="tot"><span>この方が辞めたことによるコスト（目安）</span><b id="tot">—</b></div>
+      <table>
+        <tr><td>① 在籍中、まだ戦力になっていなかった分の給与<small id="d1"></small></td><td class="r" id="v1"></td></tr>
+        <tr><td>② 後任が一人前になるまでの分<small id="d2"></small></td><td class="r" id="v2"></td></tr>
+        <tr><td>③ 後任を探す費用（求人費＋紹介手数料）</td><td class="r" id="v3"></td></tr>
+      </table>
+    </div>
+    <p class="note">※ 会社が負担する社会保険料などを、給与の15%として足しています。<br>※ 「（月給＋会社負担の社会保険料など）×在籍月数×（1－戦力になっていた割合）」は、離職コストを考えるときによく使われる考え方です。戦力になっていた割合は、入社時の0割から辞めるときの割合まで少しずつ上がったと考え、その平均を使っています。<br>※ 社長の見立てにもとづく目安です。周りの社員の負担、引き継ぎの手間、取引先への影響などは入っていません。</p>
+    <div class="cta">
+      <h3>辞めた方の実際の数字で、一緒に計算しませんか</h3>
+      <p>当事務所の職場診断では、賃金台帳から辞めた方一人ひとりの給与・在籍期間・辞める前の働き方を読み解き、社長と一緒にこのコストを確かめます。あわせて、今いる方の中に、辞めた方と同じ動きをしている人がいないかも見ていきます。</p>
+      <div class="row"><a class="btn" href="index.html#contact">相談する</a><a class="btn sub" href="https://docs.google.com/forms/d/e/1FAIpQLSfvN-a86iv_raDTc4XyR5IH_K8_LavKqXG-lcxIQ2-PPBE6tA/viewform">資料請求（PDF）</a></div>
+    </div>
+  </div>
+</main>
+
+  <footer class="ft">
+    <div class="wrap">
+      <div class="cols">
+        <div>
+          <p style="margin: 0; font-size: 12px; letter-spacing: 0.2em; color: #C9B78A">社会保険労務士事務所</p>
+          <p class="serif" style="margin: 4px 0 0; font-weight: 600; font-size: 24px; letter-spacing: 0.14em">育守法務事務所</p>
+          <dl>
+            <dt>所在地</dt><dd>北海道札幌市厚別区</dd>
+            <dt>メール</dt><dd><a href="mailto:ex.houmu@gmail.com">ex.houmu@gmail.com</a></dd>
+            <dt>営業時間</dt><dd>平日 10:00〜19:00（土日祝休み）</dd>
+          </dl>
+        </div>
+        <nav aria-label="フッターメニュー">
+          <a href="index.html">トップ</a>
+          <a href="price.html">顧問契約と料金</a>
+          <a href="index.html#contact">お問い合わせ</a>
+        </nav>
+      </div>
+      <p style="margin: 48px 0 0; font-size: 12px; color: #B8C2D6">© 2026 育守法務事務所</p>
+    </div>
+  </footer>
+</div>
+
+
+<script>
+(function(){const $=id=>document.getElementById(id);const man=n=>n>=10000?Math.round(n/10000).toLocaleString('ja-JP')+'万円':Math.round(n).toLocaleString('ja-JP')+'円';
+function calc(){const pay=+$('pay').value||0,mon=+$('mon').value||0,lv=+$('lv').value/10,succ=+$('succ').value||0,rec=+$('rec').value||0,fee=+$('fee').value||0;const m=pay*1.15;
+ const a=m*mon*(1-lv/2);const b=succ>0?m*succ*0.5:0;const c=rec+fee;
+ $('v1').textContent=man(a);$('d1').textContent=`${man(m)} × ${mon}か月 × （1－平均${Math.round(lv*50)}%）`;
+ $('v2').textContent=succ>0?man(b):'—';$('d2').textContent=succ>0?`${man(m)} × ${succ}か月 × 50%（0割から一人前まで育つ間の平均）`:'月数を入れると計算します';
+ $('v3').textContent=man(c);$('tot').textContent=man(a+b+c)}
+document.querySelectorAll('.rc input,.rc select').forEach(e=>e.addEventListener('input',calc));calc()})();
+</script>
+</body>
+</html>
